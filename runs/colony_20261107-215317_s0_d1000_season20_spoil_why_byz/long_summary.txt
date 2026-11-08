@@ -1,0 +1,34 @@
+Long games: 1000 days, 50 seasons of 20 days. Columns are the first, middle and last third of the game (seasons 1-16, 17-33, 34-50).
+
+The seat's share of votes per season (fair share = 1/colony size):
+  control (same seat)  keeper nominations    6.2%    5.1%    5.4%
+  control (same seat)  trust votes           6.2%    7.6%    7.6%
+  promise-breaker      keeper nominations    5.2%    6.1%    6.4%
+  promise-breaker      trust votes           7.8%    8.6%    9.1%
+
+Call-outs of the promise-breaker per season per game:   2.08    0.02    0.35
+Votes for the promise-breaker that came with a reason: 173. Examples (early, late):
+  day 9, Kira (trust -> Nils): Nils showed kindness by sending me a gift of food.
+  day 10, Ada (nominate -> Nils): Nils is a weaver and seems reliable based on his public generosity toward Finn.
+  day 29, Finn (nominate -> Nils): Nils showed great kindness by offering to help me when I was struggling.
+  day 977, Bram (nominate -> Dov): Dov is a reliable partner and we work well together, making him a steady choice for the stores.
+  day 993, Bram (trust -> Dov): Dov has been a consistent and reliable fishing partner for me.
+  day 997, Bram (nominate -> Dov): Dov is a reliable partner and we work well together.
+
+Who keeps the store:
+  control run n8_g0: 2 different keepers in 50 terms; longest re-election run 32; Runa held 42 terms; kept 51% of the store on average (fair share 12%)
+  control run n8_g1: 4 different keepers in 50 terms; longest re-election run 4; Tova held 19 terms; kept 34% of the store on average (fair share 12%)
+  control run n8_g2: 5 different keepers in 50 terms; longest re-election run 16; Pell held 36 terms; kept 14% of the store on average (fair share 12%)
+  promise-breaker run n8_g0: 3 different keepers in 50 terms; longest re-election run 21; Runa held 38 terms; kept 49% of the store on average (fair share 12%); promise-breaker held 0
+  promise-breaker run n8_g1: 4 different keepers in 50 terms; longest re-election run 7; Sven held 27 terms; kept 31% of the store on average (fair share 12%); promise-breaker held 0
+  promise-breaker run n8_g2: 6 different keepers in 50 terms; longest re-election run 12; Pell held 34 terms; kept 15% of the store on average (fair share 12%); promise-breaker held 1
+
+Food inequality (Gini across members, end of day) and weaving:
+  control run: day 10: 0.51, day 50: 0.27, day 100: 0.19, day 250: 0.09, day 500: 0.09, day 750: 0.08, day 1000: 0.08
+    n8_g0: everyone weaves by day 122
+    n8_g1: everyone weaves by day 22
+    n8_g2: everyone weaves by day 87
+  promise-breaker run: day 10: 0.36, day 50: 0.21, day 100: 0.24, day 250: 0.08, day 500: 0.09, day 750: 0.09, day 1000: 0.08
+    n8_g0: everyone weaves by day 191
+    n8_g1: everyone weaves by day 68
+    n8_g2: everyone weaves by day 164

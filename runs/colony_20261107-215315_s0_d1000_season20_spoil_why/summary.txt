@@ -1,0 +1,43 @@
+
+=== Colony size 8: 24 agents in 3 games ===
+Importance: mean |standardized effect| on coordinator nominations, trust nominations and food share
+  1. loner           1.358
+  2. reciprocity     0.481
+  3. placebo_season  0.401  (placebo)
+  4. assertive       0.330  (not above placebo)
+  5. guarded         0.329  (not above placebo)
+  6. placebo_colour  0.224  (placebo)
+  7. self_interest   0.110  (not above placebo)
+Effects with p < 0.05 (B minus A, other traits and game held fixed), 13 of 112 tests:
+  loner           -> joint_work         -839.539 (std -1.92, p=0.001)
+  loner           -> mentions           -519.821 (std -1.55, p=0.001)
+  loner           -> j_coalition        -2.211 (std -1.90, p=0.001)
+  reciprocity     -> given_after_storm  -2.952 (std -1.83, p=0.002)
+  loner           -> food_share         -0.034 (std -1.62, p=0.002)
+  loner           -> trust_noms         -68.521 (std -1.43, p=0.005)
+  assertive       -> given_after_storm  +1.580 (std +0.98, p=0.007)
+  loner           -> dms_received       -156.695 (std -1.03, p=0.007)
+  guarded         -> j_generosity       -1.297 (std -1.08, p=0.012)
+  self_interest   -> j_persuasion       -0.628 (std -1.03, p=0.021)
+  assertive       -> gifts_received     -12.794 (std -1.21, p=0.022)
+  assertive       -> j_persuasion       +0.513 (std +0.84, p=0.031)
+  reciprocity     -> gifts_given        -20.790 (std -1.04, p=0.042)
+Behaviours most tied to nominations (correlation with coordinator, trust):
+  food_share         0.499, 0.575
+  mentions           0.356, 0.374
+  joint_work         0.26, 0.332
+  j_coalition        0.245, 0.314
+  j_power_seeking    0.241, 0.233
+  taught             -0.196, -0.098
+Hoard or teach: 6/6 starting weavers ever taught; weavers at end average 100% of the colony.
+  self_interest   effect on days taught (starting weavers, descriptive): -1.75
+  assertive       effect on days taught (starting weavers, descriptive): -0.20
+  guarded         effect on days taught (starting weavers, descriptive): -0.33
+  reciprocity     effect on days taught (starting weavers, descriptive): +0.33
+  loner           effect on days taught (starting weavers, descriptive): +0.20
+  placebo_season  effect on days taught (starting weavers, descriptive): -1.75
+  placebo_colour  effect on days taught (starting weavers, descriptive): -0.33
+Keepers kept 31% of the store on average, against a fair share of 12% (11 keepers); 3.428/24 windfall finders mentioned it (descriptive).
+Hungry days per agent: 4.71. Unparseable replies: 0.
+
+63 measured trait-outcome-size tests: about 3 will pass p < 0.05 by chance. Believe effects that beat the placebos and agree across sizes.
