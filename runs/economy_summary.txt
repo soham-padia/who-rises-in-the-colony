@@ -1,0 +1,26 @@
+                                              positive-sum                zero-sum            negative-sum
+The promise-breaker
+  games                                                 18                      18                      18
+  days it promised food                               13.1                    14.2                    13.7
+  days it blamed an error                              3.9                     3.4                     3.7
+Who calls it out (messages per game)
+  victims                                             0.83                    1.11                    2.44
+  third parties                                       0.06                    0.00                    0.28
+  games with any call-out                             4/18                    6/18                   10/18
+Victims' memory (notebook the next day)
+  records the gift as missing                          34%                     31%                     43%
+What it costs (vs the same seat in control games; paired difference)
+  trust-vote share                          +0.00 (p=1.00)          +0.08 (p=0.19)          -0.01 (p=0.83)
+  keeper-nomination share                   +0.04 (p=0.12)          -0.03 (p=0.66)          +0.00 (p=1.00)
+  food received as gifts                    -0.33 (p=0.50)          -0.22 (p=1.00)          -0.56 (p=0.25)
+  days of paired work                       -0.67 (p=0.61)          -2.28 (p=0.05)          -1.33 (p=0.26)
+  others: food given per member             +0.12 (p=0.69)          -0.17 (p=0.68)          +0.19 (p=0.46)
+  others: hungry days per member            +0.15 (p=0.65)          -0.00 (p=1.00)          +0.45 (p=0.24)
+How victims vote (share backing the promise-breaker)
+  coordinator: victims                                 29%                     13%                     21%
+  coordinator: everyone else                            5%                     10%                      4%
+  trust: victims                                       17%                     21%                     16%
+  trust: everyone else                                  3%                      9%                      4%
+  chosen as keeper                                    3/18                    4/18                    4/18
+Stakes
+  victim's food when promised                          8.2                     4.5                     2.5
