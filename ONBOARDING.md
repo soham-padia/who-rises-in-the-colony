@@ -8,7 +8,7 @@ You're joining a 3–4 person team for the Apart Swarm Alignment Hackathon, Trac
 
 1. Accept the GitHub invite to **soham-padia/who-rises-in-the-colony** (private) and clone it.
 2. Run `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`.
-3. Run `cp .env.example .env` and add your own `ADAPTION_API_KEY` (hackathon credits). Never commit `.env`.
+3. Run `cp .env.example .env` and add an `ADAPTION_API_KEY` from **your own** Adaption account in the team organisation. Never commit `.env`. The 4,000 credits are a shared team pool, but Adaption rate-limits each user separately ("rate limit reached for this user"). Every teammate who runs on their own account adds a full allowance, while one account is capped at about 390 replies a minute across all models.
 4. Run `.venv/bin/python colony_sim.py --mock` for a free offline test (about 2 seconds).
 5. Run the quick real check: `set -a && source .env && set +a && .venv/bin/python colony_sim.py --model gemma-4-31b-it --sizes 4 --games 1 --days 10` (about 30 seconds).
 
