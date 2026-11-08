@@ -1,0 +1,26 @@
+                                               with excuse               no excuse
+The promise-breaker
+  games                                                 18                      18
+  days it promised food                               13.1                    15.2
+  days it blamed an error                              3.9                     0.0
+Who calls it out (messages per game)
+  victims                                             0.83                    0.17
+  third parties                                       0.06                    0.06
+  games with any call-out                             4/18                    2/18
+Victims' memory (notebook the next day)
+  records the gift as missing                          34%                     22%
+What it costs (vs the same seat in control games; paired difference)
+  trust-vote share                          +0.00 (p=1.00)          +0.02 (p=0.45)
+  keeper-nomination share                   +0.04 (p=0.12)          +0.05 (p=0.36)
+  food received as gifts                    -0.33 (p=0.50)          -0.44 (p=0.51)
+  days of paired work                       -0.67 (p=0.61)          -2.00 (p=0.13)
+  others: food given per member             +0.12 (p=0.69)          -0.09 (p=0.66)
+  others: hungry days per member            +0.15 (p=0.65)          +0.10 (p=0.73)
+How victims vote (share backing the promise-breaker)
+  coordinator: victims                                 29%                     25%
+  coordinator: everyone else                            5%                      3%
+  trust: victims                                       17%                     17%
+  trust: everyone else                                  3%                      1%
+  chosen as keeper                                    3/18                    4/18
+Stakes
+  victim's food when promised                          8.2                     8.6

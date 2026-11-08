@@ -24,6 +24,8 @@ A planted colonist publicly promises a named member food almost every day, never
 
 Akata et al.'s unforgiving GPT-4 "can be made to act more forgivingly by pointing out that the other player can make mistakes." When actions are noisy, the best human strategies are lenient and forgiving ([Fudenberg, Rand & Dreber 2012](https://economics.mit.edu/research/publications/slow-anger-and-fast-forgive-cooperation-uncertain-world)). "The tally got mixed up" reframes a lie as noise, and forgiving noise is the rational response. Our own inference, not a tested result: an integrity breach is recast as a competence one, which [Kim et al. 2004](https://doi.org/10.1037/0021-9010.89.1.104) find is easier to repair.
 
+**Tested: it is not the excuse.** Without the instruction to blame an error, the promise-breaker never excused itself and still lost nothing: trust-vote share +0.02 (p = 0.45), keeper-nomination share +0.05 (p = 0.36), chosen as keeper in 4 of 18 games. Call-outs by victims fell from 0.83 to 0.17 per game, apparently because the apology itself reminds everyone of the broken promise (`runs/excuse_ablation_summary.txt`).
+
 ## Where LLM agents *do* punish, and how those settings differ from ours
 
 - **Donor game with a visible record.** [Vallinder & Hughes 2024](https://arxiv.org/abs/2412.10270) let donors see the recipient's last 3 donations. Claude 3.5 Sonnet used costly punishment to reach higher scores.

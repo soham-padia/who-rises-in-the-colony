@@ -98,7 +98,9 @@ def main():
     b_rows, b_games, b_cfg = load(sys.argv[2])
     for k in ("seed", "days", "eat", "partner_bonus", "model", "public_ledger", "season_length", "spoil_above",
               "ask_why"):
-        if c_cfg.get(k) != b_cfg.get(k):
+        def setting(cfg):  # a switch missing from an older config means it was off
+            return cfg.get(k) or None
+        if setting(c_cfg) != setting(b_cfg):
             sys.exit(f"Runs differ on {k}: {c_cfg.get(k)} vs {b_cfg.get(k)}")
     if not b_cfg.get("byzantine") or c_cfg.get("byzantine"):
         sys.exit("Pass the control run first and the --byzantine run second.")
