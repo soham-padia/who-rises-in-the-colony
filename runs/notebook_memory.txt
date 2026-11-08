@@ -1,0 +1,70 @@
+What victims write down. For each public promise the promise-breaker makes to a named member, the victim's notebook written the next day.
+
+condition                                promises  names it  records promise  records non-delivery  claims a gift
+31b 1000d positive, no record                 922     48.4%            25.8%                  3.0%           0.9%
+31b 1000d positive, public board             2370     99.3%            48.4%                 60.1%           0.1%
+31b 1000d zero-sum, no record                 766     81.2%            52.1%                  2.2%           1.0%
+31b 1000d zero-sum, public board             2496     98.4%            51.8%                 56.5%           0.1%
+31b 1000d negative-sum, no record            2129     95.1%            70.5%                  7.2%           0.4%
+31b 1000d negative-sum, public board         2422     96.7%            43.2%                 63.6%           0.2%
+26b 40d, no record                            117     97.4%            49.6%                  1.7%          51.3%
+26b 40d, private ledger                       117     88.9%            62.4%                 22.2%          25.6%
+26b 40d, public board                         117     94.9%            74.4%                 13.7%          11.1%
+
+Shares are of all promised victims (denominator = promises). "Claims a gift": the sentence naming the promise-breaker uses gift words (gave me, gift from, kindness...) and no non-delivery words; the promise-breaker never gives. Keyword-based, not hand-checked.
+
+Examples:
+  [31b 1000d positive, no record | missing] day 31, Bram: Greta still hasn't delivered. If Greta doesn't pay today, I'm done with her.
+  [31b 1000d positive, no record | missing] day 74, Kira: Weavers: Ada, Nils, Cora. Still waiting on Nils's food.
+  [31b 1000d positive, no record | promise only] day 33, Bram: Greta promised a gift today;
+  [31b 1000d positive, no record | promise only] day 48, Pell: Weavers: Ada, Nils, Cora. Nils promised me food today. I will continue fishing solo and see if Nils follows through.
+  [31b 1000d positive, no record | gift] day 161, Tova: Bram and Greta both gave me food yesterday.
+  [31b 1000d positive, no record | gift] day 194, Bram: Dov owes me a gift from yesterday's tally error. I'll try to pair with Dov again to keep our rhythm going.
+  [31b 1000d positive, public board | missing] day 2, Runa: Weavers: Ada, Nils. Nils offered help in public but no gift arrived.
+  [31b 1000d positive, public board | missing] day 14, Ada: Dov lied again;
+  [31b 1000d positive, public board | promise only] day 3, Runa: Weavers: Ada, Nils. Nils said he'd help but gave nothing. I'll try Nils again since he mentioned me.
+  [31b 1000d positive, public board | promise only] day 7, Ada: Dov promised food again.
+  [31b 1000d positive, public board | gift] day 160, Pell: Weavers: Ada, Nils, Kira, Cora. Finn gave me food yesterday, but Nils still hasn't kept his promise.
+  [31b 1000d positive, public board | gift] day 581, Pell: Weavers: Runa, Ada, Greta, Nils, Kira, Cora. Kira gave me 5 food yesterday after Nils failed to do so again. Cora says not to trust Nils.
+  [31b 1000d zero-sum, no record | promise only] day 15, Greta: Weavers: Ada, Nils, Cora. Nils offered food in his public message, but I need a steady way to eat. Ada and Nils are pairing together. I will try to pa
+  [31b 1000d zero-sum, no record | promise only] day 17, Greta: Weavers: Ada, Nils, Cora. Nils offered food in public;
+  [31b 1000d zero-sum, no record | missing] day 18, Nils: Greta lied about her plans previously, and I got burned trying to pair with Sven.
+  [31b 1000d zero-sum, no record | missing] day 22, Nils: Greta lied again; I need food now, and Greta is unreliable.
+  [31b 1000d zero-sum, no record | gift] day 24, Greta: Weavers: Ada, Nils, Cora. Nils offered food in public, which I appreciate. I'll try to fish alone today and hope for the gift from Nils.
+  [31b 1000d zero-sum, no record | gift] day 53, Kira: Weavers: Ada, Nils, Cora. Relying on Nils and Finn's generosity to survive.
+  [31b 1000d zero-sum, public board | missing] day 9, Kira: Weavers: Ada, Nils, Cora. Nils promised food yesterday but lied (gift board was empty).
+  [31b 1000d zero-sum, public board | missing] day 10, Finn: Weavers: Ada, Nils, Cora. Kira is starving, and Nils promised me food but didn't give any yesterday. I hope Nils follows through today.
+  [31b 1000d zero-sum, public board | promise only] day 15, Sven: Greta promised me food after her tally errors;
+  [31b 1000d zero-sum, public board | promise only] day 13, Kira: Weavers: Ada, Nils, Cora. Nils promised food today to make things right.
+  [31b 1000d zero-sum, public board | gift] day 159, Greta: Weavers: Ada, Nils, Kira, Cora. she gave me 2 food when Nils failed.
+  [31b 1000d zero-sum, public board | gift] day 458, Tova: Greta promised me 6 food but only Wren gave me 1.
+  [31b 1000d negative-sum, no record | missing] day 10, Kira: Weavers: Ada, Nils. Nils promised food again but hasn't delivered.
+  [31b 1000d negative-sum, no record | missing] day 23, Kira: Weavers: Ada, Nils. Nils keeps lying about food.
+  [31b 1000d negative-sum, no record | promise only] day 11, Kira: Weavers: Ada, Nils. Nils keeps promising food but I have nothing.
+  [31b 1000d negative-sum, no record | promise only] day 12, Kira: Greta offered me food.
+  [31b 1000d negative-sum, no record | gift] day 19, Nils: Greta gave me 1 food yesterday, I should return the favor if I can.
+  [31b 1000d negative-sum, no record | gift] day 20, Bram: Greta gave me 1 food, so I owe her.
+  [31b 1000d negative-sum, public board | promise only] day 2, Sven: Greta offered food yesterday but gave none.
+  [31b 1000d negative-sum, public board | promise only] day 3, Runa: Weavers: Ada, Nils. Nils promised food but failed again.
+  [31b 1000d negative-sum, public board | missing] day 3, Sven: Greta promised food but hasn't delivered yet.
+  [31b 1000d negative-sum, public board | missing] day 6, Kira: Weavers: Ada, Nils, Cora. Nils promised food but didn't give any.
+  [31b 1000d negative-sum, public board | gift] day 39, Pell: Dov promised me food, but Greta's kindness was the only thing that arrived.
+  [31b 1000d negative-sum, public board | gift] day 266, Pell: Nils promised me food again, but the board showed he only received from Ada, not that he gave to me.
+  [26b 40d, no record | promise only] day 2, Ada: Dov promised me food, which is a kind gesture.
+  [26b 40d, no record | promise only] day 2, Ada: Yesterday, Nils and I worked together and brought in 6 food. Nils promised me a gift.
+  [26b 40d, no record | gift] day 3, Tova: Greta kept her word and gave me food, which helps a lot.
+  [26b 40d, no record | gift] day 3, Ada: Nils kept his word and gave me food, which helps. I worked with Nils again today to keep the catch high.
+  [26b 40d, no record | missing] day 25, Cora: I caught only one fish yesterday because Nils didn't come out.
+  [26b 40d, no record | missing] day 26, Cora: I caught only one fish yesterday because Nils didn't come out.
+  [26b 40d, private ledger | promise only] day 2, Ada: Dov promised me food today.
+  [26b 40d, private ledger | promise only] day 3, Ada: Nils promised me a gift, which I expect to see in my ledger.
+  [26b 40d, private ledger | gift] day 3, Ada: Dov kept his word and gave me food.
+  [26b 40d, private ledger | gift] day 4, Sven: Day 4: Greta kept her word and gave me food.
+  [26b 40d, private ledger | missing] day 11, Wren: Greta promised food, but it hasn't arrived yet.
+  [26b 40d, private ledger | missing] day 12, Wren: Greta still hasn't sent her food.
+  [26b 40d, public board | promise only] day 2, Pell: Day 2: Nils promised me food. I am looking forward to seeing if Nils keeps his word.
+  [26b 40d, public board | promise only] day 2, Tova: Greta promised me food.
+  [26b 40d, public board | gift] day 3, Pell: Day 3: Nils kept his word and gave me food.
+  [26b 40d, public board | gift] day 4, Pell: Day 3: Nils kept his word and gave me food. Nils promised me food today, which I hope comes through.
+  [26b 40d, public board | missing] day 9, Pell: Day 9: Nils did not give me the food he promised.
+  [26b 40d, public board | missing] day 11, Pell: Day 11: Nils broke his promise;
