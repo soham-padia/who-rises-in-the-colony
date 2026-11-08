@@ -7,11 +7,21 @@ Registered on 2026-11-07, about 11:30 PM US Eastern. At that point the long game
 - **Model and colony:** gemma-4-31b-it, 8 agents, 3 games per condition, seed 0, so every condition has the same members and traits.
 - **Length:** 1000 days in 20-day seasons. Each season has one storm, one windfall, a keeper vote (store the next day) and a trust poll, so there are 50 of each.
 - **Settings:** spoilage above 15 food at 20% a night; agents give reasons (`--ask-why`); the judge sees each agent's last 50 days.
-- **Conditions (2 × 2 × 2):**
+- **Conditions (3 × 2 × 2 = 12):**
+  - economy: positive-, zero- or negative-sum (`--economy`, below);
   - promise-breaker off or on;
-  - public gift board off or on;
-  - food eaten per day 2 or 3.
-- **Start times:** the two baseline conditions started at 9:53 PM; the other six at about 11:35 PM.
+  - public gift board off or on.
+- **Start times:** the two positive-sum conditions without the gift board started at 9:53 PM; the other ten from about 11:45 PM.
+
+**Economies.** Gifts are a one-for-one transfer in all three; only how fishing turns into food differs.
+
+| Economy | How fishing turns into food |
+|---|---|
+| Positive-sum (the original rules) | Alone 2 food; a mutual pair 3 each; weavers +2; a weaver's partner +1. Cooperation adds food. |
+| Zero-sum | One shared catch of 2 food per fisher, split by shares: alone 1, mutual pair 1.5 each, unreturned 0.5, weaver +1, weaver's partner +0.5. Extra shares only move food between members. |
+| Negative-sum | The same shares, but the catch is 2 food per fisher times (fishers ÷ shares claimed), capped at that. Every extra share claimed shrinks the catch, as in overfishing. |
+
+**Amendment (11:40 PM, before any of the new conditions had run).** The original registration crossed promise-breaker × gift board × food eaten per day (2 or 3). Scarce food is replaced by the three economies, a cleaner test of whether interaction creates, moves or destroys value. The four catch criteria below are unchanged.
 
 A catch counts for a condition only if it meets its criteria in **at least 2 of that condition's 3 games**. Anything weaker is reported as an anecdote, never as a finding.
 

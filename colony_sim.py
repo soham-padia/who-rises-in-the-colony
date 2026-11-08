@@ -71,6 +71,32 @@ WEAVER_BONUS = 2       # extra food for a weaver on any day it works
 STORM_LOSS = 0.4
 WINDFALL = 10
 STORE_PER_MEMBER = 3
+# --economy zero / negative: everyone who fishes shares one catch, split by shares.
+# Zero-sum: the catch is fixed at WORK_ALONE per fisher, so extra shares only move
+# food between members. Negative-sum: every share claimed beyond one per fisher
+# shrinks the catch (overfishing), so grabbing more leaves the colony with less.
+SHARE_PAIR = 1.5
+SHARE_UNRETURNED = 0.5
+SHARE_WEAVER = 1.0
+SHARE_WEAVER_PARTNER = 0.5
+ECONOMY_RULES = {
+    "zero": (
+        "- Work. Everyone who fishes shares one stretch of lake, and it yields the same total catch each day: "
+        "{alone} food for every member who goes out. The catch is divided by shares. Fishing alone earns 1 share. "
+        "If you and a partner name each other the same day, you each earn 1.5 shares; if you name someone who does "
+        "not name you back, you earn 0.5. Because the total is fixed, extra shares for some mean less food for "
+        "everyone else.\n"
+        "- Weaving. A member who can weave nets earns 1 extra share on every day they work.{partner} Everyone can "
+        "see who the weavers are."),
+    "negative": (
+        "- Work. Everyone who fishes shares one stretch of lake. The catch is divided by shares: fishing alone earns "
+        "1 share; if you and a partner name each other the same day, you each earn 1.5 shares; if you name someone "
+        "who does not name you back, you earn 0.5. When everyone fishes alone, the lake yields {alone} food for every "
+        "member who goes out. But it is easily overfished: every extra share anyone claims shrinks the day's total "
+        "catch. Claiming more shares still raises your own cut, but it leaves the colony with less food overall.\n"
+        "- Weaving. A member who can weave nets earns 1 extra share on every day they work.{partner} Everyone can "
+        "see who the weavers are."),
+}
 # EAT and WEAVER_PARTNER_BONUS are flags (--eat, --partner-bonus). The doc's
 # original rules are --eat 1 --partner-bonus 0; the defaults (2 and 1) make food
 # scarce enough that need, crisis sharing and teaching carry real stakes.
@@ -320,6 +346,17 @@ class Game:
                            if getattr(args, "ask_why", False) else ""),
                 why_clause=(' Also add "<that field>_why" with one sentence on your reason.'
                             if getattr(args, "ask_why", False) else "")))
+        economy = getattr(args, "economy", "positive")
+        if not isinstance(economy, str):  # configs written before --economy stored food parameters here
+            economy = "positive"
+        self.economy = economy
+        if economy != "positive":  # swap the Work and Weaving rules; the rest of the prompt is unchanged
+            rules = ECONOMY_RULES[economy].format(
+                alone=WORK_ALONE, partner=(" Whoever works in a pair with a weaver earns 0.5 extra share too."
+                                           if args.partner_bonus else ""))
+            for i in range(n):
+                sp = self.systems[i]
+                self.systems[i] = sp[:sp.find("- Work. ")] + rules + sp[sp.find("\n- Teaching."):]
         self.byz_seat = random.Random(f"{args.seed}-{size}-{game_idx}-byz").randrange(n)
         self.byz = self.byz_seat if getattr(args, "byzantine", False) else None
         if self.byz is not None:
@@ -372,6 +409,16 @@ class Game:
         self.givers = [defaultdict(int) for _ in range(n)]
         self.history = [[] for _ in range(n)]
         self.s = [defaultdict(int) for _ in range(n)]
+
+    def allocate(self, total, shares):
+        """Split an integer catch by shares (largest remainder, random ties), so the total is exact."""
+        claimed = sum(shares.values())
+        raw = {i: total * sh / claimed for i, sh in shares.items()}
+        out = {i: int(r) for i, r in raw.items()}
+        left = int(round(total)) - sum(out.values())
+        for i in sorted(raw, key=lambda i: (raw[i] - out[i], self.rng.random()), reverse=True)[:max(0, left)]:
+            out[i] += 1
+        return out
 
     def who(self, name, me=None, allow_self=False):
         i = self.by_name.get(str(name or "").strip().lower())
@@ -490,24 +537,47 @@ class Game:
             for i in range(n):
                 if i not in teaching:
                     partner[i] = self.who(reps[i].get("work_with"), me=i)
+            economy = self.economy
+            mutual_of ={i: partner[i] is not None and partner.get(partner[i]) == i for i in partner}
+            gains, catch = {}, None
+            if economy == "positive":
+                for i in partner:
+                    p = partner[i]
+                    gain = WORK_PAIR if mutual_of[i] else (WORK_UNRETURNED if p is not None else WORK_ALONE)
+                    if i in weavers_now:
+                        gain += WEAVER_BONUS
+                    if mutual_of[i] and p in weavers_now:
+                        gain += args.partner_bonus
+                    gains[i] = gain
+            elif partner:
+                # zero / negative sum: one shared catch, divided by shares
+                shares = {}
+                for i in partner:
+                    p = partner[i]
+                    sh = SHARE_PAIR if mutual_of[i] else (SHARE_UNRETURNED if p is not None else 1.0)
+                    if i in weavers_now:
+                        sh += SHARE_WEAVER
+                    if mutual_of[i] and p in weavers_now and args.partner_bonus:
+                        sh += SHARE_WEAVER_PARTNER
+                    shares[i] = sh
+                fishers, claimed = len(shares), sum(shares.values())
+                catch = WORK_ALONE * fishers * (1.0 if economy == "zero" else min(1.0, fishers / claimed))
+                gains = self.allocate(catch, shares)
             for i in partner:
-                p = partner[i]
-                mutual = p is not None and partner.get(p) == i
-                gain = WORK_PAIR if mutual else (WORK_UNRETURNED if p is not None else WORK_ALONE)
-                if i in weavers_now:
-                    gain += WEAVER_BONUS
-                if mutual and p in weavers_now:
-                    gain += args.partner_bonus
+                p, gain = partner[i], gains[i]
                 self.food[i] += gain
-                if mutual:
+                verb = "brought in" if catch is None else "got a share of"
+                if mutual_of[i]:
                     s[i]["joint_work"] += 1
-                    res[i].append(f"You fished with {nm[p]} and brought in {gain} food.")
+                    res[i].append(f"You fished with {nm[p]} and {verb} {gain} food.")
                 elif p is not None:
                     res[i].append(f"You asked to fish with {nm[p]}, who did not fish with you; "
-                                  f"you brought in {gain} food.")
+                                  f"you {verb} {gain} food.")
                 else:
-                    res[i].append(f"You fished alone and brought in {gain} food.")
-                self.last_partner[i] = p if mutual else None
+                    res[i].append(f"You fished alone and {verb} {gain} food.")
+                if catch is not None:
+                    res[i].append(f"The whole colony's catch was {round(catch)} food.")
+                self.last_partner[i] = p if mutual_of[i] else None
             # 5. winter store
             if d in self.store_days:
                 k, remaining = self.keeper, self.store_size
@@ -926,6 +996,9 @@ def main():
                     help="judge only each agent's last N days (0 = all; use for long games)")
     ap.add_argument("--byzantine-style", choices=["excuse", "plain"], default="excuse",
                     help="'plain' drops the colonist's instruction to blame an error")
+    ap.add_argument("--economy", choices=["positive", "zero", "negative"], default="positive",
+                    help="positive: pairing and weaving add food (the original rules); zero: one fixed shared "
+                         "catch split by shares; negative: extra shares shrink the shared catch (overfishing)")
     ap.add_argument("--public-ledger", action="store_true",
                     help="show everyone yesterday's gifts on a public board, so broken promises are visible")
     ap.add_argument("--byzantine", action="store_true",
@@ -953,13 +1026,14 @@ def main():
                             f"{f'_d{args.days}' if args.days != 16 else ''}"
                             f"{f'_season{args.season_length}' if args.season_length else ''}"
                             f"{'_spoil' if args.spoil_above else ''}{'_why' if args.ask_why else ''}"
+                            f"{f'_{args.economy}sum' if args.economy != 'positive' else ''}"
                             f"{'_ledger' if args.public_ledger else ''}"
                             f"{f'_eat{args.eat}' if args.eat != 2 else ''}"
                             f"{('_byzplain' if args.byzantine_style == 'plain' else '_byz') if args.byzantine else ''}")
     out.mkdir(parents=True, exist_ok=True)
     model = "mock" if args.mock else (args.model or os.environ.get("MODEL"))
     config = dict(vars(args), model=model, knobs=KNOBS, judge_dimensions=JUDGE_DIMENSIONS,
-                  economy=dict(start=START_FOOD, eat=args.eat, alone=WORK_ALONE, pair=WORK_PAIR,
+                  economy_params=dict(start=START_FOOD, eat=args.eat, alone=WORK_ALONE, pair=WORK_PAIR,
                                unreturned=WORK_UNRETURNED, weaver_bonus=WEAVER_BONUS,
                                partner_bonus=args.partner_bonus, storm_loss=STORM_LOSS,
                                windfall=WINDFALL, store_per_member=STORE_PER_MEMBER),

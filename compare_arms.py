@@ -97,9 +97,12 @@ def main():
     c_rows, c_games, c_cfg = load(sys.argv[1])
     b_rows, b_games, b_cfg = load(sys.argv[2])
     for k in ("seed", "days", "eat", "partner_bonus", "model", "public_ledger", "season_length", "spoil_above",
-              "ask_why"):
+              "ask_why", "economy"):
         def setting(cfg):  # a switch missing from an older config means it was off
-            return cfg.get(k) or None
+            v = cfg.get(k)
+            if k == "economy" and not isinstance(v, str):  # older configs stored food parameters here
+                v = None
+            return None if not v or (k == "economy" and v == "positive") else v
         if setting(c_cfg) != setting(b_cfg):
             sys.exit(f"Runs differ on {k}: {c_cfg.get(k)} vs {b_cfg.get(k)}")
     if not b_cfg.get("byzantine") or c_cfg.get("byzantine"):
