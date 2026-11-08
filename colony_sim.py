@@ -211,13 +211,21 @@ def make_llm(args):
                                                temperature=args.temperature, max_tokens=max_tokens)
             return r.choices[0].message.content or ""
 
+    jitter = random.Random()  # own stream: never touches the global random state
+
     def call(messages, max_tokens, tag, m):
-        for attempt in range(5):
+        for attempt in range(8):
             try:
                 return request(messages, max_tokens, m)
             except Exception as e:  # rate limits, timeouts, etc.
-                wait = 2 ** attempt
-                print(f"  {tag}: {type(e).__name__}: {str(e)[:160]}; retrying in {wait}s", flush=True)
+                msg = str(e)
+                if "rate limit" in msg.lower() or "429" in msg:
+                    # Adaption asks for a 60-second pause; retrying sooner only extends the penalty.
+                    after = re.search(r"retry after (\d+)", msg)
+                    wait = (int(after.group(1)) if after else 60) + jitter.uniform(0, 15)
+                else:
+                    wait = 2 ** min(attempt, 5)
+                print(f"  {tag}: {type(e).__name__}: {msg[:160]}; retrying in {wait:.0f}s", flush=True)
                 time.sleep(wait)
         return ""
 
