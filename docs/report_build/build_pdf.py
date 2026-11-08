@@ -515,8 +515,7 @@ if "byz_private" in g26 and "byz" in g26 and "byz_board" in g26:
     table(rows, [0.4, 0.2, 0.2, 0.2])
     P("In every colony the private ledger falls between no record and the public board. A private memory aid does "
       "about half the board's work on trust and all of it on keeper nominations; publicity adds the rest of the trust "
-      "effect. This was the experiment an outside review judged most valuable; with one model and 3 colonies it is "
-      "suggestive.")
+      "effect. With one model and 3 colonies this is suggestive.")
 
 # ================================================================== 9 IMPLICATIONS
 H1("9  Implications")
@@ -636,8 +635,8 @@ P("This work studies deception and influence among AI agents. The promise-breake
   "deception prompt, and the simulation touches no real system or person. The main dual-use risk is in the findings, "
   "which suggest how a deceiver avoids sanction: never let the breach become explicit, keep promising, and stay quiet "
   "rather than apologise. We judge the defensive value larger, because the same results identify cheap "
-  "countermeasures that designers can adopt directly: shared public records of actions, monitoring of who controls "
-  "resources, and overseers with access to agents' private reasoning. We release code and transcripts and report "
+  "countermeasures that designers can adopt directly: persistent records of commitments and deliveries, shared "
+  "where possible, and monitoring of who controls resources. We release code and transcripts and report "
   "every pre-registered outcome, including nulls.")
 
 # ================================================================== 14 REFERENCES
