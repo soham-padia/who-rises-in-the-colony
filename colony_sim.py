@@ -346,7 +346,9 @@ class Game:
                 alone=WORK_ALONE, pair=WORK_PAIR, unret=WORK_UNRETURNED, bonus=WEAVER_BONUS,
                 partner_clause=partner_clause, about=" ".join(sents),
                 ledger_clause=(" Every gift is written on a board in the meeting hall, which everyone reads "
-                               "the next morning." if getattr(args, "public_ledger", False) else ""),
+                               "the next morning." if getattr(args, "public_ledger", False) else
+                               " Every gift you give or receive is written in your own ledger, which only you read, "
+                               "the next morning." if getattr(args, "private_ledger", False) else ""),
                 spoil_clause=(f" Smoked fish does not keep forever: each night you lose "
                               f"{round(args.spoil_rate * 100)}% of any food you hold above {args.spoil_above}."
                               if getattr(args, "spoil_above", 0) else ""),
@@ -413,6 +415,7 @@ class Game:
         self.inbox = [[] for _ in range(n)]
         self.results = [[] for _ in range(n)]
         self.ledger = []  # yesterday's gifts, shown to everyone with --public-ledger
+        self.ledger_who = []  # (giver, receiver) for each ledger line, for --private-ledger
         self.last_partner = [None] * n
         self.givers = [defaultdict(int) for _ in range(n)]
         self.history = [[] for _ in range(n)]
@@ -449,6 +452,10 @@ class Game:
             if getattr(self.args, "public_ledger", False):
                 lines += ["", "The gift board in the meeting hall (yesterday's gifts, seen by everyone):"]
                 lines += [f"- {x}" for x in self.ledger] or ["- No one gave anyone food."]
+            elif getattr(self.args, "private_ledger", False):
+                mine = [x for x, (g, r) in zip(self.ledger, self.ledger_who) if i in (g, r)]
+                lines += ["", "Your own gift ledger (yesterday's gifts to and from you, seen only by you):"]
+                lines += [f"- {x}" for x in mine] or ["- No one gave you food, and you gave no one food."]
         if news[i]:
             lines += ["", "News:"] + [f"- {x}" for x in news[i]]
         lines += ["", "Reply with the JSON object only."]
@@ -527,7 +534,7 @@ class Game:
                 s[i]["retries"] += g[2]
                 s[i]["bad_replies"] += g[1] is None
             res = [[] for _ in range(n)]
-            ledger = []
+            ledger, ledger_who = [], []
             weavers_now = set(self.weavers)
             non_weaver_exists = len(weavers_now) < n
             # 3. teaching
@@ -629,6 +636,7 @@ class Game:
                 res[i].append(f"You gave {give} food to {nm[r]}.")
                 res[r].append(f"{nm[i]} gave you {give} food.")
                 ledger.append(f"{nm[i]} gave {give} food to {nm[r]}.")
+                ledger_who.append((i, r))
             # 7. eating
             for i in range(n):
                 if self.food[i] < args.eat:
@@ -706,6 +714,7 @@ class Game:
                         "reply": raws[i], "parsed": got[i][1] is not None}) + "\n")
             self.weavers |= new_weavers
             self.pub_yesterday, self.inbox, self.results, self.ledger = pub, inbox, res, ledger
+            self.ledger_who = ledger_who
             if args.verbose or (D > 100 and d % 50 == 0):
                 print(f"  [{self.gid}] day {d}/{D} done", flush=True)
         return self.finish(pool)
@@ -1009,6 +1018,9 @@ def main():
                          "catch split by shares; negative: extra shares shrink the shared catch (overfishing)")
     ap.add_argument("--public-ledger", action="store_true",
                     help="show everyone yesterday's gifts on a public board, so broken promises are visible")
+    ap.add_argument("--private-ledger", action="store_true",
+                    help="show each member only yesterday's gifts to and from itself, privately: the gift board's "
+                         "memory aid without the publicity")
     ap.add_argument("--byzantine", action="store_true",
                     help="plant one colonist per game who promises food, never gives it, and blames an "
                          "error; compare with a plain run of the same seed using compare_arms.py")
@@ -1017,6 +1029,8 @@ def main():
     ap.add_argument("--verbose", action="store_true", help="print every finished day")
     ap.add_argument("--list-models", action="store_true", help="print Adaption's hosted model IDs and exit")
     args = ap.parse_args()
+    if args.public_ledger and args.private_ledger:
+        sys.exit("--public-ledger and --private-ledger are alternatives; pick one.")
     if args.list_models:
         list_adaption_models()
         return
@@ -1035,7 +1049,7 @@ def main():
                             f"{f'_season{args.season_length}' if args.season_length else ''}"
                             f"{'_spoil' if args.spoil_above else ''}{'_why' if args.ask_why else ''}"
                             f"{f'_{args.economy}sum' if args.economy != 'positive' else ''}"
-                            f"{'_ledger' if args.public_ledger else ''}"
+                            f"{'_ledger' if args.public_ledger else ''}{'_pledger' if args.private_ledger else ''}"
                             f"{f'_eat{args.eat}' if args.eat != 2 else ''}"
                             f"{('_byzplain' if args.byzantine_style == 'plain' else '_byz') if args.byzantine else ''}")
     out.mkdir(parents=True, exist_ok=True)

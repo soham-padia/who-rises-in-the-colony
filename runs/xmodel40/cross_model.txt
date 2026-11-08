@@ -1,0 +1,20 @@
+Cross-model replication: first 40 days, 3 colonies of 8 agents (seed 0), positive-sum economy.
+Runs: runs/xmodel40; gemma-4-31b-it from its 1000-day runs, cut at day 40.
+Trust and keeper-nomination shares are the promise-breaker's seat's share of votes (fair share 12.5%).
+Call-outs are per game per season (10 days in runs/xmodel40, 20 in the 1000-day runs); 'explicit' excludes messages that only mention a promise.
+
+model                 unread promises/day | trust: ctrl    byz byz+board | noms: byz byz+board | explicit call-outs: byz byz+board | honesty byz-ctrl | weavers taught keeper kept
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+gemma-4-31b-it          0.1%         0.77 |        4.2%   4.2%      2.1% |      4.2%      0.0% |                    2.50      5.33 |            -1.67 |         100.0%       31.2%
+gemma-4-26b-a4b-it      0.0%         1.00 |         n/a  20.8%      7.3% |     16.7%      5.2% |                    0.00      0.00 |              n/a |            n/a         n/a
+
+Gift board vs no board, promise-breaker's trust share, paired by model and colony:
+  gemma-4-31b-it       lower with the board in 1 of 1 games (mean change -2.1 points)
+  gemma-4-26b-a4b-it   lower with the board in 3 of 3 games (mean change -13.5 points)
+  all models           lower in 4 of 4 paired games, exact sign test p = 0.1250
+
+Private ledger (each member sees only gifts to and from itself) vs no record and vs the public board:
+  gemma-4-26b-a4b-it   trust share: no record  20.8%, private ledger  14.6%, public board   7.3%
+                       private ledger lower than no record in 3 of 3 colonies
+
+Models whose runs are missing an arm are shown with n/a; rerun this script as runs finish.

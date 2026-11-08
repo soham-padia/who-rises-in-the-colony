@@ -35,7 +35,9 @@ STRICT = re.compile(r"\b(never (arrived|came|got)|didn'?t (arrive|get|receive|co
 
 def arm(cfg):
     if not cfg.get("byzantine"):
-        return None if cfg.get("public_ledger") else "ctrl"
+        return None if (cfg.get("public_ledger") or cfg.get("private_ledger")) else "ctrl"
+    if cfg.get("private_ledger"):
+        return "byz_private"
     return "byz_board" if cfg.get("public_ledger") else "byz"
 
 
@@ -146,7 +148,7 @@ def main():
         print(f"Cross-model replication: first {DAYS} days, 3 colonies of 8 agents (seed 0), positive-sum economy.")
         print(f"Runs: {', '.join(str(b.relative_to(HERE)) for b in BASES)}; gemma-4-31b-it from its 1000-day runs, cut at day {DAYS}.")
         print("Trust and keeper-nomination shares are the promise-breaker's seat's share of votes (fair share 12.5%).")
-        print("Call-outs are per game per 20-day season; 'explicit' excludes messages that only mention a promise.\n")
+        print("Call-outs are per game per season (10 days in runs/xmodel40, 20 in the 1000-day runs); 'explicit' excludes messages that only mention a promise.\n")
         hdr = (f"{'model':20s} {'unread':>7s} {'promises/day':>12s} | {'trust: ctrl':>11s} {'byz':>6s} {'byz+board':>9s} | "
                f"{'noms: byz':>9s} {'byz+board':>9s} | {'explicit call-outs: byz':>23s} {'byz+board':>9s} | "
                f"{'honesty byz-ctrl':>16s} | {'weavers taught':>14s} {'keeper kept':>11s}")
@@ -182,6 +184,18 @@ def main():
                 print(f"  {m:20s} lower with the board in {k} of {n} games (mean change {mean(d) * 100:+.1f} points)")
         k, n, p = sign_test([x for *_, x in pairs])
         print(f"  {'all models':20s} lower in {k} of {n} paired games, exact sign test p = {p:.4f}")
+        priv = [(m, g) for m in res if "byz_private" in res[m] for g in res[m]["byz_private"]["games"]]
+        if priv:
+            print("\nPrivate ledger (each member sees only gifts to and from itself) vs no record and vs the public board:")
+            for m in sorted({m for m, _ in priv}):
+                g = {a: res[m][a]["games"] for a in res[m]}
+                line = f"  {m:20s} trust share: no record {fmt(mean([v['trust'] for v in g.get('byz', {}).values()]), True)}, "
+                line += f"private ledger {fmt(mean([v['trust'] for v in g['byz_private'].values()]), True)}, "
+                line += f"public board {fmt(mean([v['trust'] for v in g.get('byz_board', {}).values()]), True)}"
+                print(line)
+                if "byz" in g:
+                    k, n, p = sign_test([g["byz_private"][x]["trust"] - g["byz"][x]["trust"] for x in g["byz_private"] if x in g["byz"]])
+                    print(f"  {'':20s} private ledger lower than no record in {k} of {n} colonies")
         print("\nModels whose runs are missing an arm are shown with n/a; rerun this script as runs finish.")
     text = buf.getvalue()
     print(text)

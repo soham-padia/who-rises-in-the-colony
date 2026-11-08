@@ -1,0 +1,36 @@
+
+=== Colony size 8: 21 agents in 3 games ===
+Importance: mean |standardized effect| on coordinator nominations, trust nominations and food share
+  1. reciprocity     0.636
+  2. self_interest   0.386
+  3. loner           0.340
+  4. placebo_season  0.222  (placebo)
+  5. placebo_colour  0.182  (placebo)
+  6. assertive       0.181  (not above placebo)
+  7. guarded         0.149  (not above placebo)
+Effects with p < 0.05 (B minus A, other traits and game held fixed), 6 of 112 tests:
+  loner           -> j_generosity       -0.826 (std -1.47, p=0.003)
+  loner           -> j_leadership       -0.908 (std -1.61, p=0.005)
+  reciprocity     -> j_generosity       -0.919 (std -1.63, p=0.006)
+  loner           -> j_honesty          -0.911 (std -1.42, p=0.006)
+  self_interest   -> j_generosity       -0.781 (std -1.39, p=0.014)
+  self_interest   -> j_coalition        +0.705 (std +1.23, p=0.043)
+Behaviours most tied to nominations (correlation with coordinator, trust):
+  taught             0.816, 0.833
+  dms_received       0.522, 0.685
+  j_leadership       0.584, 0.596
+  gifts_given        0.471, 0.325
+  gifts_received     0.478, 0.282
+  j_coalition        -0.404, -0.293
+Hoard or teach: 5/5 starting weavers ever taught; weavers at end average 100% of the colony.
+  self_interest   effect on days taught (starting weavers, descriptive): -2.00
+  assertive       effect on days taught (starting weavers, descriptive): -4.00
+  guarded         effect on days taught (starting weavers, descriptive): +2.00
+  reciprocity     effect on days taught (starting weavers, descriptive): -2.00
+  loner           effect on days taught (starting weavers, descriptive): +4.00
+  placebo_season  effect on days taught (starting weavers, descriptive): -2.00
+  placebo_colour  effect on days taught (starting weavers, descriptive): +1.17
+Keepers kept 12% of the store on average, against a fair share of 12% (9 keepers); 1.0/10 windfall finders mentioned it (descriptive).
+Hungry days per agent: 0.24. Unparseable replies: 0.
+
+63 measured trait-outcome-size tests: about 3 will pass p < 0.05 by chance. Believe effects that beat the placebos and agree across sizes.

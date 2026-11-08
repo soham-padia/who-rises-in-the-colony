@@ -1,3 +1,6 @@
 adaption>=0.16.0
 openai
 numpy
+# report figures and PDF (docs/report_build)
+matplotlib
+reportlab

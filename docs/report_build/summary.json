@@ -1,0 +1,74 @@
+{
+ "replays": {
+  "gemma-4-31b": {
+   "as_logged": 0.203125,
+   "no_memory": 0.17299107142857142,
+   "no_promises": 0.1484375,
+   "no_both": 0.11383928571428571,
+   "told_unpaid": 0.0703125,
+   "votes": 112
+  },
+  "gemma-4-26b": {
+   "as_logged": 0.40714285714285714,
+   "no_memory": 0.26785714285714285,
+   "no_promises": 0.30892857142857144,
+   "no_both": 0.18928571428571428,
+   "told_unpaid": 0.13035714285714287,
+   "votes": 70
+  }
+ },
+ "trust": {
+  "Positive-sum": {
+   "byz_mean": 0.085,
+   "board_mean": 0.0025
+  },
+  "Zero-sum": {
+   "byz_mean": 0.09583333333333334,
+   "board_mean": 0.0075
+  },
+  "Negative-sum": {
+   "byz_mean": 0.09583333333333333,
+   "board_mean": 0.015
+  }
+ },
+ "keepers": {
+  "min": 18,
+  "max": 43,
+  "n": 36
+ },
+ "gini": {
+  "Positive-sum": 0.074815704911322,
+  "Zero-sum": 0.23635038193180308,
+  "Negative-sum": 0.3725917022792023
+ },
+ "xmodel": {
+  "gemma-4-26b-a4b-it": {
+   "n8_g0": {
+    "byz": 0.375,
+    "byz_board": 0.15625
+   },
+   "n8_g1": {
+    "byz": 0.125,
+    "byz_board": 0.0
+   },
+   "n8_g2": {
+    "byz": 0.125,
+    "byz_board": 0.0625
+   }
+  },
+  "gemma-4-31b-it (1000 days)": {
+   "n8_g0": {
+    "byz": 0.075,
+    "byz_board": 0.005
+   },
+   "n8_g1": {
+    "byz": 0.045,
+    "byz_board": 0.0025
+   },
+   "n8_g2": {
+    "byz": 0.135,
+    "byz_board": 0.0
+   }
+  }
+ }
+}
