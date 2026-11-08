@@ -21,7 +21,7 @@ You're joining a 3–4 person team for the Apart Swarm Alignment Hackathon, Trac
   - **Results so far:** the findings to date.
   - **Literature review:** sources for and against our explanations.
 - **Code:** `colony_sim.py` (the simulation every run uses), `compare_arms.py`, `analyze_promises.py`, `environment_summary.py`. `colony-sim.py` is the team's earlier version, kept for reference.
-- **Results:** `runs/<run>/summary.txt`, `effects.csv`, `agents.csv`, `games.jsonl` and `compare.txt` are in git. Full transcripts (`transcript.jsonl`) are in the Hugging Face dataset, too big for git.
+- **Results:** `runs/<run>/summary.txt`, `effects.csv`, `agents.csv`, `games.jsonl` and `compare.txt` are in git. Full transcripts (`transcript.jsonl`) are too big for git. They are in the Hugging Face dataset `sohampadianeu/who-rises-in-the-colony-runs`; get them with `hf download sohampadianeu/who-rises-in-the-colony-runs --repo-type dataset --local-dir .` (ask Soham for access while it's private).
 
 ## Rules that keep results comparable
 

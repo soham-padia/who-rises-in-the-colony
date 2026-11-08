@@ -49,7 +49,13 @@ Each run folder holds:
 - `summary.txt`
 - `compare.txt`: Byzantine runs only
 
-Full transcripts (`transcript.jsonl`) are too large for git. They are in the Hugging Face dataset; ask Soham for access.
+Full transcripts (`transcript.jsonl`) are too large for git. They are in the Hugging Face dataset [`sohampadianeu/who-rises-in-the-colony-runs`](https://huggingface.co/datasets/sohampadianeu/who-rises-in-the-colony-runs). Download them next to the code with:
+
+```bash
+hf download sohampadianeu/who-rises-in-the-colony-runs --repo-type dataset --local-dir .
+```
+
+The dataset is private for now; ask Soham for access.
 
 ## Files
 
