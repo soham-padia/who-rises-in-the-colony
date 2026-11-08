@@ -47,6 +47,7 @@ Those settings share things our colony lacks: explicit numeric payoffs, a defect
 - **Votes barely move.** The change in trust-vote share is −0.04 (p = 0.75) and in keeper-nomination share −0.09 (p = 0.25). Paired work fell by 1.94 days (p = 0.06).
 - **Scarce food (eat 3).** Victims held 4.2 food when promised, against 8.2 in the original setup. The promiser received 1.06 less food as gifts (p = 0.03), the only significant cost so far, but third parties never spoke up (0.00 call-outs per game).
 - **Reading.** Visibility makes the colony name the cheat, as the literature predicts, but these models still don't turn that into sanctions. That fits the finding that LLMs prefer rewarding to punishing (Guzman Piedrahita).
+- **Counterfactual replays narrow it down.** We re-asked victims' actual vote-day decisions with one added sentence, "The food Cora promised you has never arrived." It cut support for the promise-breaker by about two thirds on both models: gemma-4-31b went from 20.3% to 7.0% (−13.3 points, paired 95% interval [−18.8, −8.1]) and gemma-4-26b from 40.7% to 13.0% (−27.7 [−36.2, −19.5]). Removing its promise messages and the victim's notebook mentions of it roughly halved support. So the models can sanction a cheat; the breach is simply never made explicit, and the promises themselves earn credit. This favours explanations 1 and 3 over a pure disposition story (`runs/replays_paired.txt`).
 
 ## How each source was checked
 

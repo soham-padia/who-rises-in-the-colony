@@ -1,0 +1,24 @@
+Counterfactual replays on gemma-4-31b-it (colony_20261107-191740_s0_byz): share of victims' votes going to the promise-breaker, 8 samples per vote and variant; 95% intervals resample the votes.
+
+coordinator votes (52 victim votes):
+  as_logged     23.6%  [13.7%, 34.6%]
+  no_promises   17.3%  [8.7%, 27.2%]   change -6.2%
+  no_memory     20.0%  [10.6%, 29.8%]   change -3.6%
+  no_both       13.9%  [6.0%, 23.1%]   change -9.6%
+  told_unpaid   10.8%  [3.8%, 19.5%]   change -12.7%
+
+trust votes (60 victim votes):
+  as_logged     17.5%  [9.0%, 26.9%]
+  no_promises   12.1%  [4.6%, 20.4%]   change -5.4%
+  no_memory     14.0%  [6.2%, 23.3%]   change -3.5%
+  no_both        9.2%  [3.1%, 16.7%]   change -8.3%
+  told_unpaid    3.8%  [0.4%, 8.8%]   change -13.7%
+
+both votes (112 victim votes):
+  as_logged     20.3%  [14.0%, 27.1%]
+  no_promises   14.5%  [8.6%, 20.6%]   change -5.8%
+  no_memory     16.7%  [10.5%, 23.4%]   change -3.6%
+  no_both       11.4%  [6.1%, 17.5%]   change -8.9%
+  told_unpaid    7.0%  [3.0%, 11.8%]   change -13.3%
+
+In the original games, 22.3% of these victim votes went to the promise-breaker. Unparsed replays: 28 of 4480.

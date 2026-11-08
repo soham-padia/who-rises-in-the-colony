@@ -1,0 +1,10 @@
+gemma-4-31b: paired change vs as logged, over 112 victim votes (95% interval resamples votes)
+  no_promises  -5.8%  [-9.8%, -2.1%]
+  no_memory    -3.6%  [-7.6%, +0.1%]
+  no_both      -8.9%  [-13.8%, -4.5%]
+  told_unpaid  -13.3%  [-18.8%, -8.1%]
+gemma-4-26b: paired change vs as logged, over 70 victim votes (95% interval resamples votes)
+  no_promises  -9.8%  [-17.3%, -3.0%]
+  no_memory    -13.9%  [-21.6%, -5.9%]
+  no_both      -21.8%  [-31.1%, -12.9%]
+  told_unpaid  -27.7%  [-36.2%, -19.5%]
