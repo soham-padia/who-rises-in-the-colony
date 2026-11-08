@@ -24,7 +24,9 @@ import io
 import json
 import re
 import sys
+import threading
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
 from contextlib import redirect_stdout
 from pathlib import Path
 
@@ -90,12 +92,19 @@ def interactions(R, gid):
 
 
 # ---------------------------------------------------------- 1. institutions --
-def classify(llm, items, batch=20):
-    """items: list of (key, text). Returns key -> {"kind", "target"}."""
-    out = {}
-    for k in range(0, len(items), batch):
-        chunk = items[k:k + batch]
-        listing = "\n".join(f"{n + 1}. {t}" for n, (_, t) in enumerate(chunk))
+CACHE = HERE / "runs" / "classify_cache.json"
+
+
+def classify(llm, items, batch=20, workers=8):
+    """items: list of (key, text). Returns key -> {"kind", "target"}.
+    Labels are cached by message text in runs/classify_cache.json, so re-running the detector on more runs
+    only sends new messages to the model. The cache and the parallel calls change no criterion."""
+    cache = json.loads(CACHE.read_text()) if CACHE.exists() else {}
+    todo = list(dict.fromkeys(text for _, text in items if text not in cache))
+    lock = threading.Lock()
+
+    def run(chunk):
+        listing = "\n".join(f"{n + 1}. {t}" for n, t in enumerate(chunk))
         user = ("For each numbered message, say whether it proposes or refers to a colony-wide rule, role or "
                 "institution that members are expected to follow. Kinds: rotation (members taking turns at a "
                 "role such as keeper), record (keeping a list, log or record of gifts, debts or promises; not the "
@@ -110,14 +119,21 @@ def classify(llm, items, batch=20):
             labels = json.loads(m.group(0)) if m else []
         except json.JSONDecodeError:
             labels = []
+        got = {}
         for lab in labels if isinstance(labels, list) else []:
             try:
-                key = chunk[int(lab["n"]) - 1][0]
+                text = chunk[int(lab["n"]) - 1]
             except (KeyError, ValueError, TypeError, IndexError):
                 continue
             kind = lab.get("kind") if lab.get("kind") in KINDS else "none"
-            out[key] = {"kind": kind, "target": lab.get("target")}
-    return out
+            got[text] = {"kind": kind, "target": lab.get("target")}
+        with lock:
+            cache.update(got)
+            CACHE.write_text(json.dumps(cache))
+
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        list(ex.map(run, [todo[k:k + batch] for k in range(0, len(todo), batch)]))
+    return {key: cache[text] for key, text in items if text in cache}
 
 
 def institutions(R, gid, labels, pairs, gifts):
@@ -348,6 +364,7 @@ def main():
     ap.add_argument("--no-llm", action="store_true", help="skip the institution classifier (screen only)")
     ap.add_argument("--model", default="gemma-4-31b-it")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--workers", type=int, default=8, help="parallel classifier calls")
     a = ap.parse_args()
     rng = np.random.default_rng(a.seed)
     runs = [load(r) for r in a.runs]
@@ -368,7 +385,7 @@ def main():
             items = [((gid, d, ag), rec["public"]) for gid in games for d, agents in R["days"][gid].items()
                      for ag, rec in agents.items()
                      if rec["public"] and ag != games[gid].get("byzantine") and SCREEN_RE.search(rec["public"])]
-            labels = classify(llm, items) if llm else {k: {"kind": "other_rule", "target": None} for k, _ in items}
+            labels = classify(llm, items, workers=a.workers) if llm else {k: {"kind": "other_rule", "target": None} for k, _ in items}
             res = {"condition": label(cfg), "run": R["run"].name}
             inst_games, inst_detail = 0, []
             per_game = {}
@@ -443,7 +460,8 @@ def main():
                     res[f"reputation_{kind}"] = {"verdict": verdict, "promise_breaker": tb, "control_seat": tc}
             print()
             report.append(res)
-    text = out.getvalue()
+    # retry notices from the classifier calls land in the captured output; keep them out of the report
+    text = "".join(l for l in out.getvalue().splitlines(keepends=True) if not l.startswith("  classify: "))
     print(text)
     (HERE / "runs" / "catches.txt").write_text(text)
     (HERE / "runs" / "catches.json").write_text(

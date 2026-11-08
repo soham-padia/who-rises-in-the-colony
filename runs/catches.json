@@ -1,0 +1,356 @@
+[
+  {
+    "condition": "negative-sum, gift board off, promise-breaker off",
+    "run": "colony_20261107-233959_s0_d1000_season20_spoil_why_negativesum",
+    "institution_games": 3,
+    "leader_games": 0,
+    "ingroup_games": 3,
+    "exclusion_games": 2
+  },
+  {
+    "condition": "negative-sum, gift board off, promise-breaker on",
+    "run": "colony_20261107-234001_s0_d1000_season20_spoil_why_negativesum_byz",
+    "institution_games": 3,
+    "leader_games": 0,
+    "ingroup_games": 3,
+    "exclusion_games": 3,
+    "freezeout_games": 1,
+    "reputation_trust": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": -0.00028211284513805367,
+        "ci": [
+          -0.0014093853485537657,
+          0.0010083122372973156
+        ],
+        "first_third": 0.09895833333333333,
+        "last_third": 0.0859375
+      },
+      "control_seat": {
+        "slope_per_season": -0.0005902360944377749,
+        "ci": [
+          -0.0020783645900480704,
+          0.0009212370145248505
+        ],
+        "first_third": 0.109375,
+        "last_third": 0.09375
+      }
+    },
+    "reputation_coordinator": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": -0.0004821928771508613,
+        "ci": [
+          -0.0011445049175019073,
+          0.00013677656073033493
+        ],
+        "first_third": 0.041666666666666664,
+        "last_third": 0.028645833333333332
+      },
+      "control_seat": {
+        "slope_per_season": -0.0002661064425770306,
+        "ci": [
+          -0.001337946582342156,
+          0.0008154852590919157
+        ],
+        "first_third": 0.06510416666666667,
+        "last_third": 0.057291666666666664
+      }
+    }
+  },
+  {
+    "condition": "negative-sum, gift board on, promise-breaker off",
+    "run": "colony_20261108-014300_s0_d1000_season20_spoil_why_negativesum_ledger",
+    "institution_games": 3,
+    "leader_games": 0,
+    "ingroup_games": 3,
+    "exclusion_games": 3
+  },
+  {
+    "condition": "negative-sum, gift board on, promise-breaker on",
+    "run": "colony_20261108-014302_s0_d1000_season20_spoil_why_negativesum_ledger_byz",
+    "institution_games": 3,
+    "leader_games": 0,
+    "ingroup_games": 3,
+    "exclusion_games": 2,
+    "freezeout_games": 1,
+    "reputation_trust": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": 0.00024409763905562228,
+        "ci": [
+          -0.00025909854660129654,
+          0.0007339037477511692
+        ],
+        "first_third": 0.015625,
+        "last_third": 0.0234375
+      },
+      "control_seat": {
+        "slope_per_season": -0.0016026410564225699,
+        "ci": [
+          -0.0025516157454169067,
+          -0.0007687184628312178
+        ],
+        "first_third": 0.13020833333333334,
+        "last_third": 0.06510416666666667
+      }
+    },
+    "reputation_coordinator": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": 0.00013805522208883584,
+        "ci": [
+          -0.00023889426011917844,
+          0.0005387064195285791
+        ],
+        "first_third": 0.0078125,
+        "last_third": 0.010416666666666666
+      },
+      "control_seat": {
+        "slope_per_season": -0.0021588635454181677,
+        "ci": [
+          -0.0037442216568422276,
+          -0.0005594154205722288
+        ],
+        "first_third": 0.15364583333333334,
+        "last_third": 0.0703125
+      }
+    }
+  },
+  {
+    "condition": "positive-sum, gift board off, promise-breaker off",
+    "run": "colony_20261107-215315_s0_d1000_season20_spoil_why",
+    "institution_games": 0,
+    "leader_games": 1,
+    "ingroup_games": 3,
+    "exclusion_games": 3
+  },
+  {
+    "condition": "positive-sum, gift board off, promise-breaker on",
+    "run": "colony_20261107-215317_s0_d1000_season20_spoil_why_byz",
+    "institution_games": 0,
+    "leader_games": 0,
+    "ingroup_games": 3,
+    "exclusion_games": 3,
+    "freezeout_games": 0,
+    "reputation_trust": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": 0.00033213285314125617,
+        "ci": [
+          -0.0005208061549182603,
+          0.0012234583918284297
+        ],
+        "first_third": 0.078125,
+        "last_third": 0.09114583333333333
+      },
+      "control_seat": {
+        "slope_per_season": 0.0003761504601840757,
+        "ci": [
+          -3.506006242246463e-05,
+          0.0007578633857713291
+        ],
+        "first_third": 0.0625,
+        "last_third": 0.07552083333333333
+      }
+    },
+    "reputation_coordinator": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": 0.0003701480592236892,
+        "ci": [
+          -0.00046312835335252025,
+          0.001154093728864482
+        ],
+        "first_third": 0.052083333333333336,
+        "last_third": 0.0625
+      },
+      "control_seat": {
+        "slope_per_season": -0.00025810324129651877,
+        "ci": [
+          -0.0008559803473614765,
+          0.0002729550424965557
+        ],
+        "first_third": 0.0625,
+        "last_third": 0.0546875
+      }
+    }
+  },
+  {
+    "condition": "positive-sum, gift board on, promise-breaker off",
+    "run": "colony_20261108-014252_s0_d1000_season20_spoil_why_ledger",
+    "institution_games": 0,
+    "leader_games": 1,
+    "ingroup_games": 3,
+    "exclusion_games": 3
+  },
+  {
+    "condition": "positive-sum, gift board on, promise-breaker on",
+    "run": "colony_20261108-014254_s0_d1000_season20_spoil_why_ledger_byz",
+    "institution_games": 0,
+    "leader_games": 0,
+    "ingroup_games": 1,
+    "exclusion_games": 3,
+    "freezeout_games": 1,
+    "reputation_trust": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": -6.602641056422584e-05,
+        "ci": [
+          -0.00030224557538997555,
+          0.0001294706132968552
+        ],
+        "first_third": 0.0026041666666666665,
+        "last_third": 0.0026041666666666665
+      },
+      "control_seat": {
+        "slope_per_season": -0.0004281712685074027,
+        "ci": [
+          -0.0011846346431420398,
+          0.0001706162681351538
+        ],
+        "first_third": 0.08854166666666667,
+        "last_third": 0.07291666666666667
+      }
+    },
+    "reputation_coordinator": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": 1.4005602240896405e-05,
+        "ci": [
+          -8.335987006760059e-07,
+          6.215270638581e-05
+        ],
+        "first_third": 0.0,
+        "last_third": 0.0
+      },
+      "control_seat": {
+        "slope_per_season": -5.0020008003200925e-05,
+        "ci": [
+          -0.0005553879166267965,
+          0.0004349672970519845
+        ],
+        "first_third": 0.07552083333333333,
+        "last_third": 0.07552083333333333
+      }
+    }
+  },
+  {
+    "condition": "zero-sum, gift board off, promise-breaker off",
+    "run": "colony_20261107-233955_s0_d1000_season20_spoil_why_zerosum",
+    "institution_games": 0,
+    "leader_games": 1,
+    "ingroup_games": 3,
+    "exclusion_games": 3
+  },
+  {
+    "condition": "zero-sum, gift board off, promise-breaker on",
+    "run": "colony_20261107-233957_s0_d1000_season20_spoil_why_zerosum_byz",
+    "institution_games": 0,
+    "leader_games": 0,
+    "ingroup_games": 3,
+    "exclusion_games": 3,
+    "freezeout_games": 1,
+    "reputation_trust": {
+      "verdict": "decays",
+      "promise_breaker": {
+        "slope_per_season": -0.0019667867146858737,
+        "ci": [
+          -0.0029291246004152158,
+          -0.0010737716629713105
+        ],
+        "first_third": 0.13802083333333334,
+        "last_third": 0.0625
+      },
+      "control_seat": {
+        "slope_per_season": -0.0003481392557022794,
+        "ci": [
+          -0.0008523604413975508,
+          8.89768753546463e-05
+        ],
+        "first_third": 0.09375,
+        "last_third": 0.0859375
+      }
+    },
+    "reputation_coordinator": {
+      "verdict": "decays",
+      "promise_breaker": {
+        "slope_per_season": -0.0015426170468187277,
+        "ci": [
+          -0.0022954767240064835,
+          -0.0008154649633811997
+        ],
+        "first_third": 0.09114583333333333,
+        "last_third": 0.041666666666666664
+      },
+      "control_seat": {
+        "slope_per_season": 0.0007943177270908388,
+        "ci": [
+          5.525926574087237e-05,
+          0.0014813370518240168
+        ],
+        "first_third": 0.052083333333333336,
+        "last_third": 0.08072916666666667
+      }
+    }
+  },
+  {
+    "condition": "zero-sum, gift board on, promise-breaker off",
+    "run": "colony_20261108-014256_s0_d1000_season20_spoil_why_zerosum_ledger",
+    "institution_games": 0,
+    "leader_games": 0,
+    "ingroup_games": 3,
+    "exclusion_games": 3
+  },
+  {
+    "condition": "zero-sum, gift board on, promise-breaker on",
+    "run": "colony_20261108-014258_s0_d1000_season20_spoil_why_zerosum_ledger_byz",
+    "institution_games": 0,
+    "leader_games": 0,
+    "ingroup_games": 1,
+    "exclusion_games": 3,
+    "freezeout_games": 0,
+    "reputation_trust": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": 0.00011004401760704303,
+        "ci": [
+          -0.0002518275026199088,
+          0.0005086198415794215
+        ],
+        "first_third": 0.005208333333333333,
+        "last_third": 0.0078125
+      },
+      "control_seat": {
+        "slope_per_season": -0.000274109643857543,
+        "ci": [
+          -0.0011904789348256039,
+          0.0005609374765941372
+        ],
+        "first_third": 0.08072916666666667,
+        "last_third": 0.078125
+      }
+    },
+    "reputation_coordinator": {
+      "verdict": "partial",
+      "promise_breaker": {
+        "slope_per_season": -4.601840736294504e-05,
+        "ci": [
+          -0.000263919001297769,
+          0.00011673725540839897
+        ],
+        "first_third": 0.0026041666666666665,
+        "last_third": 0.0
+      },
+      "control_seat": {
+        "slope_per_season": 4.801920768307485e-05,
+        "ci": [
+          -0.0009884189119858066,
+          0.0010480038121819003
+        ],
+        "first_third": 0.06770833333333333,
+        "last_third": 0.0859375
+      }
+    }
+  }
+]

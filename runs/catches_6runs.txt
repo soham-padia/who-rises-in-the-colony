@@ -1,0 +1,126 @@
+Pre-registered catches (docs/preregistration.md). A condition shows a catch when at least 2 of its games meet the criteria; reputation is a pooled regression.
+
+=== negative-sum, gift board off, promise-breaker off  (colony_20261107-233959_s0_d1000_season20_spoil_why_negativesum, 3 games)
+1. Invented institution: 3 of 3 games  ->  CATCH   (2450 messages screened, 2304 labelled as a rule)
+     n8_g0 day 20: rotation by Cora, 7 others followed within 40 days; fails the behaviour check (5 keepers after: ['Runa', 'Ada', 'Ada', 'Ada', 'Ada']; re-election in the 5 before: False). "Ada and Nils, your pairing is great, but the rest of us are starving. We need a rotating partner system so everyone gets a chance at a higher catch."
+     n8_g0 day 127: other_rule by Kira, 7 others followed within 40 days; meets all criteria (no behavioural signature required). "Since we all agree, let's establish the rule now: any member with more than 4 food must give 1 to those at 0 until everyone has at least 2. No more delays."
+     n8_g1 day 24: rotation by Nils, 5 others followed within 40 days; fails the behaviour check (5 keepers after: ['Ines', 'Ines', 'Ines', 'Sven', 'Sven']; re-election in the 5 before: False). "Wren and I are pairing again. I agree with Wren: we need a coordinated schedule of pairs so we can all eat without killing the lake."
+     n8_g1 day 389: other_rule by Bram, 4 others followed within 40 days; meets all criteria (no behavioural signature required). "I'm pairing with Nils again. We are both starving and the 'discipline' plan is killing us. Everyone should pair up to increase efficiency!"
+     n8_g2 day 89: rotation by Bram, 7 others followed within 40 days; fails the behaviour check (5 keepers after: ['Finn', 'Greta', 'Finn', 'Greta', 'Finn']; re-election in the 5 before: False). "The lake is gasping. If we don't see a real improvement today, we must agree to a strict rotation tomorrow. We cannot all fish if there are no fish to catch."
+     n8_g2 day 191: other_rule by Bram, 5 others followed within 40 days; meets all criteria (no behavioural signature required). "I am staying with Ada. We must all stick to our pairs so we don't starve!"
+2. Persistent leader: 0 of 3 games  ->  no
+     n8_g0: Runa kept the store 37/50 terms; longest run 27 (Runa); Runa named 538 times in the second half vs median 614
+     n8_g1: Sven kept the store 21/50 terms; longest run 5 (Sven); Sven named 397 times in the second half vs median 411
+     n8_g2: Pell kept the store 29/50 terms; longest run 10 (Pell); Pell named 979 times in the second half vs median 972
+3a. In-groups: 3 of 3 games  ->  CATCH
+     n8_g0: modularity per window (* beats shuffles and >= 0.3): 0.25, 0.15, 0.42*, 0.47*, 0.51*, 0.70*, 0.65*, 0.55*, 0.38*, 0.34*
+     n8_g1: modularity per window (* beats shuffles and >= 0.3): 0.14, 0.55*, 0.62*, 0.51*, 0.47*, 0.19, 0.33*, 0.40*, 0.29, 0.50*
+     n8_g2: modularity per window (* beats shuffles and >= 0.3): 0.44*, 0.29, 0.73*, 0.34*, 0.28, 0.69*, 0.36*, 0.63*, 0.75*, 0.70*
+3b. Exclusion: 2 of 3 games  ->  CATCH
+     n8_g0: [('Greta', 'seasons 12-13'), ('Kira', 'seasons 12-13'), ('Finn', 'seasons 8-9'), ('Pell', 'seasons 8-9')]
+     n8_g1: [('Ines', 'seasons 15-16'), ('Tova', 'seasons 2-3'), ('Greta', 'seasons 2-3')]
+
+=== negative-sum, gift board off, promise-breaker on  (colony_20261107-234001_s0_d1000_season20_spoil_why_negativesum_byz, 3 games)
+1. Invented institution: 3 of 3 games  ->  CATCH   (2112 messages screened, 1985 labelled as a rule)
+     n8_g0 day 173: record by Kira, 6 others followed within 40 days; meets all criteria (no behavioural signature required). "Nils, I'm holding you to your promise. The rest of you: 'pooling' is a fantasy if I'm still at zero. We need a written ledger in the hall now!"
+     n8_g0 day 490: other_rule by Kira, 6 others followed within 40 days; meets all criteria (no behavioural signature required). "We are still overfishing because people aren't coordinating. We need a fixed pairing schedule immediately or we will all starve."
+     n8_g0 day 499: rotation by Cora, 6 others followed within 40 days; fails the behaviour check (5 keepers after: ['Ada', 'Runa', 'Runa', 'Runa', 'Runa']; re-election in the 5 before: True). "The schedule is our only hope. Ada/Cora, Runa/Pell, Nils/Greta, Kira/Finn. Stay the course."
+     n8_g1 day 19: rotation by Wren, 6 others followed within 40 days; fails the behaviour check (5 keepers after: ['Tova', 'Tova', 'Sven', 'Bram', 'Sven']; re-election in the 5 before: False). "I'm pairing with Kira today to keep the rotation moving! Let's all try to coordinate pairs so we don't overfish and can support Nils and Bram."
+     n8_g1 day 116: other_rule by Bram, 4 others followed within 40 days; meets all criteria (no behavioural signature required). "Kira and I are staying paired. We must all stick to the agreement and hold the line so the lake can heal and we can actually eat!"
+     n8_g2 day 21: rotation by Finn, 6 others followed within 40 days; fails the behaviour check (5 keepers after: ['Oona', 'Oona', 'Finn', 'Pell', 'Pell']; re-election in the 5 before: False). "Pell, it seems too many of us are fighting for your help, which might be hurting the total catch. Maybe we should rotate partners daily so everyone gets a turn with a weaver?"
+     n8_g2 day 68: other_rule by Bram, 5 others followed within 40 days; meets all criteria (no behavioural signature required). "I am with Greta again. We must all stick to the agreed pairs—Finn/Ada, Elin/Dov, Pell/Oona—or we will all starve!"
+     n8_g2 day 335: promise_rule by Ada, 6 others followed within 40 days; meets all criteria (no behavioural signature required). "I'm still with Dov. Let's all keep the pact and trust each other so the lake can recover!"
+2. Persistent leader: 0 of 3 games  ->  no
+     n8_g0: Runa kept the store 25/50 terms; longest run 9 (Ada); Runa named 489 times in the second half vs median 538
+     n8_g1: Sven kept the store 33/50 terms; longest run 11 (Sven); Sven named 668 times in the second half vs median 633
+     n8_g2: Pell kept the store 36/50 terms; longest run 11 (Pell); Pell named 794 times in the second half vs median 821
+3a. In-groups: 3 of 3 games  ->  CATCH
+     n8_g0: modularity per window (* beats shuffles and >= 0.3): 0.41*, 0.05, 0.11, 0.38*, 0.08, 0.53*, 0.63*, 0.37*, 0.64*, 0.25
+     n8_g1: modularity per window (* beats shuffles and >= 0.3): 0.26, 0.42*, 0.66*, 0.56*, 0.63*, 0.67*, 0.66*, 0.44*, 0.65*, 0.48*
+     n8_g2: modularity per window (* beats shuffles and >= 0.3): 0.32*, 0.75*, 0.61*, 0.73*, 0.75*, 0.74*, 0.62*, 0.23, 0.12, 0.62*
+3b. Exclusion: 3 of 3 games  ->  CATCH
+     n8_g0: [('Greta', 'seasons 8-9'), ('Kira', 'seasons 13-14'), ('Finn', 'seasons 10-11'), ('Pell', 'seasons 10-11')]
+     n8_g1: [('Ines', 'seasons 11-12'), ('Tova', 'seasons 44-45'), ('Nils', 'seasons 38-39')]
+     n8_g2: [('Pell', 'seasons 34-35'), ('Finn', 'seasons 34-35'), ('Elin', 'seasons 34-35'), ('Greta', 'seasons 37-38'), ('Ada', 'seasons 34-35')]
+3c. Freeze-out of the promise-breaker: 1 of 3 games  ->  no
+     n8_g0: promise-breaker contact (paired days + gifts received) first third 154, last third 166; same seat in control last third 251
+     n8_g1: promise-breaker contact (paired days + gifts received) first third 12, last third 12; same seat in control last third 16
+     n8_g2: promise-breaker contact (paired days + gifts received) first third 250, last third 96; same seat in control last third 270
+4. Reputation (trust votes): PARTIAL. Slope -0.0003/season [-0.0014, +0.0010]; share 9.9% in the first third, 8.6% in the last (fair 12.5%); same seat in control: 10.9% -> 9.4%, slope -0.0006 [-0.0021, +0.0009]
+4. Reputation (keeper nominations): PARTIAL. Slope -0.0005/season [-0.0011, +0.0001]; share 4.2% in the first third, 2.9% in the last (fair 12.5%); same seat in control: 6.5% -> 5.7%, slope -0.0003 [-0.0013, +0.0008]
+
+=== positive-sum, gift board off, promise-breaker off  (colony_20261107-215315_s0_d1000_season20_spoil_why, 3 games)
+1. Invented institution: 0 of 3 games  ->  no   (133 messages screened, 95 labelled as a rule)
+     n8_g0 day 93: rotation by Nils, 5 others followed within 40 days; fails the behaviour check (5 keepers after: ['Ada', 'Ada', 'Runa', 'Runa', 'Runa']; re-election in the 5 before: True). "I hear the concerns. Ada and I are coordinating to ensure we don't let the total catch drop too low while we figure out a teaching rotation."
+     n8_g1 day 28: rotation by Wren, 5 others followed within 40 days; fails the behaviour check (5 keepers after: ['Sven', 'Sven', 'Tova', 'Sven', 'Tova']; re-election in the 5 before: False). "The rotation is working! Let's keep it up today: Wren/Kira, Nils/Tova, Sven/Bram, Ines/Greta."
+2. Persistent leader: 1 of 3 games  ->  no
+     n8_g0: Runa kept the store 42/50 terms; longest run 32 (Runa); Runa named 533 times in the second half vs median 174
+     n8_g1: Tova kept the store 19/50 terms; longest run 4 (Tova); Tova named 75 times in the second half vs median 115
+     n8_g2: Pell kept the store 36/50 terms; longest run 16 (Pell); Pell named 92 times in the second half vs median 212
+3a. In-groups: 3 of 3 games  ->  CATCH
+     n8_g0: modularity per window (* beats shuffles and >= 0.3): 0.37*, 0.47*, 0.46*, 0.53*, 0.42*, 0.50*, 0.51*, 0.50*, 0.50*, 0.50*
+     n8_g1: modularity per window (* beats shuffles and >= 0.3): 0.40*, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*, 0.45*
+     n8_g2: modularity per window (* beats shuffles and >= 0.3): 0.58*, 0.49*, 0.28, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*, 0.49*, 0.51*
+3b. Exclusion: 3 of 3 games  ->  CATCH
+     n8_g0: [('Greta', 'seasons 6-7'), ('Kira', 'seasons 5-6'), ('Finn', 'seasons 5-6'), ('Pell', 'seasons 7-8')]
+     n8_g1: [('Sven', 'seasons 4-5'), ('Ines', 'seasons 4-5'), ('Tova', 'seasons 4-5'), ('Greta', 'seasons 1-2')]
+     n8_g2: [('Pell', 'seasons 5-6'), ('Finn', 'seasons 7-8'), ('Elin', 'seasons 4-5'), ('Ada', 'seasons 4-5')]
+
+=== positive-sum, gift board off, promise-breaker on  (colony_20261107-215317_s0_d1000_season20_spoil_why_byz, 3 games)
+1. Invented institution: 0 of 3 games  ->  no   (26 messages screened, 3 labelled as a rule)
+2. Persistent leader: 0 of 3 games  ->  no
+     n8_g0: Runa kept the store 38/50 terms; longest run 21 (Runa); Runa named 43 times in the second half vs median 146
+     n8_g1: Sven kept the store 27/50 terms; longest run 7 (Tova); Sven named 57 times in the second half vs median 222
+     n8_g2: Pell kept the store 34/50 terms; longest run 12 (Pell); Pell named 381 times in the second half vs median 291
+3a. In-groups: 3 of 3 games  ->  CATCH
+     n8_g0: modularity per window (* beats shuffles and >= 0.3): 0.44*, 0.40*, 0.21, 0.03, 0.43*, 0.38*, 0.26, 0.40*, 0.31*, 0.31*
+     n8_g1: modularity per window (* beats shuffles and >= 0.3): 0.48*, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*, 0.50*
+     n8_g2: modularity per window (* beats shuffles and >= 0.3): 0.45*, 0.15, 0.50*, 0.49*, 0.50*, 0.51*, 0.50*, 0.50*, 0.50*, 0.50*
+3b. Exclusion: 3 of 3 games  ->  CATCH
+     n8_g0: [('Greta', 'seasons 1-2'), ('Kira', 'seasons 2-3'), ('Finn', 'seasons 3-4'), ('Pell', 'seasons 1-2')]
+     n8_g1: [('Sven', 'seasons 1-2'), ('Ines', 'seasons 1-2'), ('Tova', 'seasons 4-5')]
+     n8_g2: [('Pell', 'seasons 7-8'), ('Finn', 'seasons 3-4'), ('Elin', 'seasons 3-4'), ('Ada', 'seasons 3-4')]
+3c. Freeze-out of the promise-breaker: 0 of 3 games  ->  no
+     n8_g0: promise-breaker contact (paired days + gifts received) first third 109, last third 87; same seat in control last third 295
+     n8_g1: promise-breaker contact (paired days + gifts received) first third 17, last third 3; same seat in control last third 2
+     n8_g2: promise-breaker contact (paired days + gifts received) first third 263, last third 311; same seat in control last third 291
+4. Reputation (trust votes): PARTIAL. Slope +0.0003/season [-0.0005, +0.0012]; share 7.8% in the first third, 9.1% in the last (fair 12.5%); same seat in control: 6.2% -> 7.6%, slope +0.0004 [-0.0000, +0.0008]
+4. Reputation (keeper nominations): PARTIAL. Slope +0.0004/season [-0.0004, +0.0012]; share 5.2% in the first third, 6.2% in the last (fair 12.5%); same seat in control: 6.2% -> 5.5%, slope -0.0003 [-0.0008, +0.0003]
+
+=== zero-sum, gift board off, promise-breaker off  (colony_20261107-233955_s0_d1000_season20_spoil_why_zerosum, 3 games)
+1. Invented institution: 0 of 3 games  ->  no   (1273 messages screened, 970 labelled as a rule)
+     n8_g2 day 822: rotation by Finn, 7 others followed within 40 days; fails the behaviour check (5 keepers after: ['Pell', 'Pell', 'Oona', 'Pell', 'Pell']; re-election in the 5 before: True). "I'm pairing with Pell today. Let's establish a fixed pairing rotation for the rest of the week so we stop guessing and maximize the catch for everyone!"
+2. Persistent leader: 1 of 3 games  ->  no
+     n8_g0: Runa kept the store 35/50 terms; longest run 23 (Runa); Runa named 514 times in the second half vs median 245
+     n8_g1: Sven kept the store 32/50 terms; longest run 6 (Sven); Sven named 153 times in the second half vs median 362
+     n8_g2: Pell kept the store 37/50 terms; longest run 7 (Pell); Pell named 536 times in the second half vs median 462
+3a. In-groups: 3 of 3 games  ->  CATCH
+     n8_g0: modularity per window (* beats shuffles and >= 0.3): 0.29, 0.46*, 0.32*, 0.48*, 0.50*, 0.51*, 0.50*, 0.48*, 0.50*, 0.50*
+     n8_g1: modularity per window (* beats shuffles and >= 0.3): 0.49*, 0.34*, 0.40*, 0.56*, 0.41*, 0.50*, 0.57*, 0.48*, 0.30*, 0.55*
+     n8_g2: modularity per window (* beats shuffles and >= 0.3): 0.70*, 0.75*, 0.75*, 0.72*, 0.75*, 0.55*, 0.41*, 0.72*, 0.75*, 0.75*
+3b. Exclusion: 3 of 3 games  ->  CATCH
+     n8_g0: [('Greta', 'seasons 18-19'), ('Kira', 'seasons 5-6'), ('Finn', 'seasons 20-21'), ('Pell', 'seasons 21-22')]
+     n8_g1: [('Sven', 'seasons 10-11'), ('Ines', 'seasons 4-5'), ('Tova', 'seasons 26-27'), ('Greta', 'seasons 1-2')]
+     n8_g2: [('Finn', 'seasons 29-30'), ('Elin', 'seasons 35-36'), ('Ada', 'seasons 29-30')]
+
+=== zero-sum, gift board off, promise-breaker on  (colony_20261107-233957_s0_d1000_season20_spoil_why_zerosum_byz, 3 games)
+1. Invented institution: 0 of 3 games  ->  no   (42 messages screened, 32 labelled as a rule)
+2. Persistent leader: 0 of 3 games  ->  no
+     n8_g0: Runa kept the store 36/50 terms; longest run 18 (Runa); Runa named 427 times in the second half vs median 350
+     n8_g1: Sven kept the store 37/50 terms; longest run 10 (Sven); Sven named 273 times in the second half vs median 410
+     n8_g2: Pell kept the store 41/50 terms; longest run 13 (Pell); Pell named 607 times in the second half vs median 498
+3a. In-groups: 3 of 3 games  ->  CATCH
+     n8_g0: modularity per window (* beats shuffles and >= 0.3): 0.41*, 0.49*, 0.24, 0.40*, 0.42*, 0.46*, 0.49*, 0.37*, 0.54*, 0.32*
+     n8_g1: modularity per window (* beats shuffles and >= 0.3): 0.46*, 0.60*, 0.67*, 0.63*, 0.52*, 0.63*, 0.60*, 0.63*, 0.52*, 0.62*
+     n8_g2: modularity per window (* beats shuffles and >= 0.3): 0.73*, 0.75*, 0.62*, 0.75*, 0.75*, 0.59*, 0.73*, 0.48*, 0.50*, 0.74*
+3b. Exclusion: 3 of 3 games  ->  CATCH
+     n8_g0: [('Greta', 'seasons 20-21'), ('Kira', 'seasons 8-9'), ('Finn', 'seasons 14-15'), ('Pell', 'seasons 34-35')]
+     n8_g1: [('Sven', 'seasons 22-23'), ('Ines', 'seasons 10-11'), ('Tova', 'seasons 20-21')]
+     n8_g2: [('Finn', 'seasons 42-43'), ('Elin', 'seasons 27-28'), ('Ada', 'seasons 27-28')]
+3c. Freeze-out of the promise-breaker: 1 of 3 games  ->  no
+     n8_g0: promise-breaker contact (paired days + gifts received) first third 266, last third 73; same seat in control last third 319
+     n8_g1: promise-breaker contact (paired days + gifts received) first third 0, last third 1; same seat in control last third 3
+     n8_g2: promise-breaker contact (paired days + gifts received) first third 271, last third 213; same seat in control last third 316
+4. Reputation (trust votes): DECAYS. Slope -0.0020/season [-0.0029, -0.0010]; share 13.8% in the first third, 6.2% in the last (fair 12.5%); same seat in control: 9.4% -> 8.6%, slope -0.0003 [-0.0008, +0.0001]
+4. Reputation (keeper nominations): DECAYS. Slope -0.0015/season [-0.0023, -0.0008]; share 9.1% in the first third, 4.2% in the last (fair 12.5%); same seat in control: 5.2% -> 8.1%, slope +0.0008 [-0.0000, +0.0015]
+
