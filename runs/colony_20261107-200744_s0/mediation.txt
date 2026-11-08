@@ -1,0 +1,33 @@
+Mediation on 168 agents in 18 games from: colony_20261107-200744_s0
+Chains whose 95% interval (games resampled) excludes zero; outcome = votes received / colony size.
+j_ behaviours are judge ratings, which can echo the trait sentence itself; treat them with care.
+
+keeper-nomination share:
+  loner          -> joint_work         -> keeper-nomination share: indirect -0.0595 [-0.1012, -0.0267]  (a -4.91, b +0.0121, -478% of its total effect)
+  self_interest  -> j_leadership       -> keeper-nomination share: indirect -0.0522 [-0.0940, -0.0187]  (a -0.29, b +0.1805, -354% of its total effect)
+  guarded        -> j_leadership       -> keeper-nomination share: indirect -0.0511 [-0.0971, -0.0089]  (a -0.28, b +0.1805)
+  guarded        -> j_generosity       -> keeper-nomination share: indirect -0.0493 [-0.0847, -0.0243]  (a -0.43, b +0.1135)
+  assertive      -> j_leadership       -> keeper-nomination share: indirect +0.0451 [+0.0101, +0.0871]  (a +0.25, b +0.1805, 124% of its total effect)
+  guarded        -> dms_received       -> keeper-nomination share: indirect -0.0440 [-0.0733, -0.0125]  (a -1.49, b +0.0296)
+  self_interest  -> j_generosity       -> keeper-nomination share: indirect -0.0427 [-0.0779, -0.0216]  (a -0.38, b +0.1135, -290% of its total effect)
+  loner          -> dms_received       -> keeper-nomination share: indirect -0.0366 [-0.0626, -0.0121]  (a -1.23, b +0.0296, -293% of its total effect)
+  guarded        -> mentions           -> keeper-nomination share: indirect -0.0272 [-0.0455, -0.0022]  (a -0.62, b +0.0440)
+  reciprocity    -> j_generosity       -> keeper-nomination share: indirect -0.0239 [-0.0470, -0.0017]  (a -0.21, b +0.1135, -281% of its total effect)
+  guarded        -> gifts_given        -> keeper-nomination share: indirect -0.0200 [-0.0409, -0.0037]  (a -0.74, b +0.0270)
+  loner          -> mentions           -> keeper-nomination share: indirect -0.0162 [-0.0266, -0.0030]  (a -0.37, b +0.0440, -130% of its total effect)
+  guarded        -> joint_work         -> keeper-nomination share: indirect -0.0157 [-0.0290, -0.0064]  (a -1.30, b +0.0121)
+  assertive      -> gifts_given        -> keeper-nomination share: indirect +0.0147 [+0.0012, +0.0347]  (a +0.55, b +0.0270, 41% of its total effect)
+trust-vote share:
+  loner          -> joint_work         -> trust-vote share: indirect -0.0921 [-0.1486, -0.0494]  (a -4.91, b +0.0188, 989% of its total effect)
+  guarded        -> dms_received       -> trust-vote share: indirect -0.0575 [-0.0849, -0.0329]  (a -1.49, b +0.0387)
+  loner          -> dms_received       -> trust-vote share: indirect -0.0478 [-0.0710, -0.0282]  (a -1.23, b +0.0387, 513% of its total effect)
+  self_interest  -> j_leadership       -> trust-vote share: indirect -0.0412 [-0.0702, -0.0146]  (a -0.29, b +0.1424, -143% of its total effect)
+  guarded        -> j_leadership       -> trust-vote share: indirect -0.0403 [-0.0777, -0.0070]  (a -0.28, b +0.1424)
+  assertive      -> j_leadership       -> trust-vote share: indirect +0.0356 [+0.0097, +0.0614]  (a +0.25, b +0.1424, 108% of its total effect)
+  guarded        -> j_generosity       -> trust-vote share: indirect -0.0325 [-0.0640, -0.0022]  (a -0.43, b +0.0748)
+  guarded        -> mentions           -> trust-vote share: indirect -0.0288 [-0.0469, -0.0026]  (a -0.62, b +0.0465)
+  self_interest  -> j_generosity       -> trust-vote share: indirect -0.0281 [-0.0546, -0.0024]  (a -0.38, b +0.0748, -98% of its total effect)
+  guarded        -> joint_work         -> trust-vote share: indirect -0.0243 [-0.0485, -0.0098]  (a -1.30, b +0.0188)
+  loner          -> mentions           -> trust-vote share: indirect -0.0171 [-0.0298, -0.0038]  (a -0.37, b +0.0465, 183% of its total effect)
+
+25 of 90 chains exclude zero; about 4 would by chance.
