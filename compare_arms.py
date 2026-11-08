@@ -96,7 +96,8 @@ def main():
         sys.exit(__doc__)
     c_rows, c_games, c_cfg = load(sys.argv[1])
     b_rows, b_games, b_cfg = load(sys.argv[2])
-    for k in ("seed", "days", "eat", "partner_bonus", "model", "public_ledger"):
+    for k in ("seed", "days", "eat", "partner_bonus", "model", "public_ledger", "season_length", "spoil_above",
+              "ask_why"):
         if c_cfg.get(k) != b_cfg.get(k):
             sys.exit(f"Runs differ on {k}: {c_cfg.get(k)} vs {b_cfg.get(k)}")
     if not b_cfg.get("byzantine") or c_cfg.get("byzantine"):

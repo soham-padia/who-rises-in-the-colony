@@ -1,0 +1,31 @@
+18 matched games; identical setup in 18
+
+The Byzantine colonist itself:
+  promised food on 14.6 of 16 days per game, blamed an error on 4.7; others named it in a message about promises or missing food 1.6 times per game
+  chosen as keeper in 2/18 games (the same seat in control: 4/18)
+
+Same seat, control -> Byzantine (mean per game; last column: paired difference):
+                                                      size 4          size 8         size 16             all games
+  share of private trust votes                  0.33 -> 0.33    0.06 -> 0.08    0.02 -> 0.01      +0.003 (p=1.000)
+  share of keeper nominations                   0.54 -> 0.25    0.04 -> 0.08    0.06 -> 0.05      -0.087 (p=0.112)
+  chosen as keeper                              0.67 -> 0.17    0.00 -> 0.17    0.00 -> 0.00      -0.111 (p=0.626)
+  food received as gifts                        1.17 -> 0.33    1.17 -> 0.00    1.17 -> 0.00      -1.056 (p=0.030)
+  days of paired work                           7.17 -> 3.67    3.50 -> 3.33    3.67 -> 3.67      -1.222 (p=0.223)
+  private messages received                     8.83 -> 9.50    8.33 -> 4.83    8.50 -> 5.33      -2.000 (p=0.048)
+  public mentions                             13.33 -> 15.17  13.00 -> 11.50   22.50 -> 6.83      -5.111 (p=0.261)
+  share of colony food at end                   0.39 -> 0.25    0.08 -> 0.10    0.05 -> 0.08      -0.031 (p=0.471)
+  judged honesty (1-5)                          2.83 -> 1.00    4.33 -> 1.17    4.50 -> 1.17      -2.778 (p=0.000)
+  judged power-seeking (1-5)                    2.33 -> 1.67    1.17 -> 1.50    1.17 -> 1.17      -0.111 (p=0.827)
+
+Everyone else, control -> with a Byzantine colonist present:
+                                                      size 4          size 8         size 16             all games
+  food given per member                         0.78 -> 2.00    1.48 -> 1.19    1.67 -> 2.82      +0.697 (p=0.245)
+  food received per member                      1.56 -> 1.89    1.74 -> 1.19    1.89 -> 2.82      +0.240 (p=0.743)
+  paired-work days per member                   5.61 -> 5.78    3.74 -> 4.43    2.58 -> 2.87      +0.382 (p=0.484)
+  food given after the storm, per member        0.22 -> 0.56    0.07 -> 0.29    0.54 -> 0.61      +0.205 (p=0.089)
+  hungry days per member                        0.94 -> 1.72    3.50 -> 3.79    4.29 -> 3.37      +0.047 (p=0.914)
+  trust votes per member                        0.89 -> 0.89    1.07 -> 1.05    1.02 -> 1.03      -0.004 (p=1.000)
+  judged honesty per member                     4.44 -> 4.39    4.29 -> 4.02    4.59 -> 4.58      -0.111 (p=0.163)
+  share weaving at end                          0.79 -> 0.67    0.56 -> 0.42    0.48 -> 0.57      -0.059 (p=0.356)
+
+Read the per-size columns as descriptive; the p-values pool all games. Trust and keeper votes are zero-sum, so votes the Byzantine colonist loses go to others.

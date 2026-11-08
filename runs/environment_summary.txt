@@ -1,26 +1,26 @@
-                                              original 31b            original 26b
+                                                  original              gift board             scarce food
 The promise-breaker
-  games                                                 18                      18
-  days it promised food                               13.1                    15.7
-  days it blamed an error                              3.9                     0.1
+  games                                                 18                      18                      18
+  days it promised food                               13.1                    13.8                    14.6
+  days it blamed an error                              3.9                     7.5                     4.7
 Who calls it out (messages per game)
-  victims                                             0.83                    0.33
-  third parties                                       0.06                    0.06
-  games with any call-out                             4/18                    5/18
+  victims                                             0.83                    5.56                    1.61
+  third parties                                       0.06                    2.72                    0.00
+  games with any call-out                             4/18                   15/18                    9/18
 Victims' memory (notebook the next day)
-  records the gift as missing                          34%                     64%
+  records the gift as missing                          34%                     57%                     45%
 What it costs (vs the same seat in control games; paired difference)
-  trust-vote share                          +0.00 (p=1.00)          +0.07 (p=0.16)
-  keeper-nomination share                   +0.04 (p=0.12)          +0.01 (p=0.87)
-  food received as gifts                    -0.33 (p=0.50)          +0.78 (p=0.02)
-  days of paired work                       -0.67 (p=0.61)          -1.61 (p=0.10)
-  others: food given per member             +0.12 (p=0.69)          -0.05 (p=0.73)
-  others: hungry days per member            +0.15 (p=0.65)          -0.02 (p=0.92)
+  trust-vote share                          +0.00 (p=1.00)          -0.04 (p=0.75)          +0.00 (p=1.00)
+  keeper-nomination share                   +0.04 (p=0.12)          -0.09 (p=0.25)          -0.09 (p=0.11)
+  food received as gifts                    -0.33 (p=0.50)          -1.44 (p=0.13)          -1.06 (p=0.03)
+  days of paired work                       -0.67 (p=0.61)          -1.94 (p=0.06)          -1.22 (p=0.22)
+  others: food given per member             +0.12 (p=0.69)          -0.10 (p=0.61)          +0.70 (p=0.25)
+  others: hungry days per member            +0.15 (p=0.65)          +0.18 (p=0.15)          +0.05 (p=0.91)
 How victims vote (share backing the promise-breaker)
-  coordinator: victims                                 29%                     36%
-  coordinator: everyone else                            5%                      8%
-  trust: victims                                       17%                     51%
-  trust: everyone else                                  3%                      5%
-  chosen as keeper                                    3/18                    2/18
+  coordinator: victims                                 29%                     10%                     11%
+  coordinator: everyone else                            5%                      6%                     10%
+  trust: victims                                       17%                      9%                     11%
+  trust: everyone else                                  3%                      2%                      7%
+  chosen as keeper                                    3/18                    3/18                    2/18
 Stakes
-  victim's food when promised                          8.2                     8.5
+  victim's food when promised                          8.2                     8.3                     4.2

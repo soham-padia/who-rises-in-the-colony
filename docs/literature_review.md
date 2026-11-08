@@ -39,7 +39,12 @@ Those settings share things our colony lacks: explicit numeric payoffs, a defect
 - **Scarce food** (`--eat 3`). Punishment rises with how badly the norm is violated (Fehr & Fischbacher; Fehr & Gächter), but stakes alone may not be enough (see row 4).
 - **Exclusion or fines.** Gossip plus ostracism let human groups exclude selfish members ([Feinberg, Willer & Schultz 2014](https://doi.org/10.1177/0956797613510184)). Caveat: LLMs given the choice may reward rather than punish (Guzman Piedrahita).
 
-**First evidence (9 finished games with the gift board vs the same 9 games without it):** call-outs by victims went from 12 to 44, and call-outs by third parties from 1 to 5. Third parties now cite the board: "Nils, you promised gifts and a tally correction, yet the board is empty." and "Dov, the board was empty again. Promises don't feed people." Effects on trust votes and nominations are pending the full run.
+**Results (gemma-4-31b, 18 game pairs per setting).**
+
+- **The gift board unlocks talk.** Call-outs per game by victims rose from 0.83 to 5.56 and by third parties from 0.06 to 2.72, and games with any call-out rose from 4 to 15 of 18. Third parties cite the board: "Dov, the board was empty again. Promises don't feed people." Victims backing the promiser as keeper fell from 29% to 10%.
+- **Votes barely move.** The change in trust-vote share is −0.04 (p = 0.75) and in keeper-nomination share −0.09 (p = 0.25). Paired work fell by 1.94 days (p = 0.06).
+- **Scarce food (eat 3).** Victims held 4.2 food when promised, against 8.2 in the original setup. The promiser received 1.06 less food as gifts (p = 0.03), the only significant cost so far, but third parties never spoke up (0.00 call-outs per game).
+- **Reading.** Visibility makes the colony name the cheat, as the literature predicts, but these models still don't turn that into sanctions. That fits the finding that LLMs prefer rewarding to punishing (Guzman Piedrahita).
 
 ## How each source was checked
 
