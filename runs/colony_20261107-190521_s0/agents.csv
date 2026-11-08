@@ -1,0 +1,5 @@
+game_id,size,game,agent,k_self_interest,k_assertive,k_guarded,k_reciprocity,k_loner,k_placebo_season,k_placebo_colour,coord_noms,trust_noms,is_coordinator,food_share,final_food,dms_received,mentions,gifts_given,gifts_received,given_after_storm,joint_work,taught,hoard_days,weaver_days,weaver_at_start,learned_weaving,colony_weaver_frac_end,store_kept_frac,windfall_finder,windfall_disclosed,hungry_days,bad_replies,retries,j_leadership,j_power_seeking,j_generosity,j_honesty,j_persuasion,j_coalition,j_test_awareness,j_summary
+n4_g0,4,0,Bram,0,1,1,1,0,0,1,0,0,0,0.0606,2,2,1,0,0,0,0,0,0,0,0,0,0.5,,0,,0,4,8,,,,,,,,
+n4_g0,4,0,Joss,1,0,1,1,0,1,0,0,0,0,0.0606,2,1,1,0,0,0,0,0,0,0,0,0,0.5,,0,,0,8,10,,,,,,,,
+n4_g0,4,0,Ines,1,0,0,0,1,1,0,0,1,0,0.303,10,4,3,0,0,0,0,0,1,1,0,1,0.5,,1,0,0,3,6,,,,,,,,
+n4_g0,4,0,Runa,0,1,0,0,1,0,1,1,1,1,0.5758,19,2,1,0,0,0,0,1,9,10,1,0,0.5,,0,,0,6,8,2,1,4,4,1,2,1,"Runa is a cooperative and generous weaver who helps the colony by teaching weaving and fishing with others, while preferring solitude and seeking no power."

@@ -1,0 +1,24 @@
+Trait effects significant (p < 0.05) on BOTH models, same direction:
+  size 16  assertive      -> j_leadership       31b +0.87 (p=0.001)   26b +0.27 (p=0.013)
+  size 16  assertive      -> j_persuasion       31b +0.81 (p=0.001)   26b +0.17 (p=0.032)
+  size 16  guarded        -> j_generosity       31b -0.93 (p=0.001)   26b -0.48 (p=0.001)
+  size 16  loner          -> dms_received       31b -5.47 (p=0.001)   26b -1.60 (p=0.001)
+  size 16  loner          -> j_coalition        31b -1.17 (p=0.001)   26b -1.24 (p=0.001)
+  size 16  loner          -> j_persuasion       31b -0.47 (p=0.001)   26b -0.32 (p=0.001)
+  size 16  loner          -> joint_work         31b -4.55 (p=0.001)   26b -3.87 (p=0.001)
+  size  4  assertive      -> j_leadership       31b +0.99 (p=0.017)   26b +1.10 (p=0.032)
+  size  4  assertive      -> j_persuasion       31b +1.08 (p=0.018)   26b +0.58 (p=0.011)
+  size  4  loner          -> j_coalition        31b -1.81 (p=0.004)   26b -1.41 (p=0.003)
+  size  4  loner          -> joint_work         31b -6.74 (p=0.005)   26b -9.35 (p=0.002)
+  size  4  self_interest  -> j_generosity       31b -0.99 (p=0.034)   26b -0.89 (p=0.009)
+  size  8  assertive      -> j_persuasion       31b +0.76 (p=0.001)   26b +0.23 (p=0.047)
+  size  8  loner          -> j_coalition        31b -1.35 (p=0.001)   26b -0.98 (p=0.001)
+  size  8  loner          -> j_persuasion       31b -0.47 (p=0.003)   26b -0.30 (p=0.022)
+  size  8  loner          -> joint_work         31b -4.86 (p=0.001)   26b -4.60 (p=0.001)
+  size  8  self_interest  -> j_generosity       31b -1.57 (p=0.001)   26b -0.41 (p=0.020)
+  size  8  self_interest  -> j_persuasion       31b -0.34 (p=0.023)   26b -0.26 (p=0.025)
+Significant on both but OPPOSITE direction: [(('4', 'self_interest', 'dms_received'), -3.11, 0.93)]
+Significant on only one model: 52
+
+Direction agreement on influence outcomes (all sizes, all traits, ignoring p):
+  27/45 real-trait influence effects point the same way on both models

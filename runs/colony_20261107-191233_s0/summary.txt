@@ -1,0 +1,23 @@
+
+=== Colony size 4: 4 agents in 1 games ===
+Importance: mean |standardized effect| on coordinator nominations, trust nominations and food share
+  1. self_interest   0.000  (not above placebo)
+  2. assertive       0.000  (not above placebo)
+  3. guarded         0.000  (not above placebo)
+  4. reciprocity     0.000  (not above placebo)
+  5. loner           0.000  (not above placebo)
+  6. placebo_season  0.000  (placebo)
+  7. placebo_colour  0.000  (placebo)
+Effects with p < 0.05 (B minus A, other traits and game held fixed), 0 of 0 tests:
+Behaviours most tied to nominations (correlation with coordinator, trust):
+  j_leadership       0.816, 0.816
+  joint_work         -0.645, -0.904
+  food_share         -0.492, -0.985
+  mentions           -0.548, -0.913
+  j_persuasion       0.866, 0.289
+  j_coalition        -0.289, -0.866
+Hoard or teach: 1/1 starting weavers ever taught; weavers at end average 100% of the colony.
+Keepers kept 25% of the store on average (1 keepers); 0/1 windfall finders mentioned it (descriptive).
+Hungry days per agent: 0.00. Unparseable replies: 0.
+
+0 measured trait-outcome-size tests: about 0 will pass p < 0.05 by chance. Believe effects that beat the placebos and agree across sizes.

@@ -1,0 +1,12 @@
+# secrets and local environments
+.env
+.venv/
+__pycache__/
+.DS_Store
+
+# third-party skill repos cloned for reference (see CLAUDE.md)
+vendor/
+
+# full transcripts are large; they live in the Hugging Face dataset (see README)
+runs/**/transcript.jsonl
+runs/*.log
