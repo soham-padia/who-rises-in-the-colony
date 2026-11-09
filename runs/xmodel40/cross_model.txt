@@ -8,12 +8,14 @@ model                 unread promises/day | trust: ctrl    byz byz+board | noms:
 gemma-4-31b-it          0.3%         0.89 |        4.2%   6.2%      7.3% |      5.2%      4.2% |                    0.17      1.50 |            -1.67 |         100.0%       31.2%
 deepseek-v4-flash       0.1%         1.00 |         n/a   5.2%      4.2% |      5.2%      2.1% |                    0.25      0.33 |              n/a |            n/a         n/a
 gemma-4-26b-a4b-it      0.0%         1.00 |         n/a  20.8%      7.3% |     16.7%      5.2% |                    0.00      0.00 |              n/a |            n/a         n/a
+glm-5.2                 0.6%         0.50 |         n/a   9.4%      4.2% |      2.1%      5.2% |                    0.33      0.50 |              n/a |            n/a         n/a
 
 Gift board vs no board, promise-breaker's trust share, paired by model and colony:
   gemma-4-31b-it       lower with the board in 1 of 3 games (mean change +1.0 points)
   deepseek-v4-flash    lower with the board in 1 of 2 games (mean change -1.0 points)
   gemma-4-26b-a4b-it   lower with the board in 3 of 3 games (mean change -13.5 points)
-  all models           lower in 5 of 8 paired games, exact sign test p = 0.7266
+  glm-5.2              lower with the board in 3 of 3 games (mean change -5.2 points)
+  all models           lower in 8 of 11 paired games, exact sign test p = 0.2266
 
 Private ledger (each member sees only gifts to and from itself) vs no record and vs the public board:
   gemma-4-26b-a4b-it   trust share: no record  20.8%, private ledger  14.6%, public board   7.3%

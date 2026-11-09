@@ -189,8 +189,9 @@ bullets([
     "yet separable from the starting state.",
     "<b>A same-family pilot agrees.</b> On gemma-4-26b the gift board cut the promise-breaker's trust share from "
     "20.8% to 7.3%, lower in all 3 colonies. On deepseek-v4-flash, whose victims note the missing food themselves, "
-    "the promise-breaker never gained trust (about 5% either way), so the board had little to remove. qwen3.5-397b "
-    "and glm-5.2 are running.",
+    "the promise-breaker never gained trust (about 5% either way), so the board had little to remove. On glm-5.2 the "
+    "board cut it from 9.4% to 4.2%, in all 3 colonies; on gemma-4-31b no effect had appeared within 40 days. Pooled, "
+    "lower with the board in 8 of 11 paired colonies (p = 0.23).",
     "<b>A pre-registered punish test points the same way, but is inconclusive.</b> Given a costly punish action, "
     "gemma-4-26b members almost never punished without the board (4 times in 3 colonies); with it, 12 of 18 "
     "punishments hit the promise-breaker, 9 of them from bystanders. The registered rule needed 10 punishments per arm, "
@@ -508,6 +509,10 @@ if "deepseek-v4-flash" in xdone:
       "next-day notebooks, against 2% on both Gemma models, and never recorded a gift that didn't happen. Where agents "
       "record the breach themselves, a public record has little left to add. There is no deepseek control run, so the "
       "seat's normal share is unknown.")
+if "glm-5.2" in xdone:
+    P("<b>glm-5.2 agrees in direction.</b> The board cut the promise-breaker's share of trust votes from 9.4% to 4.2%, "
+      "lower in all 3 colonies, though its keeper nominations rose slightly (2.1% to 5.2%) and its promise-breaker made "
+      "a public promise on only about half the days, so the treatment was weaker than on the Gemma models.")
 if "gemma-4-31b-it" in xdone:
     g31 = xdone["gemma-4-31b-it"]
     P(f"<b>gemma-4-31b on the same 40-day design shows no effect yet.</b> The promise-breaker drew "
@@ -541,7 +546,7 @@ if pending:
     P("<b>Still running at this snapshot:</b> " + ", ".join(pending) + "; qwen3.8-27b and glm-53-flash were not run, "
       "for lack of rate-limit capacity. gemma-4-26b is from the same "
       "family as the reference, and 3 of 3 colonies alone gives p = 0.25, so this is a pilot; the test that matters "
-      "is the sign test pooled across families.")
+      "is the sign test pooled across families: so far lower with the board in 8 of 11 paired colonies (p = 0.23).")
 g26 = xm.get("gemma-4-26b-a4b-it", {})
 if "byz_private" in g26 and "byz" in g26 and "byz_board" in g26:
     H2("8.1 Publicity or memory? A private ledger")

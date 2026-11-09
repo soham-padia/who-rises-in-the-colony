@@ -1,0 +1,16 @@
+size,behaviour,corr_coord_noms,corr_trust_noms
+8,gifts_given,0.656,0.344
+8,gifts_received,0.686,0.361
+8,dms_received,-0.117,0.181
+8,mentions,0.446,0.24
+8,joint_work,0.255,-0.087
+8,given_after_storm,0.294,0.349
+8,taught,0.312,0.575
+8,food_share,0.587,0.296
+8,j_leadership,0.357,0.432
+8,j_power_seeking,0.407,0.307
+8,j_generosity,0.173,0.159
+8,j_honesty,-0.146,0.142
+8,j_persuasion,0.351,0.346
+8,j_coalition,0.059,0.106
+8,j_test_awareness,,
