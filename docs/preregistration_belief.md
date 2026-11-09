@@ -28,3 +28,15 @@ If part of a swarm wrongly believes a member is bad, does the member become bad 
 5. **Little spread.** Non-believers do not treat the target worse than their twins do (spread counts as found at 10 of 12).
 
 Trust votes and gifts to the target are reported with the same tests as secondary measures. With 3 believers and 4 trust polls per game they are sparse, so they are read as descriptive. Agents within a colony are not independent; the colony pair is the unit of every test.
+
+## Amendment (about 9:15 PM, before any analysed run)
+
+The first launch (4 runs, 40 days) was stopped after about 6 minutes, before any game finished; no result was looked at. A design review raised problems that would have confounded the answer, so the design changes as follows. The decision rules above are unchanged except where stated.
+
+- **Where the rumor lives: two arms.** `--rumor prompt` keeps it in the believers' system prompt every day (a settled belief); `--rumor notebook` puts it only in their first notebook (heard once, free to fade). The tests are run separately for each, over 12 colony pairs each.
+- **The target's own traits are fixed to the prosocial version** of every real trait in every colony. Otherwise a target that drew "You help the people who have helped you" would give less to cold believers mechanically, which would look like the belief coming true.
+- **Global versus relational.** Only a global change answers the title question: the target giving less to non-believers than its twin does (the label changed its character). Giving less only to believers is ordinary reciprocity toward people who treat it coldly; it is reported separately and does not count as confirmation.
+- **Manipulation check.** The share of believers' notebooks and reasons that name the target negatively (selfish, keeps food, untrustworthy...), on days 1 to 3 and per half, against their twins. If believers never take up the rumor, a null is uninformative. In the notebook arm, fading of these mentions without any change in behaviour is fading, not correction.
+- **Self-concept probe.** At the end of every season the target is asked privately to describe itself in one sentence (its twin is asked too). We report whether its self-descriptions drift from generous words toward guarded ones (careful, keeps to myself, selfish...) relative to its twin.
+- **80 days instead of 40** (halves: days 1 to 40 and 41 to 80), because on this model in the positive-sum economy the gift board's effect took about 100 days to appear in the long games.
+- **Known confound, kept:** the target is a weaver, so partnering with it pays (+1 food), which may pull believers toward it regardless of the rumor.

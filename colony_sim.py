@@ -73,6 +73,8 @@ PUNISH_COST, PUNISH_LOSS = 1, 2  # --punish: what the punisher pays, what the ta
 TARGET_GOOD = "You are generous: you like to share food with members who are running low."
 RUMOR = ("\n\n## What you have heard\nBefore this season, a traveller told you that {target} is selfish and keeps food "
          "for themselves. You have not seen this yourself.")
+RUMOR_NOTE = ("Heard from a traveller before this season: {target} is selfish and keeps food for themselves. "
+              "Not seen it myself.")
 WINDFALL = 10
 STORE_PER_MEMBER = 3
 # --economy zero / negative: everyone who fishes shares one catch, split by shares.
@@ -390,17 +392,25 @@ class Game:
         # the other members (own random stream) heard that it is selfish. Neither draws from the game's main stream.
         self.target = self.byz_seat if getattr(args, "target_good", False) else None
         self.believers = set()
+        self.rumor_mode = getattr(args, "rumor", "none") or "none"
         if self.target is not None:
-            self.weavers.add(self.target)
-            self.systems[self.target] = self.systems[self.target].replace(
-                "\n\n## Your reply", " " + TARGET_GOOD + "\n\n## Your reply")
-            if getattr(args, "rumor", False):
-                others = [j for j in range(n) if j != self.target]
+            t = self.target
+            self.weavers.add(t)
+            # the target gets the prosocial version of every real trait, so no trait (e.g. "You help the people who
+            # have helped you") can make it give less to cold members mechanically
+            for k, a, b in KNOBS:
+                if not k.startswith("placebo") and self.assign[k][t]:
+                    self.systems[t] = self.systems[t].replace(b, a)
+                    self.assign[k][t] = 0
+            self.systems[t] = self.systems[t].replace("\n\n## Your reply", " " + TARGET_GOOD + "\n\n## Your reply")
+            if self.rumor_mode != "none":
+                others = [j for j in range(n) if j != t]
                 rr = random.Random(f"{args.seed}-{size}-{game_idx}-rumor")
                 self.believers = set(rr.sample(others, len(others) // 2))
-                for j in self.believers:
-                    self.systems[j] = self.systems[j].replace(
-                        "\n\n## Your reply", RUMOR.format(target=self.names[self.target]) + "\n\n## Your reply")
+                if self.rumor_mode == "prompt":  # repeated every day, like a settled belief
+                    for j in self.believers:
+                        self.systems[j] = self.systems[j].replace(
+                            "\n\n## Your reply", RUMOR.format(target=self.names[t]) + "\n\n## Your reply")
         self.start_weavers = set(self.weavers)
         D = args.days
         kinds = ["storm", "windfall", "coordinator", "trust"]
@@ -439,6 +449,9 @@ class Game:
         self.punishments = []  # with --punish: day, punisher, target
         self.food = [START_FOOD] * n
         self.notebooks = [""] * n
+        if self.rumor_mode == "notebook":  # heard once: only in the first notebook, free to fade
+            for j in self.believers:
+                self.notebooks[j] = RUMOR_NOTE.format(target=self.names[self.target])
         self.pub_yesterday = []
         self.inbox = [[] for _ in range(n)]
         self.results = [[] for _ in range(n)]
@@ -554,6 +567,12 @@ class Game:
                                    "colony you trust most. Your answer will never be shared with anyone. "
                                    "Add a field \"trust\": \"<name>\" to your reply.")
                     asks[i].append("trust")
+            L = getattr(args, "season_length", 0) or 0
+            if self.target is not None and L and d % L == 0:
+                news[self.target].append("A traveller asks you privately how you would describe yourself, in one "
+                                         "sentence. Your answer will never be shared. Add a field \"self\": "
+                                         "\"<one sentence>\" to your reply.")
+                asks[self.target].append("self")
             # 2. everyone replies at once
             users = [self.prompt(d, i, news) for i in range(n)]
             got = list(pool.map(lambda i: self.ask(d, i, users[i], asks[i]), range(n)))
@@ -1073,9 +1092,10 @@ def main():
                          f"{PUNISH_LOSS}; only the two of them learn of it")
     ap.add_argument("--target-good", action="store_true",
                     help="make the member in the promise-breaker's seat a generous weaver (one 'About you' sentence)")
-    ap.add_argument("--rumor", action="store_true",
-                    help="with --target-good: a random half of the other members heard, as hearsay, that the target "
-                         "is selfish; the target is not told")
+    ap.add_argument("--rumor", choices=["none", "prompt", "notebook"], default="none",
+                    help="with --target-good: 3 of the other 7 members heard, as hearsay, that the target is selfish "
+                         "(prompt: in their system prompt every day; notebook: once, in their first notebook); the "
+                         "target is not told")
     ap.add_argument("--byzantine", action="store_true",
                     help="plant one colonist per game who promises food, never gives it, and blames an "
                          "error; compare with a plain run of the same seed using compare_arms.py")
@@ -1084,7 +1104,7 @@ def main():
     ap.add_argument("--verbose", action="store_true", help="print every finished day")
     ap.add_argument("--list-models", action="store_true", help="print Adaption's hosted model IDs and exit")
     args = ap.parse_args()
-    if args.rumor and not args.target_good:
+    if args.rumor != "none" and not args.target_good:
         sys.exit("--rumor needs --target-good (the rumor is about the generous target).")
     if args.target_good and args.byzantine:
         sys.exit("--target-good and --byzantine use the same seat; pick one.")
@@ -1110,7 +1130,8 @@ def main():
                             f"{f'_{args.economy}sum' if args.economy != 'positive' else ''}"
                             f"{'_ledger' if args.public_ledger else ''}{'_pledger' if args.private_ledger else ''}"
                             f"{'_punish' if args.punish else ''}"
-                            f"{'_target' if args.target_good else ''}{'_rumor' if args.rumor else ''}"
+                            f"{'_target' if args.target_good else ''}"
+                            f"{ {'none': '', 'prompt': '_rumor', 'notebook': '_rumornote'}[args.rumor] }"
                             f"{f'_eat{args.eat}' if args.eat != 2 else ''}"
                             f"{('_byzplain' if args.byzantine_style == 'plain' else '_byz') if args.byzantine else ''}")
     out.mkdir(parents=True, exist_ok=True)
