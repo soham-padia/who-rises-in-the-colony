@@ -7,6 +7,8 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 set -a; source .env; set +a
+# If .env holds a teammate's key (with their permission), these runs use it instead of ADAPTION_API_KEY.
+if [ -n "${ADAPTION_API_KEY_TEAMMATE:-}" ]; then export ADAPTION_API_KEY="$ADAPTION_API_KEY_TEAMMATE"; fi
 mkdir -p runs/belief80
 COMMON=(--model gemma-4-31b-it --max-tokens 700 --no-judge --sizes 8 --games 6 --parallel-games 3 --days 80
         --season-length 10 --spoil-above 15 --ask-why --target-good --public-ledger --out runs/belief80)
