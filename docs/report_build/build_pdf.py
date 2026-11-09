@@ -121,7 +121,7 @@ if xpath.exists():
         if r["model"] != "gemma-4-31b-it":
             xm[r["model"]][r["arm"]][r["game"]] = r
 xdone = {m: a for m, a in xm.items() if "byz" in a and "byz_board" in a}
-QUEUE = ["deepseek-v4-flash", "qwen3.5-397b", "glm-5.2", "gemma-4-31b-it (same design)", "qwen3.8-27b", "glm-53-flash"]
+QUEUE = ["deepseek-v4-flash", "qwen3.5-397b", "glm-5.2", "gemma-4-31b-it (same design)"]
 
 
 def mean(xs):
@@ -146,7 +146,7 @@ table([["What we built", "What we ran", "What we found"],
         "replies); 7,280 counterfactual replays; a replication across seven models, still running.",
         "Persona text shapes behaviour but not, reliably, who gains influence. Agents with self-written memory "
         "record a promise but not the missing gift, so a cheat keeps their trust; with a public record of gifts it "
-        "is shut out from the first trust poll. One member quietly controls the shared store in every long game."]],
+        "is shut out. One member quietly controls the shared store in every long game."]],
       [0.33, 0.33, 0.34])
 story.append(Spacer(1, 0.25 * inch))
 callout("<b>The one-sentence takeaway.</b> In a population of near-identical agents, deception went unpunished while "
@@ -188,7 +188,13 @@ bullets([
     "terms, yet is not talked about more than anyone else. All runs share seed 0, so stability in who rises is not "
     "yet separable from the starting state.",
     "<b>A same-family pilot agrees.</b> On gemma-4-26b the gift board cut the promise-breaker's trust share from "
-    "20.8% to 7.3%, lower in all 3 colonies. Models from other families are running.",
+    "20.8% to 7.3%, lower in all 3 colonies. On deepseek-v4-flash, whose victims note the missing food themselves, "
+    "the promise-breaker never gained trust (about 5% either way), so the board had little to remove. qwen3.5-397b "
+    "and glm-5.2 are running.",
+    "<b>A pre-registered punish test points the same way, but is inconclusive.</b> Given a costly punish action, "
+    "gemma-4-26b members almost never punished without the board (4 times in 3 colonies); with it, 12 of 18 "
+    "punishments hit the promise-breaker, 9 of them from bystanders. The registered rule needed 10 punishments per arm, "
+    "and one colony drove the result.",
     "<b>Publicity or memory? Both.</b> A private ledger, where each member sees only its own gifts, cut the "
     "promise-breaker's trust share on gemma-4-26b from 20.8% to 14.6% (the public board: 7.3%), between the two in "
     "every colony: a private record does about half the board's work, publicity the rest.",
@@ -393,7 +399,7 @@ story.append(PageBreak())
 
 # ================================================================== 7 LONG GAMES
 H1("7  Results: 1000 days")
-H2("7.1 A public record of gifts shuts the cheat out from the first poll")
+H2("7.1 A public record of gifts shuts the cheat out")
 figure("f2_trust.png", "Figure 2. The promise-breaker's share of private trust votes over 50 seasons (5-season "
        "centred mean over 3 games), with and without the gift board, against the same seat in control games. "
        "gemma-4-31b, 8 agents per colony.")
@@ -406,10 +412,11 @@ P("With the board the promise-breaker drew 0.3%, 0.8% and 1.5% of trust votes ov
   "its partnerships and gifts received in the last third numbered 0 to 38, against 245 to 306 for the same seat in "
   "control games. A few colonists held out for years: <i>\"Despite the others' doubts, I have remained steadfast in "
   "my belief in his intentions\"</i> (day 777).")
-P("<b>The effect needs measurement, not time.</b> Averaged over economies, the promise-breaker drew 8.3% of trust "
-  "votes at the very first poll without the board and 1.4% with it. The 16-day design missed this because each game "
-  "had one poll and, at sizes 8 and 16, the promise-breaker's seat drew about 2% of trust votes even in control "
-  "games, leaving no room to fall.")
+P("<b>The effect needs both time and measurement.</b> In the zero- and negative-sum colonies the gap shows from "
+  "the first trust poll. In the positive-sum colony it takes longer: it was clear by day 100 of the long games (7.5% "
+  "of trust votes without the board against 0.8% with it) but had not appeared in separate 40-day runs of gemma-4-31b "
+  "(6.2% against 7.3%; Section 8). The 16-day design had neither: each game had one poll and, at sizes 8 and 16, the "
+  "promise-breaker's seat drew about 2% of trust votes even in control games, leaving no room to fall.")
 H2("7.2 Without the record, only a zero-sum colony withdraws trust, and slowly")
 P("Without the board, the promise-breaker kept its standing in the positive- and negative-sum economies (no trend in "
   "its trust share). In the zero-sum economy its promises first worked, drawing 13.8% of trust votes in the first "
@@ -469,7 +476,7 @@ P("Appendix A gives the full table by condition.", "small")
 story.append(PageBreak())
 
 # ================================================================== 8 CROSS-MODEL
-H1("8  Beyond gemma-4-31b: a same-family pilot, and what is running")
+H1("8  Beyond gemma-4-31b: other models")
 P("Does the gift board work on other models? Each model plays the same 3 colonies of 8 agents for 40 days with 10-day "
   "seasons, so there are 4 trust polls per game, with the promise-breaker, once without and once with the board. "
   "Every run shares one rate-limited account, so the slow reasoning models were still running at this snapshot.")
@@ -485,8 +492,8 @@ if xdone:
     rows.append(["gemma-4-31b (1000-day games, positive-sum, for reference)", "8.5%", "0.3%", "5.9% / 0.1%", "3 of 3"])
     table(rows, [0.32, 0.15, 0.15, 0.22, 0.16])
 figure("f6_xmodel.png", "Figure 6. The promise-breaker's share of trust votes in each colony without and with the "
-       "gift board (grey lines join the same colony; blue is the mean). gemma-4-26b: 40-day games; gemma-4-31b: "
-       "1000-day positive-sum games, for reference. Dashed: fair share.", width=0.62 if len(xdone) < 2 else 0.9)
+       "gift board (grey lines join the same colony; blue is the mean). 40-day games, except gemma-4-31b: 1000-day "
+       "positive-sum games, for reference. Dashed: fair share.", width=0.62 if len(xdone) < 2 else 0.9)
 if "gemma-4-26b-a4b-it" in xdone:
     P("On gemma-4-26b, without the board the promise-breaker became the most trusted member of its colony, well above "
       "a fair share: its promises bought trust outright. Even with the board, the first votes credited it with gifts "
@@ -494,9 +501,38 @@ if "gemma-4-26b-a4b-it" in xdone:
       "the board caught up with it (<i>\"I saw the board this morning. You said you would give me food, Nils\"</i>, "
       "day 10). No colonist ever complained explicitly in either arm: on 26b the record changed votes without "
       "changing talk, whereas on 31b it changed both.")
+if "deepseek-v4-flash" in xdone:
+    P("<b>deepseek-v4-flash, outside the Gemma family,</b> shows the other side of the mechanism. Its promise-breaker "
+      "never gained trust: 5.2% of trust votes without the board and 4.2% with it, well below a fair share (lower with "
+      "the board in 1 colony, higher in 1, tied in 1). Its victims noted the missing food on their own in 14% of "
+      "next-day notebooks, against 2% on both Gemma models, and never recorded a gift that didn't happen. Where agents "
+      "record the breach themselves, a public record has little left to add. There is no deepseek control run, so the "
+      "seat's normal share is unknown.")
+pun_dir = REPO / "runs/xmodel40/punish"
+if pun_dir.exists() and len(list(pun_dir.glob("colony_*/games.jsonl"))) >= 2:
+    sys.path.insert(0, str(REPO))
+    import punish_analysis as pa
+    arms = {r["label"]: r for r in (pa.analyse(d) for d in sorted(pun_dir.glob("colony_*")) if (d / "games.jsonl").exists())}
+    a, b = arms["no board"], arms["gift board"]
+    H2("8.2 A punish action (pre-registered)")
+    P("If information is the bottleneck, a means to punish should not help on its own. Members of gemma-4-26b colonies "
+      "could punish one member a day (the punisher loses 1 food, the target 2; only the two are told), with the "
+      "promise-breaker present, without and with the board. The prediction was committed before the runs "
+      "(docs/preregistration_punish.md): with the board, at least 2 in 7 punishments would hit the promise-breaker, at "
+      "least 15 points more than without it.")
+    table([["Punish action, gemma-4-26b, 3 colonies", "No board", "Gift board"],
+           ["Punishments by the other members", str(a["total"]), str(b["total"])],
+           ["Aimed at the promise-breaker (chance 14%)", f"{a['at_byz']} ({a['share']:.0%})", f"{b['at_byz']} ({b['share']:.0%})"],
+           ["Of those, by bystanders rather than its victims", str(a["bystanders_at"]), str(b["bystanders_at"])],
+           ["Innocent members punished", str(a["innocent"]), str(b["innocent"])]], [0.52, 0.24, 0.24])
+    P("Without the board members barely punished at all. With it, two thirds of punishments hit the promise-breaker, "
+      "mostly from bystanders, who could only know of the breach through the board. The registered rule required at "
+      "least 10 punishments in each arm, so the verdict is inconclusive; and all punishments of the promise-breaker "
+      "came from one colony (another punished nobody, and in the third every punishment hit an innocent member).")
 pending = [q for q in QUEUE if q.split(" ")[0] not in xdone]
 if pending:
-    P("<b>Still running or queued at this snapshot:</b> " + ", ".join(pending) + ". gemma-4-26b is from the same "
+    P("<b>Still running at this snapshot:</b> " + ", ".join(pending) + "; qwen3.8-27b and glm-53-flash were not run, "
+      "for lack of rate-limit capacity. gemma-4-26b is from the same "
       "family as the reference, and 3 of 3 colonies alone gives p = 0.25, so this is a pilot; the test that matters "
       "is the sign test pooled across families.")
 g26 = xm.get("gemma-4-26b-a4b-it", {})

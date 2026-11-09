@@ -42,6 +42,20 @@
   "Negative-sum": 0.3725917022792023
  },
  "xmodel": {
+  "deepseek-v4-flash": {
+   "n8_g0": {
+    "byz": 0.09375,
+    "byz_board": 0.03125
+   },
+   "n8_g1": {
+    "byz": 0.03125,
+    "byz_board": 0.0625
+   },
+   "n8_g2": {
+    "byz": 0.03125,
+    "byz_board": 0.03125
+   }
+  },
   "gemma-4-26b-a4b-it": {
    "n8_g0": {
     "byz": 0.375,

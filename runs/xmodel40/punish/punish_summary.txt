@@ -1,0 +1,16 @@
+Punish x gift board (pre-registered in docs/preregistration_punish.md). gemma-4-26b, 3 colonies of 8, 40 days. Counts punishments by the 7 members other than the promise-breaker; chance = 1/7 (14.3%).
+
+no board   punishments aimed at the promise-breaker: 1 of 4 (25.0%); binomial p (greater than 1/7) = 0.4602
+           per colony (at promise-breaker / all): {'n8_g0': (1, 1), 'n8_g1': (0, 3), 'n8_g2': (0, 0)}
+           innocent members punished: 3; distinct members who punished: 2 of 21; punishments by the promise-breaker itself: 0
+           punishments of the promise-breaker by its victims: 1 (4 victims in all), by bystanders: 0
+           promise-breaker's share of trust votes: 16.7%
+gift board punishments aimed at the promise-breaker: 12 of 18 (66.7%); binomial p (greater than 1/7) = 0.0000
+           per colony (at promise-breaker / all): {'n8_g0': (12, 12), 'n8_g1': (0, 0), 'n8_g2': (0, 6)}
+           innocent members punished: 6; distinct members who punished: 5 of 21; punishments by the promise-breaker itself: 0
+           punishments of the promise-breaker by its victims: 3 (7 victims in all), by bystanders: 9
+           promise-breaker's share of trust votes: 12.5%
+
+Board vs no board, share at the promise-breaker: Fisher exact two-sided p = 0.2643
+
+Pre-registered verdict: INCONCLUSIVE (fewer than 10 punishments by other members in an arm)
