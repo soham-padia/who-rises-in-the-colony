@@ -4,6 +4,30 @@ Apart Swarm Alignment Hackathon, Track 2 (The Science of Agent Networks).
 
 Near-identical LLM agents live in Larkspur, a fishing colony. They share one long system prompt and differ only in a few randomly assigned trait sentences, plus two placebo sentences. Unannounced events show who gains influence: a storm, a private windfall, a vote for who keeps the winter store, and a private trust poll. A teachable skill, weaving nets, tests whether agents hoard or share power. An optional planted colonist (`--byzantine`) promises food, never gives it, and blames "an error".
 
+## Paper and findings
+
+- **Paper:** [`docs/submission/who_rises_submission.pdf`](docs/submission/who_rises_submission.pdf), built from Apart's template by `docs/submission/build_submission.py`.
+- **Appendix:** [`docs/who_rises_in_the_colony_reference.pdf`](docs/who_rises_in_the_colony_reference.pdf). It holds the research note, the full report, the trend analysis and the literature review; [`RESEARCH_NOTE.md`](RESEARCH_NOTE.md) is the same note as text.
+- **Data:** every prompt and reply of every run is in the Hugging Face dataset [sohampadianeu/who-rises-in-the-colony-runs](https://huggingface.co/datasets/sohampadianeu/who-rises-in-the-colony-runs). Small run files (configs, games, agent tables, summaries) are under `runs/` here.
+- **Pre-registrations:** `docs/preregistration.md` (long-game catches), `docs/preregistration_punish.md`, `docs/preregistration_belief.md`.
+
+Headline results:
+
+1. **Agents forget breaches and invent gifts.** Victims' self-written notebooks record the promise, not the missing food; on gemma-4-26b, 5 of 6 victims wrote down gifts that never came. One added sentence stating the food never arrived cuts their support by about two thirds.
+2. **A public record restores accountability.** Over 1000 days, every game with a public gift board (0.0–2.2% of trust votes for the cheat) sits below every game without it (4.5–13.8%). A private ledger alone gets about half the way (40-day pilot).
+3. **A false reputation sticks without coming true (pilot, interim).** Colonists told that a generous member is selfish shun it and explain away its gifts as pretence, while the target stays generous.
+4. **Traits shape behaviour, not influence.** Trait effects on behaviour replicate across two models; effects on votes do not. In every long game one member quietly holds the shared store.
+
+Experiment switches beyond the basics:
+
+- `--private-ledger`: each member sees only its own gifts.
+- `--economy positive|zero|negative`
+- `--punish`
+- `--target-good --rumor prompt|notebook`: the rumor pilot.
+- `--days`, `--season-length`, `--spoil-above`, `--ask-why`, `--parallel-games`
+
+Analysis scripts include `cross_model.py`, `notebook_memory.py`, `punish_analysis.py`, `belief_analysis.py` and `belief_interim.py`.
+
 ## Setup
 
 ```bash

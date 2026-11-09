@@ -11,7 +11,7 @@ Written Sunday ~9:10 PM ET as a handoff: everything a new session or teammate ne
 | Project PDF (20 pages, all findings) | `docs/who_rises_in_the_colony_report.pdf`; rebuild with `docs/report_build/` (see its docstring) |
 | Code | `colony_sim.py` (every experiment), analysis: `compare_arms.py`, `replay.py`, `mediation.py`, `analyze_long.py`, `detect_catches.py`, `cross_model.py`, `notebook_memory.py`, `punish_analysis.py`, `belief_analysis.py` |
 | Pre-registrations | `docs/preregistration.md` (long-game catches), `docs/preregistration_punish.md`, `docs/preregistration_belief.md` (with amendment) |
-| Small run files | `runs/` (git). Full transcripts: Hugging Face dataset `sohampadianeu/who-rises-in-the-colony-runs` (private; last upload before the cross-model runs) |
+| Small run files | `runs/` (git). Full transcripts: Hugging Face dataset `sohampadianeu/who-rises-in-the-colony-runs` (public; re-uploaded Sunday night, again after the belief runs finish). The GitHub repo is public too |
 | Literature | `docs/literature_review.md` |
 
 ## Setup in one paragraph
