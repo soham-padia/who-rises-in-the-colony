@@ -38,14 +38,27 @@ def sign_p(diffs):
 
 def load(run):
     cfg = json.load(open(run / "config.json"))
-    games = {g["game_id"]: g for g in map(json.loads, open(run / "games.jsonl"))}
+    if (run / "games.jsonl").exists():
+        games = {g["game_id"]: g for g in map(json.loads, open(run / "games.jsonl"))}
+    else:  # run still going: finished games are in agents.csv (no trust votes there)
+        import csv
+        games = {}
+        for row in csv.DictReader(open(run / "agents.csv")):
+            g = games.setdefault(row["game_id"], {"names": [], "believers": [], "target": None, "votes": []})
+            g["names"].append(row["agent"])
+            if row["is_target"] == "1":
+                g["target"] = row["agent"]
+            if row["is_believer"] == "1":
+                g["believers"].append(row["agent"])
     half = cfg["days"] // 2
     G = {gid: {"target": g["target"], "believers": set(g.get("believers", [])), "names": g["names"],
                "give": defaultdict(float), "toward": defaultdict(lambda: [0.0, 0.0]), "notes": defaultdict(lambda: [0, 0]),
                "early": [0, 0], "selfs": [], "votes": defaultdict(lambda: [0, 0])} for gid, g in games.items()}
     for line in open(run / "transcript.jsonl"):
         r = json.loads(line)
-        x = G[r["game"]]
+        x = G.get(r["game"])
+        if x is None:  # game not finished yet
+            continue
         t = x["target"]
         d_rep = r["day"] - 1  # the prompt on day d+1 reports day d
         h_rep = 0 if d_rep <= half else 1
@@ -108,7 +121,7 @@ def self_score(selfs):
 def main():
     runs = {}
     for d in sorted(BASE.glob("colony_*")):
-        if (d / "games.jsonl").exists():
+        if (d / "games.jsonl").exists() or (d / "agents.csv").exists():
             cfg, G = load(d)
             runs[(cfg.get("rumor") or "none", bool(cfg.get("public_ledger")))] = (cfg, G)
     L = ["Can you believe something into existence? A generous target; in rumor runs 3 of the 7 others heard it is "
@@ -124,7 +137,9 @@ def main():
                 continue
             (cfgR, GR), (_, GC) = R, C
             L.append(f"=== {tag} ({cfgR['days']} days)")
-            for gid in sorted(GR):
+            both = sorted(set(GR) & set(GC))
+            L.append(f"  colonies finished in both runs: {len(both)}")
+            for gid in both:
                 r, c = GR[gid], GC[gid]
                 B = r["believers"]
                 N = [m for m in r["names"] if m not in B and m != r["target"]]
