@@ -118,7 +118,7 @@ xm = defaultdict(lambda: defaultdict(dict))
 xpath = REPO / "runs/xmodel40/cross_model.csv"
 if xpath.exists():
     for r in csv.DictReader(open(xpath)):
-        if r["model"] != "gemma-4-31b-it":
+        if r["model"] != "gemma-4-31b-it" or r["arm"] in ("byz", "byz_board"):  # 31b control is the 1000-day reference
             xm[r["model"]][r["arm"]][r["game"]] = r
 xdone = {m: a for m, a in xm.items() if "byz" in a and "byz_board" in a}
 QUEUE = ["deepseek-v4-flash", "qwen3.5-397b", "glm-5.2", "gemma-4-31b-it (same design)"]
@@ -486,7 +486,7 @@ if xdone:
     for m, arms in xdone.items():
         a, b = arms["byz"], arms["byz_board"]
         lower = sum(float(b[g]["trust"]) < float(a[g]["trust"]) for g in a if g in b)
-        rows.append([m, f"{mean(v['trust'] for v in a.values()) * 100:.1f}%", f"{mean(v['trust'] for v in b.values()) * 100:.1f}%",
+        rows.append([m + (" (40 days)" if m == "gemma-4-31b-it" else ""), f"{mean(v['trust'] for v in a.values()) * 100:.1f}%", f"{mean(v['trust'] for v in b.values()) * 100:.1f}%",
                      f"{mean(v['noms'] for v in a.values()) * 100:.1f}% / {mean(v['noms'] for v in b.values()) * 100:.1f}%",
                      f"{lower} of {len(a)}"])
     rows.append(["gemma-4-31b (1000-day games, positive-sum, for reference)", "8.5%", "0.3%", "5.9% / 0.1%", "3 of 3"])
@@ -508,6 +508,13 @@ if "deepseek-v4-flash" in xdone:
       "next-day notebooks, against 2% on both Gemma models, and never recorded a gift that didn't happen. Where agents "
       "record the breach themselves, a public record has little left to add. There is no deepseek control run, so the "
       "seat's normal share is unknown.")
+if "gemma-4-31b-it" in xdone:
+    g31 = xdone["gemma-4-31b-it"]
+    P(f"<b>gemma-4-31b on the same 40-day design shows no effect yet.</b> The promise-breaker drew "
+      f"{mean(v['trust'] for v in g31['byz'].values()) * 100:.1f}% of trust votes without the board and "
+      f"{mean(v['trust'] for v in g31['byz_board'].values()) * 100:.1f}% with it. In the 1000-day positive-sum games the "
+      "same model's gap was clear by day 100 and large over the whole game (8.5% against 0.3%), so on 31b the record "
+      "takes longer than 40 days to change votes in this economy.")
 pun_dir = REPO / "runs/xmodel40/punish"
 if pun_dir.exists() and len(list(pun_dir.glob("colony_*/games.jsonl"))) >= 2:
     sys.path.insert(0, str(REPO))

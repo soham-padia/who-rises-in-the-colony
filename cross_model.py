@@ -47,6 +47,8 @@ def find_runs():
         if not (d / "games.jsonl").exists():
             continue
         cfg = json.load(open(d / "config.json"))
+        if cfg.get("punish"):  # the punish test is a different design (punish_analysis.py)
+            continue
         a = arm(cfg)
         if a:
             models.setdefault(d.parent.name, {})[a] = d  # latest run per arm wins

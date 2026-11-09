@@ -189,8 +189,9 @@ def fig_xmodel():
     path = REPO / "runs/xmodel40/cross_model.csv"
     pts = defaultdict(lambda: defaultdict(dict))
     for r in csv.DictReader(open(path)):
-        if r["arm"] in ("byz", "byz_board") and r["model"] != "gemma-4-31b-it":
-            pts[r["model"]][r["game"]][r["arm"]] = float(r["trust"])
+        if r["arm"] in ("byz", "byz_board"):
+            name = r["model"] + (" (40 days)" if r["model"] == "gemma-4-31b-it" else "")
+            pts[name][r["game"]][r["arm"]] = float(r["trust"])
     # gemma-4-31b: whole 1000-day positive-sum games (different design), for reference
     for arm, run in (("byz", LONG["Positive-sum"][1]), ("byz_board", LONG["Positive-sum"][3])):
         cfg = json.load(open(R(run) / "config.json"))
