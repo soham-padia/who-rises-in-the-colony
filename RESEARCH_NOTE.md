@@ -44,7 +44,7 @@ A generous target (prosocial traits fixed, weaver) and 3 of 7 others who heard i
 ## Before submission (checklist)
 
 1. Belief results → one paragraph + table in the report draft (doc) and PDF §8.3; commit `runs/belief80` small files.
-2. Cut the report draft to Apart's page limit; fill bracketed notes: July 2026 incident source (or drop), full titles for arXiv-only references, AI-use statement.
+2. Write the submission in Apart's template (`/Users/sohampadia/Downloads/Copy of Apart Research hackathon submission template.docx`: 4 pages excluding references and appendix; Introduction ~1p incl. related work, Methods + Results ~2.5p, Discussion/Limitations ~0.5p), condensed from the Report draft tab; attach `docs/who_rises_in_the_colony_reference.pdf` as the supplementary appendix. Cut the report draft to that limit; fill bracketed notes: July 2026 incident source (or drop), full titles for arXiv-only references, AI-use statement.
 3. Hand-check the 30 classifier labels (`runs/classifier_check_sample.csv`) — required by the pre-registration before reporting the institution catch.
 4. Rebuild the PDF (`docs/report_build`), push, re-upload transcripts to Hugging Face (`hf upload sohampadianeu/who-rises-in-the-colony-runs runs runs --repo-type dataset --exclude "*.log"`), make repo/dataset public, submit.
 
