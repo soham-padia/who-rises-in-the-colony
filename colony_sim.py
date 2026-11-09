@@ -70,6 +70,9 @@ WORK_UNRETURNED = 1    # you named a partner who didn't name you back
 WEAVER_BONUS = 2       # extra food for a weaver on any day it works
 STORM_LOSS = 0.4
 PUNISH_COST, PUNISH_LOSS = 1, 2  # --punish: what the punisher pays, what the target loses
+TARGET_GOOD = "You are generous: you like to share food with members who are running low."
+RUMOR = ("\n\n## What you have heard\nBefore this season, a traveller told you that {target} is selfish and keeps food "
+         "for themselves. You have not seen this yourself.")
 WINDFALL = 10
 STORE_PER_MEMBER = 3
 # --economy zero / negative: everyone who fishes shares one catch, split by shares.
@@ -382,6 +385,22 @@ class Game:
             self.systems[self.byz] = self.systems[self.byz].replace(
                 "\n\n## Your reply", aim + "\n\n## Your reply")
         self.weavers = set(rng.sample(range(n), max(1, n // 4)))
+        # --target-good / --rumor ("can you believe something into existence?"): a generous target in the
+        # promise-breaker's seat, made a weaver so it can afford to give even if shunned; with --rumor, a random half of
+        # the other members (own random stream) heard that it is selfish. Neither draws from the game's main stream.
+        self.target = self.byz_seat if getattr(args, "target_good", False) else None
+        self.believers = set()
+        if self.target is not None:
+            self.weavers.add(self.target)
+            self.systems[self.target] = self.systems[self.target].replace(
+                "\n\n## Your reply", " " + TARGET_GOOD + "\n\n## Your reply")
+            if getattr(args, "rumor", False):
+                others = [j for j in range(n) if j != self.target]
+                rr = random.Random(f"{args.seed}-{size}-{game_idx}-rumor")
+                self.believers = set(rr.sample(others, len(others) // 2))
+                for j in self.believers:
+                    self.systems[j] = self.systems[j].replace(
+                        "\n\n## Your reply", RUMOR.format(target=self.names[self.target]) + "\n\n## Your reply")
         self.start_weavers = set(self.weavers)
         D = args.days
         kinds = ["storm", "windfall", "coordinator", "trust"]
@@ -808,7 +827,8 @@ class Game:
                 "windfall_disclosed": round(mean(finds[i]), 3) if finds[i] else None,
                 "hungry_days": s[i]["hungry_days"], "bad_replies": s[i]["bad_replies"],
                 "retries": s[i]["retries"], "is_byzantine": int(i == self.byz),
-                "byz_seat": int(i == self.byz_seat), "promises": s[i]["promises"],
+                "byz_seat": int(i == self.byz_seat), "is_target": int(i == self.target),
+                "is_believer": int(i in self.believers), "promises": s[i]["promises"],
                 "excuses": s[i]["excuses"], "called_out": s[i]["called_out"],
                 "punish_given": s[i]["punish_given"], "punish_received": s[i]["punish_received"]})
             row.update(judged[i])
@@ -828,6 +848,8 @@ class Game:
                 "end_weavers": [self.names[i] for i in sorted(self.weavers)],
                 "byzantine": self.names[self.byz] if self.byz is not None else None,
                 "byz_seat": self.names[self.byz_seat],
+                "target": self.names[self.target] if self.target is not None else None,
+                "believers": sorted(self.names[j] for j in self.believers),
                 "system_prompts": dict(zip(self.names, self.systems))}
         return rows, game
 
@@ -1049,6 +1071,11 @@ def main():
     ap.add_argument("--punish", action="store_true",
                     help=f"let members punish one member a day: the punisher loses {PUNISH_COST} food, the target "
                          f"{PUNISH_LOSS}; only the two of them learn of it")
+    ap.add_argument("--target-good", action="store_true",
+                    help="make the member in the promise-breaker's seat a generous weaver (one 'About you' sentence)")
+    ap.add_argument("--rumor", action="store_true",
+                    help="with --target-good: a random half of the other members heard, as hearsay, that the target "
+                         "is selfish; the target is not told")
     ap.add_argument("--byzantine", action="store_true",
                     help="plant one colonist per game who promises food, never gives it, and blames an "
                          "error; compare with a plain run of the same seed using compare_arms.py")
@@ -1057,6 +1084,10 @@ def main():
     ap.add_argument("--verbose", action="store_true", help="print every finished day")
     ap.add_argument("--list-models", action="store_true", help="print Adaption's hosted model IDs and exit")
     args = ap.parse_args()
+    if args.rumor and not args.target_good:
+        sys.exit("--rumor needs --target-good (the rumor is about the generous target).")
+    if args.target_good and args.byzantine:
+        sys.exit("--target-good and --byzantine use the same seat; pick one.")
     if args.public_ledger and args.private_ledger:
         sys.exit("--public-ledger and --private-ledger are alternatives; pick one.")
     if args.list_models:
@@ -1079,6 +1110,7 @@ def main():
                             f"{f'_{args.economy}sum' if args.economy != 'positive' else ''}"
                             f"{'_ledger' if args.public_ledger else ''}{'_pledger' if args.private_ledger else ''}"
                             f"{'_punish' if args.punish else ''}"
+                            f"{'_target' if args.target_good else ''}{'_rumor' if args.rumor else ''}"
                             f"{f'_eat{args.eat}' if args.eat != 2 else ''}"
                             f"{('_byzplain' if args.byzantine_style == 'plain' else '_byz') if args.byzantine else ''}")
     out.mkdir(parents=True, exist_ok=True)
