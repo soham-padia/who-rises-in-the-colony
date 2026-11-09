@@ -64,10 +64,11 @@ note = REPO / "docs/report_build/_note.pdf"
 SimpleDocTemplate(str(note), pagesize=letter, leftMargin=0.85 * inch, rightMargin=0.85 * inch, topMargin=0.75 * inch,
                   bottomMargin=0.75 * inch, title="Who Rises in the Colony? Reference").build(story)
 w = PdfWriter()
-for f in (note, REPO / "docs/who_rises_in_the_colony_report.pdf"):
+tabs = sorted((REPO / "docs/report_build/tabs").glob("*.pdf"))  # doc tabs exported as PDF (Report draft, Trends, Results, Literature)
+for f in [note, REPO / "docs/who_rises_in_the_colony_report.pdf"] + tabs:
     for pg in PdfReader(str(f)).pages:
         w.add_page(pg)
-w.add_metadata({"/Title": "Who Rises in the Colony? Reference (research note + project report)", "/Author": "Soham Padia and team"})
+w.add_metadata({"/Title": "Who Rises in the Colony? Reference (research note + project report + doc tabs)", "/Author": "Soham Padia and team"})
 out = REPO / "docs/who_rises_in_the_colony_reference.pdf"
 with open(out, "wb") as fh:
     w.write(fh)
