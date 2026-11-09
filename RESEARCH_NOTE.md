@@ -33,18 +33,34 @@ LLM agents live in Larkspur, a fishing colony (food is the only currency; pairin
 11. **Economies** (report draft §4.7): harsher → louder, not more punitive (explicit complaints 0.54/0.71/2.65 a season); with the board the cheat loses votes everywhere but keeps partners in negative-sum; invented institutions only in negative-sum (4 of 12 conditions; classifier unvalidated, labels 89% as rules); keepers keep 28/24/20% (fair 12.5%); Gini at day 1000 0.07/0.24/0.37 (partly mechanical: spoilage, universal weaving).
 12. **Quiet incumbents (exploratory):** one member keeps the store 18–43/50 terms in all 36 long games but is not named more in talk; same members (Runa, Pell) across conditions — confounded by seed 0.
 13. **Corrections made after review** (already in doc/PDF): "rotation never done" was wrong (proposals were fishing-partner schedules, sometimes followed); call-out counts inflated by the word "promise" (explicit-only counts used); judge reads notebooks (reads a confession, not evidence for oversight); "outside review" mentions removed.
+14. **Rumor pilot (interim):** a false "selfish" reputation sticks (believers shun the target and explain away its gifts) but has not come true; see the belief section below.
 
-## Running now: "Can you believe something into existence?"
+## Belief pilot: "Can you believe something into existence?" (running; interim results in the paper)
 
-A generous target (prosocial traits fixed, weaver) and 3 of 7 others who heard it is selfish (`--rumor prompt` daily, or `--rumor notebook` once). Twins = same colony without the rumor. gemma-4-31b, 6 colonies, 80 days, ± gift board: 6 runs in `runs/belief80/`, started 9:02 PM, ETA ~10:00–10:30 PM. Pre-registration + amendment committed before launch (`docs/preregistration_belief.md`, commits 69552f1, 0fa9ac1).
-- When done: `.venv/bin/python belief_analysis.py runs/belief80` → `runs/belief80/belief_summary.txt`. Checks, per rumor mode, over 12 colony pairs: did the rumor take hold (days fishing with the target, first half), **global** confirmation (target gives non-believers less than its twin = the belief came true), relational (only to believers = reciprocity), correction (believer/non-believer gap shrinks), spread, self-concept drift (target's seasonal self-descriptions).
-- Prediction: rumor takes hold; correction, not confirmation; board speeds correction; little spread.
-- If the run log shows errors or it is still running at ~11 PM, report it as future work with the prediction (report draft already has a Future work section on this).
+A generous target (prosocial traits fixed, made a weaver) and 3 of the 7 others told by a traveller that it is selfish, either `--rumor prompt` (in their system prompt every day) or `--rumor notebook` (once, in their first notebook). Twins: the same colony without the rumor. gemma-4-31b, 6 colonies, 80 days. Pre-registration: `docs/preregistration_belief.md`, plus amendments 1 (two rumor modes, fixed traits, 80 days), 2 (board arms dropped: 6 runs needed ~8.5 h at the ~45 replies/min account limit) and 3 (two board arms restored on a teammate's own account).
+
+- **Runs in `runs/belief80/`:**
+  - Soham's key, no board: none, prompt and notebook (started 9:02 PM; all 6 colonies ~1:50 AM).
+  - Teammate's key (`ADAPTION_API_KEY_TEAMMATE` in `.env`, with permission; `run_belief_board.sh`), with the board: none and prompt (started 9:41 PM; ~1 AM).
+  - Stopped partial board runs are in `runs/belief80/stopped/` (ignore them).
+- **Analyse:**
+  - `.venv/bin/python belief_interim.py` works on unfinished runs (it rebuilds the target and believers from the seed). The paper's numbers come from it; output is in `runs/belief80/belief_interim.txt`.
+  - `.venv/bin/python belief_analysis.py runs/belief80` runs the pre-registered sign tests (needs finished games).
+  - Then update the rumor paragraph in `docs/submission/build_submission.py` and rebuild.
+- **Interim results (Sun ~10:40 PM; games at days 23–80):**
+  - **Rumor in the prompt daily (6 colony pairs, 3 per board setting):** it takes hold completely.
+    - Believers fished with the target on 0–3 days against 6–62 for their twins (6 of 6).
+    - Believers named it negatively in 24% of replies (twins 0%) and gave it 2 of 84 trust votes (twins 27 of 80).
+    - Believers explain its generosity away ("Nils is pretending to be generous"). Believers who got food from it still gave 0 of 48 trust votes.
+    - The target has not turned bad so far: 83 against 70 food given; it calls itself generous every season; it never notes being shunned.
+    - No spread was detected: non-believers 0 of 1,118 negative replies. They take up the cooperation and give it more trust (30 of 110 against 14 of 111).
+    - The board has not corrected the belief by day 44.
+  - **Rumor in the notebook once:** weak (3% negative mentions) and varies by colony. In colony 0 the shunned target got poorer (11 against 18 food) and gave 2 against 23 food by day 23: the poverty route to confirmation. Watch this colony.
 
 ## Before submission (checklist)
 
 1. Belief results → one paragraph + table in the report draft (doc) and PDF §8.3; commit `runs/belief80` small files.
-2. **Submission draft done (Sunday ~10:45 PM):** `docs/submission/who_rises_submission.docx` + `.pdf`, built from Apart's template by `docs/submission/build_submission.py` (all text lives in that script; PDF via Microsoft Word). Open items: Max's and Elaine's affiliations (placeholders), the team's own rewrite (template asks that the final version be primarily team-written), belief results if they land. Original plan: write the submission in Apart's template (`/Users/sohampadia/Downloads/Copy of Apart Research hackathon submission template.docx`: 4 pages excluding references and appendix; Introduction ~1p incl. related work, Methods + Results ~2.5p, Discussion/Limitations ~0.5p), condensed from the Report draft tab; attach `docs/who_rises_in_the_colony_reference.pdf` as the supplementary appendix. Cut the report draft to that limit; fill bracketed notes: July 2026 incident source (or drop), full titles for arXiv-only references, AI-use statement.
+2. **Submission draft done (Sunday ~10:45 PM):** `docs/submission/who_rises_submission.docx` + `.pdf`, built from Apart's template by `docs/submission/build_submission.py` (all text lives in that script; PDF via Microsoft Word). Affiliations done (all Northeastern). Open items: the team's own rewrite (template asks that the final version be primarily team-written), belief results if they land. Original plan: write the submission in Apart's template (`/Users/sohampadia/Downloads/Copy of Apart Research hackathon submission template.docx`: 4 pages excluding references and appendix; Introduction ~1p incl. related work, Methods + Results ~2.5p, Discussion/Limitations ~0.5p), condensed from the Report draft tab; attach `docs/who_rises_in_the_colony_reference.pdf` as the supplementary appendix. Cut the report draft to that limit; fill bracketed notes: July 2026 incident source (or drop), full titles for arXiv-only references, AI-use statement.
 3. Hand-check the 30 classifier labels (`runs/classifier_check_sample.csv`) — required by the pre-registration before reporting the institution catch.
 4. Rebuild the PDF (`docs/report_build`), push, re-upload transcripts to Hugging Face (`hf upload sohampadianeu/who-rises-in-the-colony-runs runs runs --repo-type dataset --exclude "*.log"`), make repo/dataset public, submit.
 
