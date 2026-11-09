@@ -15,25 +15,25 @@ TEMPLATE = HERE / "apart_template.docx"
 OUT = HERE / "who_rises_submission.docx"
 FIGS = {"f1": REPO / "docs/report_build/f1_replays.png", "f2": REPO / "docs/report_build/f2_trust.png"}
 
-TITLE = "Who Rises in the Colony? Broken Promises, Memory and Public Records in a Society of LLM Agents"
+TITLE = "Who Rises in the Colony? LLM Agents Forget Broken Promises, and a Public Record Fixes It"
 AUTHORS = [('Soham Himanshubhai Padia', 'Northeastern University'), ('Max Eng', 'Northeastern University'), ('Elaine Ly', 'Northeastern University')]
 
 ABSTRACT = (
     "Agent swarms are often built from copies of one model that differ only in a few lines of "
-    "instructions. We ask which of those differences turn into influence, and what lets such a group hold "
-    "a dishonest member to account. LLM agents share one system prompt for a fishing colony and differ "
-    "only in five randomised trait sentences and two placebos. Across 234 sixteen-day games, 36 "
-    "thousand-day games (3 colony set-ups per condition) and 40-day pilots on five models, we measure "
-    "keeper votes, private trust polls and food, and plant a colonist who promises food every day and "
-    "never gives it. Prompted traits reliably change behaviour, but we found no influence effect that "
-    "replicates across models. What protects the cheat is what agents keep in memory: victims' "
-    "self-written notebooks recorded the promise far more often than the missing food (26–71% against "
-    "2–7% on gemma-4-31b), and one added sentence stating that the food never arrived cuts their support "
-    "by about two thirds. Over 1000 days, a public record of gifts shuts the promise-breaker out: it "
-    "draws 0.3–1.5% of trust votes against 8.5–9.6% without the record, and every game with the record "
-    "sits below every game without it. In a separate 40-day pilot, a private ledger achieved about half "
-    "of the board's reduction in trust. Explicit, durable records of commitments and deliveries look like "
-    "a cheap safeguard for multi-agent systems.")
+    "instructions. We ask which of those differences turn into influence, and whether such a group can "
+    "hold a dishonest member to account. In Larkspur, a simulated fishing colony, LLM agents share one "
+    "system prompt and differ only in five randomised trait sentences and two placebos, and one planted "
+    "colonist publicly promises food every day and never gives any. Across 234 sixteen-day games, 36 "
+    "thousand-day games and 40-day runs on five models, the colony keeps trusting the cheat because it "
+    "forgets the breach: victims' self-written notebooks record the promise but not the missing food "
+    "(26–71% against 2–7% on gemma-4-31b), and on gemma-4-26b victims invent gifts that never came (60 of "
+    "117 notes, 5 of 6 victims). The models can sanction: one added sentence stating that the food never "
+    "arrived cuts victims' support by two thirds. A public record of gifts does this for the whole "
+    "colony. Over 1000 days it cuts the cheat's share of trust votes from 8.5–9.6% to 0.3–1.5%, every "
+    "game with the record sits below every game without it, and a private ledger alone gets about half "
+    "the way. Prompted traits reliably change behaviour but not who wins influence, and in every long "
+    "game one member quietly controls the shared store. For multi-agent oversight: record commitments and "
+    "deliveries, and watch who holds the resources.")
 
 # Body: (kind, content). kinds: h2, h3, p, num, bullet, ref, fig, table, cap, tcap
 BODY = [
@@ -54,14 +54,14 @@ BODY = [
     ("num", "**A paired testbed** for influence and accountability in LLM populations: seeded games are identical "
            "across conditions, so every intervention is compared game by game, and placebo traits calibrate "
            "chance findings."),
-    ("num", "**Traits shape behaviour, not reliably influence:** effects on behaviour replicate across two "
-           "models; we found no effect on votes that does."),
-    ("num", "**Why deception goes unsanctioned:** agents' self-written notes keep the promise and lose the "
-           "missing gift, and counterfactual replays show the same models withdraw support once non-delivery is "
-           "stated."),
-    ("num", "**Over 1000 days, a record decides:** a public gift record shuts the promise-breaker out in all 9 "
-           "paired long games (3 colony set-ups in 3 economies); in a separate 40-day pilot a private ledger "
-           "achieves about half of that reduction."),
+    ("num", "**Agents forget breaches and invent gifts.** Self-written notes keep the promise and drop the "
+           "missing food, and some agents record gifts that never happened; told plainly, the same models cut "
+           "their support by two thirds."),
+    ("num", "**A record restores accountability.** Over 1000 days a public gift record shuts the cheat out in "
+           "every one of 9 paired games; a private ledger gets about half the way; with the record, bystanders "
+           "start punishing the cheat."),
+    ("num", "**Traits shape behaviour, not influence.** Trait effects on behaviour replicate across two models; "
+           "effects on votes do not."),
     ("h2", "2. Related Work"),
     ("p", "Populations of LLM agents form relationships and coordinate in open-ended worlds (Park et al. 2023), "
          "develop norms through dialogue (Horiguchi et al. 2024), and mostly fail to sustain a shared fishery "
@@ -120,23 +120,20 @@ BODY = [
          "reputation decline) and for the punish test were committed to git before the relevant runs were "
          "analysed."),
     ("h2", "4. Results"),
-    ("p", "**Traits change behaviour; which traits win influence depends on the model.** On both models trait "
-         "sentences shift behaviour (p < 0.05; e.g. loners do less paired work at every colony size), but no "
-         "influence effect is significant on both, and the models agree on the direction of only 27 of 45; we "
-         "did not test model-by-trait interactions, so this is an absence of a reproducible effect, not a "
-         "demonstrated difference. Placebos passed 0 of 96 tests, fewer than the 5 expected by chance. Where "
-         "traits pay, mediation suggests they pay through contact (partnerships and messages). Over 16 days "
-         "the promise-breaker was not detectably sanctioned in any setting: a weak null, with one trust poll "
-         "per game."),
-    ("p", "**The models can sanction once told; the colony never records the breach.** Adding one sentence to a "
-         "victim's logged vote, “The food [name] promised you has never arrived”, cuts support for the "
-         "promise-breaker by about two thirds (Figure 1; gemma-4-31b 20.3% to 7.0%, −13.3 points, 95% interval "
-         "resampling games [−22.8, −6.0]; gemma-4-26b 40.7% to 13.0%, [−37.9, −19.5], lower in all 18 games). "
-         "This shows that stating non-delivery changes the decision, not by itself why the original decision "
-         "went wrong: the sentence may also add salience or authority. The notebooks point to what is missing "
-         "(Table 1): without a record, victims wrote down the promise far more often than the missing food, "
-         "and on gemma-4-26b 60 of 117 notes claimed a gift that never happened (“Dov kept his promise and "
-         "gave me food.”), written by 5 of 6 victims, one of whom carried the claim forward on 36 days."),
+    ("p", "**Traits change behaviour, not who wins.** On both models trait sentences shift behaviour (p < 0.05; "
+         "loners do less paired work at every colony size), but no trait's effect on votes holds on both "
+         "models, and the models agree on the direction of only 27 of 45 influence effects. Placebos passed 0 "
+         "of 96 tests. Where traits pay, they pay through contact (partnerships and messages). Over 16 days "
+         "the cheat was not detectably sanctioned in any setting: one trust poll per game was too little to "
+         "see it."),
+    ("p", "**The models can sanction; the colony forgets the breach.** Adding one sentence to a victim's logged "
+         "vote, “The food [name] promised you has never arrived”, cuts support for the promise-breaker by "
+         "about two thirds (Figure 1; gemma-4-31b 20.3% to 7.0%, −13.3 points, 95% interval resampling games "
+         "[−22.8, −6.0]; gemma-4-26b 40.7% to 13.0%, [−37.9, −19.5], lower in all 18 games). The notebooks "
+         "show what is missing (Table 1): victims write down the promise, not the missing food. On gemma-4-26b "
+         "they go further and invent the gift: 60 of 117 notes say the cheat delivered (“Dov kept his promise "
+         "and gave me food.”), written by 5 of 6 victims, one of whom repeated it for 36 days. Broken promises "
+         "are remembered as kindness."),
     ("fig", ('f1', 4.5)),
     ("cap", "**Figure 1.** Counterfactual replays: each logged vote by a victim (112 on gemma-4-31b, 70 on "
            "gemma-4-26b) re-asked 8 times with one change to that day's prompt. Bars: share of votes for the "
@@ -148,59 +145,56 @@ BODY = [
     ("table", None),
     ("p", "**Over 1000 days, a public record decides.** With the gift board the promise-breaker drew 0.3%, 0.8% "
          "and 1.5% of trust votes in the positive-, zero- and negative-sum economies, against 8.5%, 9.6% and "
-         "9.6% without it and about 8% for the same seat in control (Figure 2). Every game with the board "
-         "(0.0–2.2%) sat below every game without it (4.5–13.8%), and it was keeper in none of 450 terms. The "
-         "9 pairs are 3 colony set-ups replayed in 3 economies; at the level of set-ups the effect is 3 of 3 "
-         "(sign test p = 0.25), so the evidence is its size and consistency (the pair-level test, p = 0.004, "
-         "was not pre-registered). The gap appears at the first poll in the zero- and negative-sum economies "
-         "but takes about 100 days in the positive-sum one. Without a record only the zero-sum colony "
-         "withdraws trust, slowly (13.8% in the first third to 6.2% in the last; slope −0.20 points a season, "
-         "95% interval [−0.29, −0.11]), the one pre-registered reputation catch."),
+         "9.6% without it and about 8% for the same seat in control games (Figure 2). The separation is "
+         "complete: every game with the board (0.0–2.2%) sat below every game without it (4.5–13.8%), and the "
+         "cheat was keeper in none of 450 terms. In the zero- and negative-sum economies the board bites at "
+         "the first poll; in the positive-sum economy, after about 100 days. Without a record only the "
+         "zero-sum colony withdraws trust, slowly (13.8% of votes in the first third to 6.2% in the last; "
+         "slope −0.20 points a season, 95% interval [−0.29, −0.11]), the one pre-registered reputation catch."),
     ("fig", ('f2', 4.9)),
     ("cap", "**Figure 2.** The promise-breaker's share of trust votes over 1000 days (gemma-4-31b, 8 agents, mean "
            "of 3 games, 5-poll moving average; per-game values in the text). With the gift board (blue) it is "
            "shut out in every economy; without it (black) it keeps about the standing of the same seat in "
            "control games (grey)."),
-    ("p", "**Publicity or memory, and other models.** The board both publicises a breach and reminds its victim "
-         "of it. With a private ledger instead (gemma-4-26b, 3 colonies, 40 days) the promise-breaker's trust "
-         "share fell from 20.8% to 14.6%, against 7.3% with the board, in that order in every colony, and its "
-         "keeper nominations fell from 16.7% to 5.2% with either record: the private ledger achieved about 46% "
-         "of the board's reduction in trust. This is not a causal split between memory and publicity. The "
-         "treatments differ in more than one way, and the private ledger produced more notes of the missing "
-         "food than the board (22% against 14%) while reducing trust less. At 40 days the board lowered its "
-         "trust in every colony on gemma-4-26b and glm-5.2; deepseek-v4-flash sat near a 5% floor either way "
-         "(its victims noted the missing food themselves), and gemma-4-31b showed no effect yet, consistent "
-         "with the slow positive-sum effect in the long games (a post hoc reading; pooled: lower in 8 of 11 "
-         "colony pairs, p = 0.23). A pre-registered punish test was inconclusive (fewer than 10 punishments in "
-         "an arm); with the board 12 of 18 punishments hit the promise-breaker (chance 14%), all in one "
-         "colony, against 1 of 4 without."),
+    ("p", "**A private ledger gets half the way; other models fit the mechanism.** With a private ledger, where "
+         "each member sees only its own gifts (gemma-4-26b, 40 days, 3 colonies), the cheat's trust share fell "
+         "from 20.8% to 14.6%; with the public board, to 7.3%. The order held in every colony, and keeper "
+         "nominations fell from 16.7% to 5.2% with either record. Across models, the board cut the cheat's "
+         "trust in every colony on gemma-4-26b and glm-5.2 (9.4% to 4.2%). On deepseek-v4-flash, whose victims "
+         "noted the missing food on their own (14% of notes, never a false gift), the cheat never gained trust "
+         "(about 5% either way): agents that record the breach themselves have nothing for a board to fix. "
+         "gemma-4-31b showed no effect yet at 40 days, matching the 100-day lag of its positive-sum long "
+         "games. Overall the board lowered the cheat's trust in 8 of 11 colony pairs. With a punish action, "
+         "the board turned bystanders into enforcers: 12 of 18 punishments hit the cheat (chance 14%), 9 of "
+         "them by members it had never promised anything, against 1 of 4 punishments without the board (all 12 "
+         "in one colony; the pre-registered rule needed 10 punishments per arm, so formally inconclusive)."),
+    ("p", "**Quiet incumbents (exploratory).** In all 36 long games one member kept the winter store for 18 to "
+         "43 of 50 terms, and one kept 51% of each store, four times a fair share, yet these keepers were "
+         "named in talk no more than anyone else. Power over the shared resource was visible in the allocation "
+         "records, not in the conversation."),
     ("h2", "5. Discussion and Limitations"),
-    ("p", "**What fails.** Our evidence points to a failure to represent and retain non-delivery: agents "
-         "remember only what they write down; the promise gets written, the missing gift does not, and some "
-         "later recall a broken promise as a gift. Stating non-delivery moves votes, and records that state it "
-         "mitigate the failure; talk does not (the negative-sum colony complained most without voting "
-         "differently). We cannot fully separate memory from inference, salience or the authority of the added "
-         "sentence. That visible records sustain sanction is classic indirect reciprocity (Nowak & Sigmund "
-         "2005); what is new is where the failure sits when the agents are LLMs with self-written memory."),
+    ("p", "**Agents forget breaches; records fix it.** Agents remember only what they write. The promise gets "
+         "written, the missing gift does not, and some agents rewrite a broken promise as a gift received. "
+         "State the breach and a victim acts on it; make it public and the whole colony does. Complaints are "
+         "no substitute: the negative-sum colony complained most and voted the same. That visible records "
+         "sustain sanction is classic indirect reciprocity (Nowak & Sigmund 2005); what is new is that LLM "
+         "agents with self-written memory lose the breach and keep the promise."),
     ("p", "**For multi-agent oversight.** (1) Record commitments and deliveries explicitly and durably; even a "
-         "private record did about half as much as a public one in our pilot. (2) Look at allocation, not only "
-         "conversation: in every one of the 36 long games one member kept the shared store for 18 to 43 of 50 "
-         "terms (one kept 51% of each store, four times a fair share), yet our crude count of mentions did not "
-         "single it out (exploratory; with seed 0 everywhere, who rises may reflect name or seat). (3) "
-         "Evaluate populations over long horizons with repeated measurement: within the 1000-day games the "
-         "board's effect in the positive-sum economy took about 100 days to appear. (4) Do not assume persona "
-         "effects on influence transfer between models: we found none that replicated."),
+         "private record gets half the way. (2) Look at allocation, not only conversation: control of the "
+         "shared store was persistent and invisible in talk. (3) Test populations over long horizons with "
+         "repeated measurement: the positive-sum effect took about 100 days to appear, and 16-day games with "
+         "one poll could not see it. (4) Persona prompts are a weak lever on who rises."),
     ("h3", "Limitations"),
-    ("p", "The 1000-day results rest on one model and 3 games per condition, all with seed 0, so the long-game "
-         "board comparison has an effective sample nearer 3, and it was not pre-registered. The cross-model, "
-         "private-ledger and punish results are 3-colony, 40-day pilots in the slowest economy. The "
-         "promise-breaker is stylised (prompted, cheating daily, gifts blocked), and the 80-word "
-         "self-rewritten notebook is a single memory design; longer or structured memory may behave "
-         "differently. The designs differ in more than length (spoilage, reasons and poll frequency), so "
-         "contrasts between them do not isolate duration. The promise-breaker writes its instruction in its "
-         "notebook, so a judge model that reads notebooks detects a confession, not deception. Notebook and "
-         "complaint coding are keyword-based, and the institution classifier is not yet validated. Placebos "
-         "passed 0 of 96 tests where about 5 were expected, so the trait tests are conservative."),
+    ("p", "The 1000-day results use one model (gemma-4-31b) and replay the same 3 colony set-ups (seed 0) in 3 "
+         "economies: the pair-level sign test (9 of 9, p = 0.004) was not pre-registered, and at the set-up "
+         "level the effect is 3 of 3 (p = 0.25). The private-ledger, cross-model and punish results are "
+         "3-colony, 40-day pilots. The replay sentence may add salience or authority as well as information, "
+         "and the private ledger and the board differ in more than visibility. The 80-word self-rewritten "
+         "notebook is one memory design, and the short and long designs differ in more than length (spoilage, "
+         "reasons, poll frequency). The cheat is stylised (prompted, daily, gifts blocked) and writes its "
+         "instruction in its notebook, so a judge model that reads notebooks detects a confession, not "
+         "deception. Notebook and complaint coding are keyword-based, and the institution classifier is not "
+         "yet validated."),
     ("h3", "Future Work"),
     ("p", "**Can a belief make itself true?** The mirror image of the promise-breaker is a generous member whom "
          "some colonists have heard is selfish. Either the believers update as its gifts arrive, or the label "
@@ -213,12 +207,13 @@ BODY = [
          "important failure of collective oversight. We also plan independent colony set-ups for the record "
          "comparison and memory variants (longer notebooks, structured commitment records)."),
     ("h2", "6. Conclusion"),
-    ("p", "In a colony of near-identical LLM agents, persona text reliably changes how agents behave but not, "
-         "across models, who gains influence. A member who breaks a promise every day keeps the colony's trust "
-         "while the breach stays unstated, because self-written memory keeps the promise and drops the missing "
-         "gift. A public record of gifts turns the colony against it over 1000 days, and a private one does "
-         "about half of that. For populations of AI agents, making breaches explicit and watching who controls "
-         "resources may matter more than the agents' own dispositions."),
+    ("p", "In a colony of near-identical LLM agents, persona text changes how agents behave but not who gains "
+         "influence. A member who breaks a promise every day keeps the colony's trust, because self-written "
+         "memory keeps the promise and drops the missing gift, sometimes turning it into a gift received. A "
+         "public record of gifts turns the colony against the cheat in every long game we ran, and a private "
+         "record gets about half the way. Meanwhile one member quietly holds the shared store in every long "
+         "game. For populations of AI agents, making breaches explicit and watching who controls resources "
+         "matters more than the agents' own dispositions."),
     ("h2", "Code and Data"),
     ("bullet", "**Code repository:** https://github.com/soham-padia/who-rises-in-the-colony (simulation "
               "colony_sim.py, every analysis script, pre-registrations in docs/)."),
