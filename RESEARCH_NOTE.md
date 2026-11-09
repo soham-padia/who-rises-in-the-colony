@@ -60,3 +60,14 @@ A generous target (prosocial traits fixed, weaver) and 3 of 7 others who heard i
 - **Belief study:** Merton 1948 (Antioch Review 8(2):193–210); Rosenthal & Jacobson 1968; Word, Zanna & Cooper 1974 (JESP 10(2):109–120); Snyder, Tanke & Berscheid 1977 (JPSP 35(9):656–666); Jussim & Harber 2005 (PSPR 9(2):131–155); Pataranutaporn et al. 2023, Nature Machine Intelligence, doi:10.1038/s42256-023-00720-7 (LLM behavioural-confirmation loop: so do not claim "no prior work"); Savcisens et al. 2026, arXiv:2607.27512; Dong et al. 2025 (memory injection), NeurIPS, arXiv:2503.03704 for dual-use.
 - **Fix in our references:** Shi et al. 2026b is an ICML 2026 workshop paper; Ren et al. 2025's current title is "Reputation as a Solution to Cooperation Collapse in LLM-based MASs" (AAMAS 2026).
 - **Do not use:** the review's drop-in Related Work paragraph; "Kemeklis & Vemuri 2026" (not found; only a LessWrong proposal: cite that post if using the omission-vs-commission framing); "LLMs punish readily/more harshly" (contradicts Guzman Piedrahita; only Liu et al. supports it); "forgive indefinitely", "board restores sanction from the first poll", and unhedged novelty claims.
+
+## Superseded claims in the appended working documents
+
+The reference PDF appends working documents written during the hackathon. Where they conflict with the submission or the report, the submission is authoritative. Known superseded claims:
+
+- **Literature review tab:** "Victims' notebooks record the gift as missing 34% (31b) and 64% (26b) of the time, so they do remember." This was an early, broad keyword count on the 16-day games. The final measure (`notebook_memory.py`: the victim's notebook on the day after each public promise) gives 2–7% without a record on gemma-4-31b's long games and 2% on gemma-4-26b's 40-day games.
+- **Report draft tab:** "loses almost all trust from the first poll onwards." In the positive-sum economy the gap takes about 100 days (first poll 4.2% in both arms).
+- **Earlier drafts:** "rotation was never done" (the proposals were fishing-partner schedules, sometimes followed); call-out rates that counted the word "promise" (replaced by explicit-only counts); "10x" call-out claims; any reading of the judge's honesty rating as detected deception (it reads the promise-breaker's own notebook).
+- **"Memory does half the work, publicity the rest":** the private ledger achieved about 46% of the board's reduction in trust in one 40-day gemma-4-26b pilot. That is a comparison of two treatments, not a causal decomposition.
+- **"9 of 9 paired games, p = 0.004":** the 9 pairs are 3 colony set-ups in 3 economies. Every board game (0.0–2.2%) sits below every no-board game (4.5–13.8%), but at the set-up level the effect is 3 of 3 (p = 0.25).
+- **Replay intervals that resample votes:** game-clustered intervals are gemma-4-31b −13.3 points [−22.8, −6.0] and gemma-4-26b −27.7 [−37.9, −19.5].
