@@ -40,3 +40,11 @@ The first launch (4 runs, 40 days) was stopped after about 6 minutes, before any
 - **Self-concept probe.** At the end of every season the target is asked privately to describe itself in one sentence (its twin is asked too). We report whether its self-descriptions drift from generous words toward guarded ones (careful, keeps to myself, selfish...) relative to its twin.
 - **80 days instead of 40** (halves: days 1 to 40 and 41 to 80), because on this model in the positive-sum economy the gift board's effect took about 100 days to appear in the long games.
 - **Known confound, kept:** the target is a weaver, so partnering with it pays (+1 food), which may pull believers toward it regardless of the rumor.
+
+## Amendment 2 (about 9:40 PM, before any game finished; the commit time is the timestamp)
+
+Six 80-day runs need about 23,000 agent calls; at the account's rate limit (about 45 replies a minute) that is about 8.5 hours, past the deadline. The three gift-board runs were stopped (the furthest had reached day 23 of 80; no game had finished and no outcome was looked at, only call counts and empty replies). What changes:
+
+- **Arms:** no rumor, `--rumor prompt`, `--rumor notebook`, all without the board. Each rumor mode is tested over 6 colony pairs, not 12. With 6 pairs a sign test reaches p < 0.05 only at 6 of 6 (p = 0.031), so each "counts as found" rule becomes 6 of 6, and the "rumor took hold" rule becomes p >= 0.05 and fewer than 5 of 6.
+- **Prediction 4 (the board speeds correction) is dropped**; the board is left for future work.
+- **Interim look:** the first three colonies of each run finish about two hours before the last three. If the deadline forces it, we report those three pairs as descriptive only (no test can reach significance with 3 pairs) and say so.
