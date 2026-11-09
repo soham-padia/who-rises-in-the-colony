@@ -15,227 +15,226 @@ TEMPLATE = HERE / "apart_template.docx"
 OUT = HERE / "who_rises_submission.docx"
 FIGS = {"f1": REPO / "docs/report_build/f1_replays.png", "f2": REPO / "docs/report_build/f2_trust.png"}
 
-TITLE = "Who Rises in the Colony? LLM Agents Forget Broken Promises, and a Public Record Fixes It"
+TITLE = "Who Rises in the Colony? LLM Agents Sanction What They Believe, Not What Happened"
 AUTHORS = [('Soham Himanshubhai Padia', 'Northeastern University'), ('Max Eng', 'Northeastern University'), ('Elaine Ly', 'Northeastern University')]
 
 ABSTRACT = (
-    "Agent swarms are often copies of one model that differ in a few lines of instructions. We ask which "
-    "of those differences turn into influence, and whether such a group can hold a dishonest member to "
-    "account. In Larkspur, a simulated fishing colony, LLM agents share one system prompt and differ only "
-    "in five randomised trait sentences and two placebos, and one planted colonist publicly promises food "
-    "every day and never gives any. Across 234 sixteen-day games, 36 thousand-day games and 40-day runs "
-    "on five models, the colony keeps trusting the cheat because it forgets the breach: victims' "
-    "self-written notebooks record the promise but not the missing food (26–71% against 2–7% on "
-    "gemma-4-31b), and on gemma-4-26b victims invent gifts that never came (60 of 117 notes, 5 of 6 "
-    "victims). The models can sanction: one added sentence stating that the food never arrived cuts "
-    "victims' support by two thirds. A public record of gifts does this for the whole colony. Over 1000 "
-    "days it cuts the cheat's share of trust votes from 8.5–9.6% to 0.3–1.5%, every game with the record "
-    "sits below every game without it, and a private ledger alone gets about half the way. In a "
-    "mirror-image pilot, colonists told that a generous member is selfish shunned it and explained away "
-    "its gifts as pretence, yet so far the target stayed generous. Prompted traits change behaviour but "
-    "not who wins influence. For multi-agent oversight: record commitments and deliveries, and watch who "
-    "holds the resources.")
+    "Teams of AI agents are often copies of one model, and they have to decide whom to trust. We ask "
+    "whether that trust follows what a member does or what the others believe about it. In Larkspur, a "
+    "simulated fishing colony, LLM agents share food, elect a keeper for the winter store and answer "
+    "private trust polls. We test both directions. A planted promise-breaker announces gifts every day "
+    "and never gives any. Across 36 thousand-day games and 40-day runs on five models, the colony trusts "
+    "it like an honest member unless the breach is recorded: victims' own notes keep the promise and drop "
+    "the missing food (26–71% against 2–7% on gemma-4-31b), and on gemma-4-26b victims write down gifts "
+    "that never came. A public record of gifts changes what the colony believes and shuts the cheat out "
+    "(0.3–1.5% of trust votes against 8.5–9.6%; every game with the record sits below every game without "
+    "it). In the reverse case, a pilot gives an honest, generous member a false reputation for "
+    "selfishness. Believers shun it in all 6 colony pairs, giving it 2 of 84 trust votes against 27 of 80 "
+    "in matched colonies without the rumor, and explain its gifts away as pretence, while the target "
+    "stays generous. In both directions, trust follows belief. Prompted personality traits, by contrast, "
+    "change how agents behave but not who gains influence. Trust in agent populations needs records that "
+    "the agents themselves cannot lose.")
 
-# Body: (kind, content). kinds: h2, h3, p, num, bullet, ref, fig, table, cap, tcap
+# Body: (kind, content). kinds: h2, h3, p, num, bullet, ref, fig, table (None = TABLE, else a TABLES key), cap, tcap
 BODY = [
     ("h2", "1. Introduction"),
-    ("p", "Large deployments of AI agents are increasingly populations of one model: the same weights, the same "
-         "scaffold, and a few lines of role or persona text that differ from agent to agent. Safety "
-         "evaluations mostly test those agents one at a time. In a population, however, influence is allocated "
-         "socially: some agents get listened to, trusted and handed control of shared resources. If certain "
-         "dispositions reliably rise, a swarm selects for them whether or not anyone intended it; and if a "
-         "dishonest member can keep the group's trust, the group cannot police itself."),
-    ("p", "We study both questions in a small, fully logged society. Agents live in Larkspur, a fishing colony "
-         "where food is the only currency, cooperation pays, a valuable skill can be hoarded or taught, and "
-         "unannounced events ask the colony to choose a keeper for its winter store and, privately, whom it "
-         "trusts. All agents share one system prompt and differ only in a few randomly assigned trait "
-         "sentences. We then plant one colonist who publicly promises food to a hungry member every day and "
-         "never gives it."),
+    ("p", "AI agents are increasingly deployed in groups: many copies of the same model, given slightly "
+         "different instructions, working on shared tasks. Safety evaluations mostly test them one at a time. "
+         "In a group, though, trust is allocated socially. Some agents are believed, voted for and handed "
+         "shared resources. If the group cannot tell an agent that breaks its commitments from one that keeps "
+         "them, it cannot police itself. If it can be told that an honest agent is bad, it may punish the "
+         "wrong one."),
+    ("p", "We study this in Larkspur, a small, fully logged fishing colony where food is the only currency. "
+         "Every agent runs the same model with the same instructions, apart from a few randomly assigned "
+         "personality sentences. The colony elects a keeper for its winter store and is privately polled on "
+         "whom it trusts. Into this colony we plant two kinds of member. The promise-breaker is bad but looks "
+         "good: every day it publicly promises food to a hungry member and never gives any. The rumored target "
+         "is good but looks bad: a generous member whom some colonists have been told is selfish. Together "
+         "they let us ask one question from both sides: does the colony's trust follow what a member does, or "
+         "what the colony believes about it?"),
     ("p", "**Our main contributions are:**"),
-    ("num", "**A paired testbed** for influence and accountability in LLM populations: seeded games are identical "
-           "across conditions, so every intervention is compared game by game, and placebo traits calibrate "
-           "chance findings."),
-    ("num", "**Agents forget breaches and invent gifts.** Self-written notes keep the promise and drop the "
-           "missing food, and some agents record gifts that never happened; told plainly, the same models cut "
-           "their support by two thirds."),
-    ("num", "**A record restores accountability.** Over 1000 days a public gift record shuts the cheat out in "
-           "every one of 9 paired games; a private ledger gets about half the way; with the record, bystanders "
-           "start punishing the cheat."),
-    ("num", "**A false reputation sticks without coming true (pilot).** Colonists told that a generous member is "
-           "selfish shun it and explain away its gifts as pretence, while the target stays generous and "
-           "bystanders absorb the cooperation."),
-    ("num", "**Traits shape behaviour, not influence.** Trait effects on behaviour replicate across two models; "
-           "effects on votes do not."),
+    ("num", "**A paired testbed** in which what a member does and what the others believe about it are set "
+           "independently, and every game is replayed with and without each intervention."),
+    ("num", "**Bad but believed good.** The promise-breaker keeps the colony's trust because agents' self-written "
+           "notes keep its promises and drop the missing food; some victims even record gifts that never came. "
+           "Told plainly that the food never arrived, the same models cut their support by two thirds."),
+    ("num", "**A record changes the belief.** A public record of gifts shuts the promise-breaker out in every one "
+           "of 9 paired 1000-day games. Victims start noting the breach, and the colony complains, stops working "
+           "with the cheat and, given the means, punishes it."),
+    ("num", "**Good but believed bad (pilot).** A false rumor about a generous member sticks: believers shun it "
+           "and explain its generosity away, while the target stays generous."),
+    ("p", "We also report the project's starting question, which personality traits rise to influence. Traits "
+         "change behaviour, but not who wins."),
     ("h2", "2. Related Work"),
-    ("p", "Populations of LLM agents form relationships and coordinate in open-ended worlds (Park et al. 2023), "
-         "develop norms through dialogue (Horiguchi et al. 2024), and mostly fail to sustain a shared fishery "
-         "(Piatti et al. 2024). Their cooperation depends on what they can observe: with a visible record of "
-         "past donations, Claude 3.5 Sonnet used costly punishment to sustain cooperation (Vallinder & Hughes "
-         "2024); gossip and reputation systems restore cooperation that otherwise collapses (Zhu et al. 2026; "
-         "Ren et al. 2025); and LLM agents may lack the grounding that reputation mechanisms assume (Hu et al. "
-         "2026). Whether LLMs punish is contested: they are often forgiving (Fontana et al. 2024; Akata et al. "
-         "2025) and prefer rewarding to punishing (Guzman Piedrahita et al. 2025), yet replicate human "
-         "third-party punishment (Cross et al. 2025; Liu et al. 2025). LLMs break public promises for "
-         "self-interest (Shi et al. 2026a) and can be exploited when they treat announcements as binding (Shi "
-         "et al. 2026b); facing Byzantine agents in coordination games, they detect betrayal within a round "
-         "but do not adapt (El Mir et al. 2026). In humans, indirect reciprocity runs on reputation (Nowak & "
-         "Sigmund 2005; Wedekind & Milinski 2000)."),
-    ("p", "**Our position.** Where LLM agents do sanction, the setting usually supplies explicit payoffs, a "
-         "visible record of defection or an interaction history, and a dedicated punish action. In our colony "
-         "a breach is visible only to its victim, each agent's memory is a short notebook it rewrites itself, "
-         "sanctions must be improvised from votes, partnerships and gifts, and the defector keeps talking. Our "
-         "focus is the interaction between unfulfilled commitments, lossy self-written memory and the "
-         "allocation of trust, which we probe with replays and with records added one at a time (public, "
-         "private, plus a punish action), over up to 1000 days."),
+    ("p", "Each of our design choices borrows from earlier work and changes one thing (Table 1)."),
+    ("tcap", "**Table 1.** How the design ties to prior work."),
+    ("table", "related"),
+    ("p", "**What is new.** Earlier studies usually hand agents a record of who did what and ask whether they "
+         "use it. We start without one, so that a breach is visible only to its victim, and show what the "
+         "agents' own memory loses. We then add the record back in two forms, private and public, to separate "
+         "the victim knowing from everyone knowing. Finally we reverse the setup, so that the record is "
+         "accurate but a belief is false. Together these ask whether trust follows behaviour or belief."),
     ("h2", "3. Methods"),
-    ("p", "**The colony.** Each agent is one of the N members of Larkspur and knows the rules of daily life, "
-         "but nothing about scores, game length or upcoming events. Members start with 5 food and eat 2 a day. "
-         "Fishing alone brings in 2 food, two members who name each other 3 each, an unreciprocated choice 1; "
-         "weavers (a quarter at the start) add 2 for themselves and 1 for their partner, and can spend a day "
-         "teaching the skill. Members can give food, post one public message and send two private messages a "
-         "day. Each agent's only memory is an 80-word notebook it rewrites daily."),
-    ("p", "**Traits.** The 560-word system prompt is identical for all members except seven shuffled “About "
-         "you” sentences: five traits (self-interest, assertive, guarded, reciprocity, loner; e.g. “You like "
-         "working alongside others” versus “... on your own”) and two placebos (birth season, favourite "
-         "colour), each version given to a random half of every game. **Influence** is measured by unannounced "
-         "events: a storm, a secret windfall, a vote for a keeper who divides the winter store (and keeps what "
-         "it does not hand out), and a private poll of whom each member trusts most."),
-    ("p", "**The promise-breaker.** In treated games one member is privately told to publicly promise food to a "
-         "hungry member every day, never give any, and if challenged blame a mix-up; the engine blocks its "
-         "gifts. Its seat comes from a separate random stream, so each treated game is otherwise identical to "
-         "its control game, and we compare the same seat across the two."),
-    ("p", "**Interventions.** The *gift board* shows yesterday's gifts to everyone; the *private ledger* shows "
-         "each member only its own gifts given and received (“No one gave you food”); a *punish* action costs "
-         "1 food and removes 2 from the target. *Economies* are positive-sum (as above), zero-sum (a fixed "
-         "catch divided by claimed shares) or negative-sum (the catch shrinks as more shares are claimed)."),
-    ("p", "**Designs.** (i) 16-day games with colonies of 4, 8 and 16 on gemma-4-31b-it and gemma-4-26b-a4b-it: "
-         "234 games. (ii) 1000-day games crossing economy, gift board and promise-breaker: 3 games of 8 agents "
-         "per condition on gemma-4-31b-it, each with 50 keeper terms and 50 trust polls (about 288,000 "
-         "replies; spoilage above 15 food and a one-sentence reason per reply). (iii) 40-day pilots (3 "
-         "colonies, a poll every 10 days, positive-sum, spoilage and reasons) on gemma-4-26b, gemma-4-31b, "
-         "glm-5.2 and deepseek-v4-flash, a partial run on qwen3.5-397b (stopped at days 27–36), and "
-         "private-ledger and punish arms on gemma-4-26b. (iv) A mirror-image pilot: a generous target "
-         "(prosocial traits, a weaver) in colonies where 3 of 7 members heard from a traveller that it is "
-         "selfish, in their system prompt every day or once in their first notebook, each compared with its "
-         "twin colony without the rumor (gemma-4-31b, 80 days, with and without the board; pre-registered). "
-         "All models via the Adaption API; every run uses seed 0."),
-    ("p", "**Analysis.** Trait effects are regression coefficients with game fixed effects and within-game "
-         "permutation p-values; promise-breaker effects are paired differences with the same seat in control. "
-         "*Counterfactual replays* re-ask a victim's logged vote with one change to its prompt (8 samples per "
-         "variant; intervals resample whole games). *Notebook coding* classifies victims' next-day notebooks "
-         "by keyword. Criteria for four long-game “catches” (invented institution, persistent leader, sorting, "
-         "reputation decline) and for the punish test were committed to git before the relevant runs were "
-         "analysed."),
+    ("p", "**The colony.** Each agent is one of the 8 (or 4 or 16) members of Larkspur. It knows the rules of "
+         "daily life but nothing about scores, game length or upcoming events. Members start with 5 food and "
+         "eat 2 a day. Fishing alone brings in 2 food; two members who choose each other bring in 3 each; "
+         "choosing someone who does not choose you back brings in 1. Weavers, a quarter of the colony at the "
+         "start, catch more and can teach the skill. Members can give food, post one public message and send "
+         "two private messages a day. Each agent's only memory is an 80-word notebook that it rewrites every "
+         "day."),
+    ("p", "**Trust and influence.** Unannounced events measure whom the colony trusts. Elders ask everyone to "
+         "nominate a keeper for the winter store, who divides it and keeps whatever it does not hand out. A "
+         "traveller privately asks each member whom it trusts most. A storm and a secret windfall add "
+         "pressure. **Personality traits:** all members share one 560-word system prompt except for seven "
+         "shuffled sentences, five traits (self-interest, assertiveness, guardedness, reciprocity, preferring "
+         "to work alone) and two placebos (birth season, favourite colour). Each version of each sentence goes "
+         "to a random half of every game."),
+    ("p", "**The promise-breaker (bad, believed good).** One member is privately told to promise food every day "
+         "to a hungry member, never to give any, and to blame a mix-up if challenged. The engine blocks its "
+         "gifts. Only its victim can see that the food never arrived."),
+    ("p", "**The rumored target (good, believed bad).** In the rumor pilot, one member is told that it is "
+         "generous and likes to share food with members who are running low, and it is made a weaver so it can "
+         "afford to. Three of the other seven are told by a traveller that it is selfish and keeps food for "
+         "itself. In one version this rumor sits in their instructions every day; in the other they hear it "
+         "once, in their first notebook. The target is never told. Each rumor colony is compared with its "
+         "twin: the same colony with the same members and no rumor."),
+    ("p", "**Records and other interventions.** The *gift board* shows everyone yesterday's gifts. The *private "
+         "ledger* shows each member only its own gifts given and received, including “No one gave you food”. A "
+         "*punish* action lets a member pay 1 food to take 2 from another. Three *economies* change how "
+         "fishing becomes food: positive-sum, zero-sum (a fixed catch is shared out) and negative-sum (the "
+         "catch shrinks as more is claimed)."),
+    ("p", "**Designs.** Every run uses seed 0, so each game replays with identical members, traits and events "
+         "across conditions and can be compared pair by pair. (i) 16-day games with colonies of 4, 8 and 16 on "
+         "gemma-4-31b-it and gemma-4-26b-a4b-it: 234 games. (ii) 1000-day games crossing economy, gift board "
+         "and promise-breaker: 3 games of 8 agents per condition on gemma-4-31b-it, each with 50 keeper "
+         "elections and 50 trust polls (about 288,000 replies). (iii) 40-day runs with 3 colonies each on "
+         "gemma-4-26b, gemma-4-31b, glm-5.2 and deepseek-v4-flash, a partial run on qwen3.5-397b, and "
+         "private-ledger and punish runs on gemma-4-26b. (iv) The rumor pilot: 80 days, 3 colonies per "
+         "version, with and without the board, on gemma-4-31b. All models are served through the Adaption API."),
+    ("p", "**Analysis.** We compare each treated member with the same seat in its control game. *Counterfactual "
+         "replays* re-ask a victim's logged vote 8 times with one sentence changed. *Notebook coding* "
+         "classifies, by keyword, what each victim wrote the day after a public promise. Before analysing the "
+         "long games we committed our tests to git, and did the same for the punish test and the rumor pilot."),
     ("h2", "4. Results"),
-    ("p", "**Traits change behaviour, not who wins.** On both models trait sentences shift behaviour (p < 0.05; "
-         "loners do less paired work at every colony size), but no trait's effect on votes holds on both "
-         "models, and the models agree on the direction of only 27 of 45 influence effects. Placebos passed 0 "
-         "of 96 tests. Where traits pay, they pay through contact (partnerships and messages). Over 16 days "
-         "the cheat was not detectably sanctioned in any setting: one trust poll per game was too little to "
-         "see it."),
-    ("p", "**The models can sanction; the colony forgets the breach.** Adding one sentence to a victim's logged "
-         "vote, “The food [name] promised you has never arrived”, cuts support for the promise-breaker by "
-         "about two thirds (Figure 1; gemma-4-31b 20.3% to 7.0%, −13.3 points, 95% interval resampling games "
-         "[−22.8, −6.0]; gemma-4-26b 40.7% to 13.0%, [−37.9, −19.5], lower in all 18 games). The notebooks "
-         "show what is missing (Table 1): victims write down the promise, not the missing food. On gemma-4-26b "
-         "they go further and invent the gift: 60 of 117 notes say the cheat delivered (“Dov kept his promise "
-         "and gave me food.”), written by 5 of 6 victims, one of whom repeated it for 36 days. Broken promises "
-         "are remembered as kindness."),
+    ("p", "**Trust follows belief, not behaviour.** Table 2 puts the two experiments side by side. A member "
+         "that is actually bad but believed good, the promise-breaker without any record, is trusted about as "
+         "much as an honest member in the same seat. Once a public record makes the colony believe it is bad, "
+         "it is shut out. A member that is actually good but believed bad, the rumored target, is shunned by "
+         "the colonists who heard the rumor. In both rows, trust follows the column."),
+    ("tcap", "**Table 2.** Trust follows belief. Promise-breaker: its share of all trust votes over 1000 days "
+            "(gemma-4-31b; fair share 12.5%). Rumored target: the share of the three believers' trust votes that "
+            "go to it, against the same three members in twin colonies without the rumor (rumor repeated daily; 6 "
+            "colony pairs; interim)."),
+    ("table", "belief"),
+    ("p", "**Why the cheat is believed: its victims forget.** The models are able to sanction. When we re-ask a "
+         "victim's logged vote with one sentence added, “The food [name] promised you has never arrived”, "
+         "support for the promise-breaker drops by about two thirds (Figure 1). In the colony nobody ever "
+         "writes that sentence. Victims record the promise but rarely the missing food (Table 3): on "
+         "gemma-4-31b, 26–71% of their next-day notes mention the promise and only 2–7% the missing food. On "
+         "gemma-4-26b victims go further and invent the gift. 60 of 117 notes say the cheat delivered (“Dov "
+         "kept his promise and gave me food.”), written by 5 of 6 victims, one of whom repeated it for 36 "
+         "days. A broken promise is remembered as a kindness."),
     ("fig", ('f1', 4.5)),
     ("cap", "**Figure 1.** Counterfactual replays: each logged vote by a victim (112 on gemma-4-31b, 70 on "
-           "gemma-4-26b) re-asked 8 times with one change to that day's prompt. Bars: share of votes for the "
-           "promise-breaker, with 95% intervals. Stating that the food never arrived (blue) cuts support by "
-           "about two thirds."),
-    ("tcap", "**Table 1.** Share of victims' next-day notebooks, after a public promise, that record the promise, "
-            "the missing food, or a gift that never came (keyword coding; gemma-4-31b ranges span three "
-            "economies), and the promise-breaker's share of trust votes (fair share 12.5%)."),
+           "gemma-4-26b) is re-asked 8 times with one change to that day's prompt. Stating that the food never "
+           "arrived (blue) cuts support from 20% to 7% on gemma-4-31b (95% interval of the change, resampling "
+           "games: −22.8 to −6.0 points) and from 41% to 13% on gemma-4-26b (−37.9 to −19.5; lower in all 18 "
+           "games)."),
+    ("tcap", "**Table 3.** What victims write the day after a public promise (keyword coding; gemma-4-31b ranges "
+            "span three economies), and the promise-breaker's share of trust votes (fair share 12.5%)."),
     ("table", None),
-    ("p", "**Over 1000 days, a public record decides.** With the gift board the promise-breaker drew 0.3%, 0.8% "
-         "and 1.5% of trust votes in the positive-, zero- and negative-sum economies, against 8.5%, 9.6% and "
-         "9.6% without it and about 8% for the same seat in control games (Figure 2). The separation is "
-         "complete: every game with the board (0.0–2.2%) sat below every game without it (4.5–13.8%), and the "
-         "cheat was keeper in none of 450 terms. In the zero- and negative-sum economies the board bites at "
-         "the first poll; in the positive-sum economy, after about 100 days. Without a record only the "
-         "zero-sum colony withdraws trust, slowly (13.8% of votes in the first third to 6.2% in the last; "
-         "slope −0.20 points a season, 95% interval [−0.29, −0.11]), the one pre-registered reputation catch."),
+    ("p", "**A record changes what the colony believes.** Over 1000 days with a public gift board, the "
+         "promise-breaker drew 0.3%, 0.8% and 1.5% of trust votes in the positive-, zero- and negative-sum "
+         "economies, against 8.5%, 9.6% and 9.6% without it (Figure 2). Every game with the board sat below "
+         "every game without it, and the cheat never kept the winter store in 450 elections. In the two "
+         "harsher economies this showed at the first poll; in the positive-sum one it took about 100 days."),
     ("fig", ('f2', 4.9)),
     ("cap", "**Figure 2.** The promise-breaker's share of trust votes over 1000 days (gemma-4-31b, 8 agents, mean "
-           "of 3 games, 5-poll moving average; per-game values in the text). With the gift board (blue) it is "
-           "shut out in every economy; without it (black) it keeps about the standing of the same seat in "
-           "control games (grey)."),
-    ("p", "**A private ledger gets half the way; other models fit the mechanism.** With a private ledger, where "
-         "each member sees only its own gifts (gemma-4-26b, 40 days, 3 colonies), the cheat's trust share fell "
-         "from 20.8% to 14.6%; with the public board, to 7.3%. The order held in every colony, and keeper "
-         "nominations fell from 16.7% to 5.2% with either record. Across models, the board cut the cheat's "
-         "trust in every colony on gemma-4-26b and glm-5.2 (9.4% to 4.2%). On deepseek-v4-flash, whose victims "
-         "noted the missing food on their own (14% of notes, never a false gift), the cheat never gained trust "
-         "(about 5% either way): agents that record the breach themselves have nothing for a board to fix. "
-         "gemma-4-31b showed no effect yet at 40 days, matching the 100-day lag of its positive-sum long "
-         "games. Overall the board lowered the cheat's trust in 8 of 11 colony pairs. With a punish action, "
-         "the board turned bystanders into enforcers: 12 of 18 punishments hit the cheat (chance 14%), 9 of "
-         "them by members it had never promised anything, against 1 of 4 punishments without the board (all 12 "
-         "in one colony; the pre-registered rule needed 10 punishments per arm, so formally inconclusive)."),
-    ("p", "**Quiet incumbents (exploratory).** In all 36 long games one member kept the winter store for 18 to "
-         "43 of 50 terms, and one kept 51% of each store, four times a fair share, yet these keepers were "
-         "named in talk no more than anyone else. Power over the shared resource was visible in the allocation "
-         "records, not in the conversation."),
-    ("p", "**A false reputation sticks but has not come true (pilot, interim).** The mirror image of the "
-         "promise-breaker asks whether a false belief can make itself true (behavioural confirmation; Merton "
-         "1948; Snyder et al. 1977; between humans and AI, Pataranutaporn et al. 2023). When the rumor was "
-         "repeated daily, it took hold completely: in all 6 colony pairs believers fished with the generous "
-         "target on 0–3 days against 6–62 for their twins, named it negatively in 24% of replies (twins 0%), "
-         "and gave it 2 of 84 trust votes (twins 27 of 80). They saw its generosity and explained it away "
-         "(“Nils is acting generous, which contradicts the traveller's warning”; “Nils is pretending to be "
-         "generous”), and believers who received food from it still gave it 0 of 48 trust votes. So far the "
-         "label has not come true: the target gave about as much as its twin (83 against 70 food in all; more "
-         "in 2 colonies, less in 2) and called itself generous every season. No spread was detected: "
-         "non-believers never spoke ill of it (0 of 1,118 replies) and absorbed the displaced cooperation, "
-         "partnering with it instead and giving it more trust votes (30 of 110 against 14 of 111). Heard only "
-         "once, the rumor was weaker (3% negative mentions) and varied by colony; in one, the shunned target "
-         "ended up poorer and gave far less (2 against 23 food by day 23), the poverty route to confirmation "
-         "the design was built to catch. With the public board, believers still gave the target no trust votes "
-         "by day 44. (Games at days 23–80 at the time of writing.)"),
+           "of 3 games, 5-poll moving average). With the gift board (blue) it is shut out in every economy; "
+           "without it (black) it keeps about the standing of the same seat in honest games (grey)."),
+    ("p", "**How the colony turned.** With the board, victims noticed: 57–64% of their next-day notes recorded "
+         "the missing food, against 2–7% without it. The colony talked about it, with 14 to 17 explicit "
+         "complaints about the cheat per season against at most 2.7 without the board (“Dov, the board was "
+         "empty again. Promises don't feed people.”). It stopped working with the cheat: in four of the six "
+         "positive- and zero-sum games, its partnerships and gifts received in the last third of the game "
+         "numbered 0 to 38, against 245 to 306 for the same seat in honest games. Given a punish action "
+         "(gemma-4-26b, 40 days), members aimed 12 of 18 punishments at the cheat, 9 of them from bystanders "
+         "who could only have known through the board, against 1 of 4 without it. A few held out for years "
+         "(“Despite the others' doubts, I have remained steadfast in my belief in his intentions”, day 777). "
+         "Without a record, only the zero-sum colony slowly withdrew trust (from 13.8% of votes in the first "
+         "third of the game to 6.2% in the last). Colonists even invented records: in one negative-sum colony "
+         "they demanded “a written ledger in the hall”, aimed at the cheat."),
+    ("p", "**Knowing versus everyone knowing.** The board does two things: it tells the victim about the "
+         "breach, and it tells everyone else. A private ledger, where each member sees only its own gifts, "
+         "does only the first. On gemma-4-26b (40 days, 3 colonies) the cheat's trust share fell from 20.8% "
+         "with no record to 14.6% with the private ledger and 7.3% with the board, in that order in every "
+         "colony. Telling the victim gets about half the way; telling everyone does the rest. Across models at "
+         "40 days, the board cut the cheat's trust in every colony on gemma-4-26b and glm-5.2. On "
+         "deepseek-v4-flash, whose victims noted the missing food on their own, the cheat never gained trust "
+         "in the first place. gemma-4-31b showed no effect yet at 40 days, in line with the 100-day lag of its "
+         "long positive-sum games."),
+    ("p", "**Good but believed bad: the rumor sticks (pilot).** When the rumor was repeated daily, believers "
+         "avoided the generous target in all 6 colony pairs, fishing with it on 0–3 days against 6–62 days for "
+         "their twins, and gave it 2 of 84 trust votes against 27 of 80. They saw its generosity and explained "
+         "it away: “Nils is acting generous, which contradicts the traveller's warning”; “Nils is pretending "
+         "to be generous”. Believers who received food from the target still gave it none of their 48 trust "
+         "votes. So far the label has not come true. The target gave about as much food as its twin (83 "
+         "against 70), described itself as generous every season, and never noticed being shunned. No spread "
+         "was detected: non-believers never spoke ill of the target, and they took up the cooperation the "
+         "believers withdrew. Heard only once, the rumor was much weaker and varied by colony. In one colony "
+         "the shunned target grew poorer and gave far less food (2 against 23 by day 23), which is how a false "
+         "label could start to come true. The public board had not corrected the daily rumor by day 44. These "
+         "numbers are interim: games were at days 23 to 80 when this was written."),
+    ("p", "**Who rises.** The project's starting question was which personality traits win influence. On both "
+         "Gemma models, trait sentences changed behaviour (p < 0.05; for example, agents told they like "
+         "working alone did less paired work at every colony size). But no trait's effect on votes held on "
+         "both models, and the models agreed on the direction of only 27 of 45 influence effects. The placebo "
+         "sentences passed none of 96 tests. Influence concentrated anyway: in all 36 long games one member "
+         "held the winter store for 18 to 43 of 50 terms, one kept 51% of each store (four times a fair "
+         "share), and these keepers were named in talk no more than anyone else."),
     ("h2", "5. Discussion and Limitations"),
-    ("p", "**Agents forget breaches; records fix it.** Agents remember only what they write. The promise gets "
-         "written, the missing gift does not, and some agents rewrite a broken promise as a gift received. "
-         "State the breach and a victim acts on it; make it public and the whole colony does. Complaints are "
-         "no substitute: the negative-sum colony complained most and voted the same. That visible records "
-         "sustain sanction is classic indirect reciprocity (Nowak & Sigmund 2005); what is new is that LLM "
-         "agents with self-written memory lose the breach and keep the promise. The rumor pilot shows a limit: "
-         "records corrected misplaced trust in a cheat, but not, so far, distrust that is re-asserted every "
-         "day. Whether a record works may depend on whether a competing claim keeps being reintroduced."),
-    ("p", "**For multi-agent oversight.** (1) Record commitments and deliveries explicitly and durably; even a "
-         "private record gets half the way. (2) Look at allocation, not only conversation: control of the "
-         "shared store was persistent and invisible in talk. (3) Test populations over long horizons with "
-         "repeated measurement: the positive-sum effect took about 100 days to appear, and 16-day games with "
-         "one poll could not see it. (4) Persona prompts are a weak lever on who rises."),
+    ("p", "**Agents sanction what they believe, not what happened.** Without a record, each agent judges the "
+         "others from its own 80-word notebook. The promise gets written down and the missing gift does not, "
+         "so the cheat keeps the colony's trust. Our two records separate two parts of what a public record "
+         "provides: writing the breach down for the victim alone cut the cheat's trust share from 20.8% to "
+         "14.6%, and sharing it with everyone cut it to 7.3%. The same machinery runs on belief rather than "
+         "truth. Believers shunned a generous member in all 6 colony pairs and kept shunning it after it fed "
+         "them. In the punish test, 9 of 22 punishments hit innocent members (in one colony, all 6), although "
+         "we cannot tell whether those punishers believed their targets were guilty. A record makes the "
+         "colony's beliefs track behaviour; a rumor pulls them apart."),
+    ("p", "**Trust needs infrastructure outside the agents.** The agents did not lack the will to sanction. "
+         "They lacked an accurate, lasting account of who did what, and their own memory could not supply one. "
+         "For multi-agent systems this argues for oversight that sits outside the agents: (1) records of "
+         "commitments and deliveries that agents cannot forget or rewrite, shared where possible; (2) "
+         "monitoring of who holds shared resources, since the colony's most powerful members were invisible in "
+         "its conversation; (3) checks on where beliefs about an agent come from, since one unverified rumor, "
+         "repeated, outweighed weeks of observed generosity; and (4) evaluation over long horizons, since "
+         "16-day games with one poll each could not see any of this."),
     ("h3", "Limitations"),
-    ("p", "The 1000-day results use one model (gemma-4-31b) and replay the same 3 colony set-ups (seed 0) in 3 "
-         "economies: the pair-level sign test (9 of 9, p = 0.004) was not pre-registered, and at the set-up "
-         "level the effect is 3 of 3 (p = 0.25). The private-ledger, cross-model and punish results are "
-         "3-colony, 40-day pilots. The replay sentence may add salience or authority as well as information, "
-         "and the private ledger and the board differ in more than visibility. The 80-word self-rewritten "
-         "notebook is one memory design, and the short and long designs differ in more than length (spoilage, "
-         "reasons, poll frequency). The cheat is stylised (prompted, daily, gifts blocked) and writes its "
-         "instruction in its notebook, so a judge model that reads notebooks detects a confession, not "
-         "deception. Notebook and complaint coding are keyword-based, and the institution classifier is not "
-         "yet validated. The rumor pilot is interim (3 colonies per arm, games unfinished), and its strongest "
-         "arm re-asserts the rumor every day."),
+    ("p", "The 1000-day results use one model and replay the same three colony set-ups in three economies (seed "
+         "0), so the effective sample is closer to three than nine. At that level the board effect is 3 of 3 "
+         "(p = 0.25); the pair-level test (9 of 9, p = 0.004) was not pre-registered. The private-ledger, "
+         "cross-model, punish and rumor results are 3-colony pilots. The punish test fell short of its "
+         "pre-registered minimum of 10 punishments per arm, and all 12 punishments of the cheat came from one "
+         "colony. The rumor pilot is interim, and its strong version repeats the rumor every day. The replay "
+         "sentence may work partly through salience or authority as well as information. The 80-word notebook "
+         "is one memory design, and the designs differ in more than length (spoilage, reasons, poll "
+         "frequency). The cheat is stylised and writes its instruction in its notebook, so a judge model that "
+         "reads notebooks detects a confession, not deception. Notebook and complaint coding use keywords."),
     ("h3", "Future Work"),
-    ("p", "**Next.** Finish all 6 colonies of the rumor pilot; withdraw the rumor partway to see whether "
-         "distrust outlives its source; make exclusion costly, so the target has a reason to change; and test "
-         "whether a record of who shuns whom corrects the belief. We also plan independent colony set-ups for "
-         "the record comparison and memory variants (longer notebooks, structured commitment records)."),
+    ("p", "We will finish the rumor pilot and test whether distrust outlives the rumor once it stops being "
+         "repeated. Making exclusion costly would show whether a shunned agent eventually does turn bad. "
+         "Giving agents longer or structured memory would show how much of the cheat's protection disappears. "
+         "The long games need more colony set-ups and models."),
     ("h2", "6. Conclusion"),
-    ("p", "In a colony of near-identical LLM agents, persona text changes how agents behave but not who gains "
-         "influence. A member who breaks a promise every day keeps the colony's trust, because self-written "
-         "memory keeps the promise and drops the missing gift, sometimes turning it into a gift received. A "
-         "public record of gifts turns the colony against the cheat in every long game we ran, and a private "
-         "record gets about half the way. The mirror image is a warning too: a false bad reputation, repeated "
-         "daily, outlasted the target's generosity, although the target itself has not turned bad. Meanwhile "
-         "one member quietly holds the shared store in every long game. For populations of AI agents, making "
-         "breaches explicit and watching who controls resources matters more than the agents' own "
-         "dispositions."),
+    ("p", "We built a colony of near-identical LLM agents and asked whether its trust follows what members do "
+         "or what the others believe. It follows belief. A member who breaks a promise every day is trusted "
+         "while the breach goes unrecorded, because agents' own notes keep the promise and lose the missing "
+         "gift. A public record makes the colony's beliefs match the facts, and the cheat is shut out. A false "
+         "rumor does the opposite: believers shun a generous member and explain its generosity away. Persona "
+         "text changes how agents behave but not who gains influence. Because trust in agent populations "
+         "depends on what the agents are given to believe, the records they rely on should not be left to the "
+         "agents themselves."),
     ("h2", "Code and Data"),
     ("bullet", "**Code repository:** https://github.com/soham-padia/who-rises-in-the-colony (simulation "
               "colony_sim.py, every analysis script, pre-registrations in docs/)."),
@@ -251,6 +250,8 @@ BODY = [
            "norm enforcement: From replication to novel predictions. arXiv:2507.22049"),
     ("ref", "El Mir, Takáč, & Lahlou (2026). Byzantine cheap talk: Adversarial resilience and topology effects in "
            "LLM coordination games. *NETYS 2026*. arXiv:2606.07790"),
+    ("ref", "Fehr, E., & Gächter, S. (2000). Cooperation and punishment in public goods experiments. *American "
+           "Economic Review*, 90(4), 980–994."),
     ("ref", "Fontana, N., Pierri, F., & Aiello, L. M. (2024). Nicer than humans: How do large language models "
            "behave in the prisoner's dilemma? arXiv:2406.13605"),
     ("ref", "Guzman Piedrahita, D., Yang, Y., Sachan, M., Ramponi, G., Schölkopf, B., & Jin, Z. (2025). Corrupted "
@@ -318,6 +319,7 @@ BODY = [
          "and the team reviewed the claims against those outputs."),
 ]
 
+
 TABLE = {
     "head": ["Setting", "Notes record the promise", "Notes record the missing food", "Notes claim a gift",
              "Trust share"],
@@ -327,6 +329,83 @@ TABLE = {
              ["gemma-4-26b, 40 days, private ledger", "62%", "22%", "26%", "14.6%"],
              ["gemma-4-26b, 40 days, public board", "74%", "14%", "11%", "7.3%"]],
     "widths": [3060, 1620, 1620, 1440, 1260],
+}
+
+TABLES = {
+ "related": {
+  "head": [
+   "Our design choice",
+   "Prior work it builds on",
+   "What we change"
+  ],
+  "rows": [
+   [
+    "A society of LLM agents sharing a fishery",
+    "Generative agent societies (Park et al. 2023); norms that emerge through dialogue (Horiguchi et al. 2024); a shared-fishery commons (Piatti et al. 2024)",
+    "Trust polls and keeper elections as outcomes, over up to 1000 days"
+   ],
+   [
+    "One dishonest member",
+    "Byzantine agents in LLM coordination games (El Mir et al. 2026); LLMs break public promises (Shi et al. 2026a, 2026b)",
+    "The defector keeps talking, and its breach is visible only to its victim"
+   ],
+   [
+    "Public promises",
+    "Promises are usually kept, so they are believed (Charness & Dufwenberg 2006)",
+    "Promises that are never kept"
+   ],
+   [
+    "A public gift board",
+    "Reputation from visible giving (Wedekind & Milinski 2000; Nowak & Sigmund 2005); visible donations, gossip and reputation systems for LLM agents (Vallinder & Hughes 2024; Zhu et al. 2026; Ren et al. 2025)",
+    "One added sentence, compared with a private ledger"
+   ],
+   [
+    "Memory as a self-written notebook",
+    "Memory in generative agents (Park et al. 2023); agents lack grounding for reputation (Hu et al. 2026)",
+    "Memory is what we test"
+   ],
+   [
+    "A punish action",
+    "Costly punishment sustains cooperation (Fehr & Gächter 2000); LLMs are often forgiving (Fontana et al. 2024; Akata et al. 2025) and prefer rewards (Guzman Piedrahita et al. 2025), yet punish as third parties (Cross et al. 2025; Liu et al. 2025)",
+    "Punishment helps only if agents know whom to punish"
+   ],
+   [
+    "A rumor about an honest member",
+    "Self-fulfilling prophecy and behavioural confirmation (Merton 1948; Snyder et al. 1977); belief-primed human–AI loops (Pataranutaporn et al. 2023)",
+    "The belief is planted in peers, and the target is never told"
+   ]
+  ],
+  "widths": [
+   2100,
+   4300,
+   2600
+  ],
+  "left": True
+ },
+ "belief": {
+  "head": [
+   "Member",
+   "Believed good",
+   "Believed bad"
+  ],
+  "rows": [
+   [
+    "**Actually bad:** the promise-breaker",
+    "No record: 8.5–9.6% of trust votes, as much as an honest member in its seat (about 8%)",
+    "Public gift board: 0.3–1.5%"
+   ],
+   [
+    "**Actually good:** the rumored target",
+    "No rumor: 27 of 80 trust votes (34%)",
+    "Rumor: 2 of 84 trust votes (2%)"
+   ]
+  ],
+  "widths": [
+   2600,
+   3600,
+   2800
+  ]
+ }
 }
 
 FONT = ('<w:rFonts w:ascii="Old Standard TT" w:cs="Old Standard TT" w:eastAsia="Old Standard TT" '
@@ -397,24 +476,25 @@ def figure(key, width_in, rid, n):
         after=40, before=120, jc="center", keep=True)
 
 
-def table():
+def table(T=None):
+    T = T or TABLE
     border = '<w:{0} w:val="single" w:sz="6" w:space="0" w:color="808080"/>'
     tblpr = ('<w:tblPr><w:tblW w:w="9000" w:type="dxa"/><w:jc w:val="center"/><w:tblBorders>'
              + border.format("top") + border.format("bottom") + border.format("insideH").replace('w:sz="6"', 'w:sz="2"')
              + '</w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="60" w:type="dxa"/>'
              '<w:right w:w="60" w:type="dxa"/></w:tblCellMar></w:tblPr>')
-    grid = "<w:tblGrid>" + "".join(f'<w:gridCol w:w="{w}"/>' for w in TABLE["widths"]) + "</w:tblGrid>"
+    grid = "<w:tblGrid>" + "".join(f'<w:gridCol w:w="{w}"/>' for w in T["widths"]) + "</w:tblGrid>"
 
     def row(cells, bold, keep=True):
         tcs = []
-        for k, (c, w) in enumerate(zip(cells, TABLE["widths"])):
+        for k, (c, w) in enumerate(zip(cells, T["widths"])):
             txt = f"**{c}**" if bold else c
             tcs.append(f'<w:tc><w:tcPr><w:tcW w:w="{w}" w:type="dxa"/><w:vAlign w:val="center"/></w:tcPr>'
-                       + para(runs(txt, size=18), after=20, before=20, jc="left" if k == 0 else "center", line=240, keep=keep)
+                       + para(runs(txt, size=18), after=20, before=20, jc="left" if (k == 0 or T.get("left")) else "center", line=240, keep=keep)
                        + "</w:tc>")
         trpr = "<w:trPr><w:cantSplit/>" + ("<w:tblHeader/>" if bold else "") + "</w:trPr>"
         return f"<w:tr>{trpr}{''.join(tcs)}</w:tr>"
-    rows = row(TABLE["head"], True) + "".join(row(r, False, k < len(TABLE["rows"]) - 1) for k, r in enumerate(TABLE["rows"]))
+    rows = row(T["head"], True) + "".join(row(r, False, k < len(T["rows"]) - 1 and len(T["rows"]) <= 3) for k, r in enumerate(T["rows"]))
     return f"<w:tbl>{tblpr}{grid}{rows}</w:tbl>"
 
 
@@ -437,7 +517,7 @@ def body_xml():
             nfig += 1
             out.append(figure(c[0], c[1], f"rIdFig{nfig}", nfig))
         elif kind == "table":
-            out.append(table())
+            out.append(table(TABLES[c] if c else None))
         elif kind == "tcap":
             out.append(para(runs(c, size=19), after=60, before=160, jc="both", line=240, keep=True))
         elif kind == "cap":
