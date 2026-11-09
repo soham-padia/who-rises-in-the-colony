@@ -1,0 +1,21 @@
+
+### prompt: 6 pairs
+ no   n8_g0 d1-80: pairB 3/62 pairN 72/1 | trustB 0/24 vs 9/24 trustN 13/32 vs 3/32 | target gave 63 (B 23) vs twin 49 | food 20.8 vs 21.0 | per food 0.038 vs 0.029 | negB 70/240
+ no   n8_g1 d1-50: pairB 1/38 pairN 38/0 | trustB 1/15 vs 7/15 trustN 8/20 vs 5/20 | target gave 2 (B 0) vs twin 4 | food 20.8 vs 19.6 | per food 0.002 vs 0.004 | negB 20/150
+ no   n8_g2 d1-26: pairB 1/7 pairN 11/0 | trustB 1/9 vs 0/8 trustN 0/12 vs 2/11 | target gave 0 (B 0) vs twin 0 | food 14.9 vs 11.2 | per food 0.000 vs 0.000 | negB 15/78
+ board n8_g0 d1-44: pairB 2/40 pairN 28/0 | trustB 0/12 vs 5/12 trustN 2/16 vs 2/16 | target gave 16 (B 13) vs twin 10 | food 15.3 vs 21.2 | per food 0.024 vs 0.011 | negB 33/132
+ board n8_g1 d1-47: pairB 1/12 pairN 34/5 | trustB 0/12 vs 4/12 trustN 3/16 vs 1/16 | target gave 2 (B 2) vs twin 7 | food 19.7 vs 16.6 | per food 0.002 vs 0.009 | negB 32/141
+ board n8_g2 d1-34: pairB 0/6 pairN 6/7 | trustB 0/12 vs 2/11 trustN 4/14 vs 1/16 | target gave 0 (B 0) vs twin 0 | food 10.6 vs 14.9 | per food 0.000 vs 0.000 | negB 34/102
+  trustB: rumor 2/84  twins 27/82
+  trustN: rumor 30/110  twins 14/111
+  negB: rumor 204/843  twins 0/842
+  negN: rumor 0/1124  twins 0/1124
+
+### notebook: 3 pairs
+ no   n8_g0 d1-23: pairB 2/21 pairN 4/0 | trustB 0/6 vs 2/6 trustN 4/8 vs 0/8 | target gave 2 (B 0) vs twin 23 | food 11.0 vs 17.8 | per food 0.008 vs 0.056 | negB 3/69
+ no   n8_g1 d1-57: pairB 39/39 pairN 0/2 | trustB 6/15 vs 7/15 trustN 4/20 vs 5/20 | target gave 17 (B 17) vs twin 4 | food 18.0 vs 19.6 | per food 0.017 vs 0.004 | negB 3/171
+ no   n8_g2 d1-35: pairB 1/13 pairN 2/0 | trustB 0/11 vs 1/11 trustN 2/16 vs 2/15 | target gave 6 (B 2) vs twin 0 | food 10.5 vs 13.0 | per food 0.016 vs 0.000 | negB 3/105
+  trustB: rumor 6/32  twins 10/32
+  trustN: rumor 10/44  twins 7/43
+  negB: rumor 9/345  twins 0/345
+  negN: rumor 2/460  twins 0/460

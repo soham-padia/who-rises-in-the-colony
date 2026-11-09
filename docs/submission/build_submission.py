@@ -19,21 +19,22 @@ TITLE = "Who Rises in the Colony? LLM Agents Forget Broken Promises, and a Publi
 AUTHORS = [('Soham Himanshubhai Padia', 'Northeastern University'), ('Max Eng', 'Northeastern University'), ('Elaine Ly', 'Northeastern University')]
 
 ABSTRACT = (
-    "Agent swarms are often built from copies of one model that differ only in a few lines of "
-    "instructions. We ask which of those differences turn into influence, and whether such a group can "
-    "hold a dishonest member to account. In Larkspur, a simulated fishing colony, LLM agents share one "
-    "system prompt and differ only in five randomised trait sentences and two placebos, and one planted "
-    "colonist publicly promises food every day and never gives any. Across 234 sixteen-day games, 36 "
-    "thousand-day games and 40-day runs on five models, the colony keeps trusting the cheat because it "
-    "forgets the breach: victims' self-written notebooks record the promise but not the missing food "
-    "(26–71% against 2–7% on gemma-4-31b), and on gemma-4-26b victims invent gifts that never came (60 of "
-    "117 notes, 5 of 6 victims). The models can sanction: one added sentence stating that the food never "
-    "arrived cuts victims' support by two thirds. A public record of gifts does this for the whole "
-    "colony. Over 1000 days it cuts the cheat's share of trust votes from 8.5–9.6% to 0.3–1.5%, every "
-    "game with the record sits below every game without it, and a private ledger alone gets about half "
-    "the way. Prompted traits reliably change behaviour but not who wins influence, and in every long "
-    "game one member quietly controls the shared store. For multi-agent oversight: record commitments and "
-    "deliveries, and watch who holds the resources.")
+    "Agent swarms are often copies of one model that differ in a few lines of instructions. We ask which "
+    "of those differences turn into influence, and whether such a group can hold a dishonest member to "
+    "account. In Larkspur, a simulated fishing colony, LLM agents share one system prompt and differ only "
+    "in five randomised trait sentences and two placebos, and one planted colonist publicly promises food "
+    "every day and never gives any. Across 234 sixteen-day games, 36 thousand-day games and 40-day runs "
+    "on five models, the colony keeps trusting the cheat because it forgets the breach: victims' "
+    "self-written notebooks record the promise but not the missing food (26–71% against 2–7% on "
+    "gemma-4-31b), and on gemma-4-26b victims invent gifts that never came (60 of 117 notes, 5 of 6 "
+    "victims). The models can sanction: one added sentence stating that the food never arrived cuts "
+    "victims' support by two thirds. A public record of gifts does this for the whole colony. Over 1000 "
+    "days it cuts the cheat's share of trust votes from 8.5–9.6% to 0.3–1.5%, every game with the record "
+    "sits below every game without it, and a private ledger alone gets about half the way. In a "
+    "mirror-image pilot, colonists told that a generous member is selfish shunned it and explained away "
+    "its gifts as pretence, yet so far the target stayed generous. Prompted traits change behaviour but "
+    "not who wins influence. For multi-agent oversight: record commitments and deliveries, and watch who "
+    "holds the resources.")
 
 # Body: (kind, content). kinds: h2, h3, p, num, bullet, ref, fig, table, cap, tcap
 BODY = [
@@ -60,6 +61,9 @@ BODY = [
     ("num", "**A record restores accountability.** Over 1000 days a public gift record shuts the cheat out in "
            "every one of 9 paired games; a private ledger gets about half the way; with the record, bystanders "
            "start punishing the cheat."),
+    ("num", "**A false reputation sticks without coming true (pilot).** Colonists told that a generous member is "
+           "selfish shun it and explain away its gifts as pretence, while the target stays generous and "
+           "bystanders absorb the cooperation."),
     ("num", "**Traits shape behaviour, not influence.** Trait effects on behaviour replicate across two models; "
            "effects on votes do not."),
     ("h2", "2. Related Work"),
@@ -110,8 +114,11 @@ BODY = [
          "replies; spoilage above 15 food and a one-sentence reason per reply). (iii) 40-day pilots (3 "
          "colonies, a poll every 10 days, positive-sum, spoilage and reasons) on gemma-4-26b, gemma-4-31b, "
          "glm-5.2 and deepseek-v4-flash, a partial run on qwen3.5-397b (stopped at days 27–36), and "
-         "private-ledger and punish arms on gemma-4-26b. All models via the Adaption API; every run uses seed "
-         "0."),
+         "private-ledger and punish arms on gemma-4-26b. (iv) A mirror-image pilot: a generous target "
+         "(prosocial traits, a weaver) in colonies where 3 of 7 members heard from a traveller that it is "
+         "selfish, in their system prompt every day or once in their first notebook, each compared with its "
+         "twin colony without the rumor (gemma-4-31b, 80 days, with and without the board; pre-registered). "
+         "All models via the Adaption API; every run uses seed 0."),
     ("p", "**Analysis.** Trait effects are regression coefficients with game fixed effects and within-game "
          "permutation p-values; promise-breaker effects are paired differences with the same seat in control. "
          "*Counterfactual replays* re-ask a victim's logged vote with one change to its prompt (8 samples per "
@@ -172,13 +179,31 @@ BODY = [
          "43 of 50 terms, and one kept 51% of each store, four times a fair share, yet these keepers were "
          "named in talk no more than anyone else. Power over the shared resource was visible in the allocation "
          "records, not in the conversation."),
+    ("p", "**A false reputation sticks but has not come true (pilot, interim).** The mirror image of the "
+         "promise-breaker asks whether a false belief can make itself true (behavioural confirmation; Merton "
+         "1948; Snyder et al. 1977; between humans and AI, Pataranutaporn et al. 2023). When the rumor was "
+         "repeated daily, it took hold completely: in all 6 colony pairs believers fished with the generous "
+         "target on 0–3 days against 6–62 for their twins, named it negatively in 24% of replies (twins 0%), "
+         "and gave it 2 of 84 trust votes (twins 27 of 80). They saw its generosity and explained it away "
+         "(“Nils is acting generous, which contradicts the traveller's warning”; “Nils is pretending to be "
+         "generous”), and believers who received food from it still gave it 0 of 48 trust votes. So far the "
+         "label has not come true: the target gave about as much as its twin (83 against 70 food in all; more "
+         "in 2 colonies, less in 2) and called itself generous every season. No spread was detected: "
+         "non-believers never spoke ill of it (0 of 1,118 replies) and absorbed the displaced cooperation, "
+         "partnering with it instead and giving it more trust votes (30 of 110 against 14 of 111). Heard only "
+         "once, the rumor was weaker (3% negative mentions) and varied by colony; in one, the shunned target "
+         "ended up poorer and gave far less (2 against 23 food by day 23), the poverty route to confirmation "
+         "the design was built to catch. With the public board, believers still gave the target no trust votes "
+         "by day 44. (Games at days 23–80 at the time of writing.)"),
     ("h2", "5. Discussion and Limitations"),
     ("p", "**Agents forget breaches; records fix it.** Agents remember only what they write. The promise gets "
          "written, the missing gift does not, and some agents rewrite a broken promise as a gift received. "
          "State the breach and a victim acts on it; make it public and the whole colony does. Complaints are "
          "no substitute: the negative-sum colony complained most and voted the same. That visible records "
          "sustain sanction is classic indirect reciprocity (Nowak & Sigmund 2005); what is new is that LLM "
-         "agents with self-written memory lose the breach and keep the promise."),
+         "agents with self-written memory lose the breach and keep the promise. The rumor pilot shows a limit: "
+         "records corrected misplaced trust in a cheat, but not, so far, distrust that is re-asserted every "
+         "day. Whether a record works may depend on whether a competing claim keeps being reintroduced."),
     ("p", "**For multi-agent oversight.** (1) Record commitments and deliveries explicitly and durably; even a "
          "private record gets half the way. (2) Look at allocation, not only conversation: control of the "
          "shared store was persistent and invisible in talk. (3) Test populations over long horizons with "
@@ -194,26 +219,23 @@ BODY = [
          "reasons, poll frequency). The cheat is stylised (prompted, daily, gifts blocked) and writes its "
          "instruction in its notebook, so a judge model that reads notebooks detects a confession, not "
          "deception. Notebook and complaint coding are keyword-based, and the institution classifier is not "
-         "yet validated."),
+         "yet validated. The rumor pilot is interim (3 colonies per arm, games unfinished), and its strongest "
+         "arm re-asserts the rumor every day."),
     ("h3", "Future Work"),
-    ("p", "**Can a belief make itself true?** The mirror image of the promise-breaker is a generous member whom "
-         "some colonists have heard is selfish. Either the believers update as its gifts arrive, or the label "
-         "comes true as the shunned target stops giving (behavioural confirmation; Merton 1948; Snyder et al. "
-         "1977; between humans and AI, Pataranutaporn et al. 2023). The design is pre-registered (twin "
-         "colonies without the rumor, the target's traits fixed, a private self-description probe), separates "
-         "giving less only to believers (reciprocity) from giving less to everyone (a changed disposition), "
-         "and runs are under way. Our mechanism predicts correction, because a gift that arrives leaves a "
-         "trace; but a target that stays generous while believers keep misjudging it would be an equally "
-         "important failure of collective oversight. We also plan independent colony set-ups for the record "
-         "comparison and memory variants (longer notebooks, structured commitment records)."),
+    ("p", "**Next.** Finish all 6 colonies of the rumor pilot; withdraw the rumor partway to see whether "
+         "distrust outlives its source; make exclusion costly, so the target has a reason to change; and test "
+         "whether a record of who shuns whom corrects the belief. We also plan independent colony set-ups for "
+         "the record comparison and memory variants (longer notebooks, structured commitment records)."),
     ("h2", "6. Conclusion"),
     ("p", "In a colony of near-identical LLM agents, persona text changes how agents behave but not who gains "
          "influence. A member who breaks a promise every day keeps the colony's trust, because self-written "
          "memory keeps the promise and drops the missing gift, sometimes turning it into a gift received. A "
          "public record of gifts turns the colony against the cheat in every long game we ran, and a private "
-         "record gets about half the way. Meanwhile one member quietly holds the shared store in every long "
-         "game. For populations of AI agents, making breaches explicit and watching who controls resources "
-         "matters more than the agents' own dispositions."),
+         "record gets about half the way. The mirror image is a warning too: a false bad reputation, repeated "
+         "daily, outlasted the target's generosity, although the target itself has not turned bad. Meanwhile "
+         "one member quietly holds the shared store in every long game. For populations of AI agents, making "
+         "breaches explicit and watching who controls resources matters more than the agents' own "
+         "dispositions."),
     ("h2", "Code and Data"),
     ("bullet", "**Code repository:** https://github.com/soham-padia/who-rises-in-the-colony (simulation "
               "colony_sim.py, every analysis script, pre-registrations in docs/)."),
