@@ -29,7 +29,7 @@ If part of a swarm wrongly believes a member is bad, does the member become bad 
 
 Trust votes and gifts to the target are reported with the same tests as secondary measures. With 3 believers and 4 trust polls per game they are sparse, so they are read as descriptive. Agents within a colony are not independent; the colony pair is the unit of every test.
 
-## Amendment (about 9:15 PM, before any analysed run)
+## Amendment (about 9:00 PM, before any analysed run; the commit time is the timestamp)
 
 The first launch (4 runs, 40 days) was stopped after about 6 minutes, before any game finished; no result was looked at. A design review raised problems that would have confounded the answer, so the design changes as follows. The decision rules above are unchanged except where stated.
 
