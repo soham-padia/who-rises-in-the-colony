@@ -48,3 +48,7 @@ Six 80-day runs need about 23,000 agent calls; at the account's rate limit (abou
 - **Arms:** no rumor, `--rumor prompt`, `--rumor notebook`, all without the board. Each rumor mode is tested over 6 colony pairs, not 12. With 6 pairs a sign test reaches p < 0.05 only at 6 of 6 (p = 0.031), so each "counts as found" rule becomes 6 of 6, and the "rumor took hold" rule becomes p >= 0.05 and fewer than 5 of 6.
 - **Prediction 4 (the board speeds correction) is dropped**; the board is left for future work.
 - **Interim look:** the first three colonies of each run finish about two hours before the last three. If the deadline forces it, we report those three pairs as descriptive only (no test can reach significance with 3 pairs) and say so.
+
+## Amendment 3 (about 9:50 PM, before any game finished)
+
+A teammate's own account can run two of the dropped gift-board runs (no rumor and `--rumor prompt`, same settings, 80 days; `run_belief_board.sh`). If they finish in time, prediction 4 (the board speeds correction) is restored for the prompt rumor only, read descriptively over 6 colonies, and the prompt-rumor tests are also reported with the board (6 pairs, same 6-of-6 rule). The board notebook arm stays dropped.
